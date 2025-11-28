@@ -1,0 +1,3216 @@
+
+(kicad_symbol_lib (version 20211014) (generator kicad_symbol_editor)
+  (symbol "RG520N" (pin_names (offset 1.016)) (in_bom yes) (on_board yes)
+    (property "Reference" "U" (id 0) (at -17.78 46.99 0)
+      (effects (font (size 1.27 1.27)) (justify bottom left))
+    )
+    (property "Value" "RG520N" (id 1) (at -17.78 -48.26 0)
+      (effects (font (size 1.27 1.27)) (justify bottom left))
+    )
+    (property "Footprint" "RG520N:XCVR_RG520N" (id 2) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MF" "Quectel" (id 4) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MAXIMUM_PACKAGE_HEIGHT" "2.95mm" (id 5) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Package" "None" (id 6) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Price" "None" (id 7) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Check_prices" "https://www.snapeda.com/parts/RG520N/Quectel/view-part/?ref=eda" (id 8) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "STANDARD" "Manufacturer Recommendations" (id 9) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "PARTREV" "1.2" (id 10) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "SnapEDA_Link" "https://www.snapeda.com/parts/RG520N/Quectel/view-part/?ref=snap" (id 11) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MP" "RG520N" (id 12) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Description" "\n                        \n                            5G sub-6GHz module; LGA form factor; 41mm  44mm  2.75mm; SA data rates: 2.4Gbps (DL)/900Mbps (UL); NSA data rates: 3.4Gbps (DL)/550Mbps (UL); Extended temperature range of -40C to +85C.\n                        \n" (id 13) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "Availability" "Not in stock" (id 14) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (property "MANUFACTURER" "Quectel" (id 15) (at 0 0 0)
+      (effects (font (size 1.27 1.27)) (justify bottom) hide)
+    )
+    (symbol "RG520N_1_0"
+      (rectangle (start -17.78 -45.72) (end 17.78 45.72)
+        (stroke (width 0.254)) (fill (type background))
+      )
+      (pin power_in line (at 22.86 43.18 180.0) (length 5.08)
+        (name "USIM1_VDD"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "245"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 22.86 40.64 180.0) (length 5.08)
+        (name "USIM2_VDD"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "250"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -22.86 30.48 0) (length 5.08)
+        (name "~{W_DISABLE}"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "114"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -22.86 -43.18 0) (length 5.08)
+        (name "ADC0"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "241"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -22.86 15.24 0) (length 5.08)
+        (name "BT_RTS"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "61"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -22.86 17.78 0) (length 5.08)
+        (name "BT_RXD"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "63"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -22.86 -35.56 0) (length 5.08)
+        (name "COEX_RXD"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "65"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -22.86 -22.86 0) (length 5.08)
+        (name "ETH1_PWR_EN"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "220"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -22.86 -27.94 0) (length 5.08)
+        (name "ETH2_PWR_EN"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "223"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -22.86 -17.78 0) (length 5.08)
+        (name "EXT_RST"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "75"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input clock (at 22.86 -35.56 180.0) (length 5.08)
+        (name "I2C_SCL"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "77"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -22.86 -5.08 0) (length 5.08)
+        (name "I2S_DIN"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "257"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input clock (at -22.86 -2.54 0) (length 5.08)
+        (name "I2S_SCK"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "256"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 22.86 -7.62 180.0) (length 5.08)
+        (name "MAIN_DCD"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "261"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 22.86 -10.16 180.0) (length 5.08)
+        (name "MAIN_RXD"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "70"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input clock (at 22.86 -22.86 180.0) (length 5.08)
+        (name "PCM_CLK"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "73"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 22.86 -27.94 180.0) (length 5.08)
+        (name "PCM_DIN"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "74"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -22.86 35.56 0) (length 5.08)
+        (name "PWRKEY"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "7"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -22.86 33.02 0) (length 5.08)
+        (name "RESET_N"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "8"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 22.86 15.24 180.0) (length 5.08)
+        (name "SPI_MISO"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "213"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -22.86 27.94 0) (length 5.08)
+        (name "USB_BOOT"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "81"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -22.86 2.54 0) (length 5.08)
+        (name "USIM1_DET"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "249"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 22.86 2.54 180.0) (length 5.08)
+        (name "USIM2_DET"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "252"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 22.86 -43.18 180.0) (length 5.08)
+        (name "GPIO_32"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "98"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 22.86 -38.1 180.0) (length 5.08)
+        (name "I2C_SDA"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "78"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at -22.86 10.16 0) (length 5.08)
+        (name "USIM1_DATA"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "248"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 22.86 10.16 180.0) (length 5.08)
+        (name "USIM2_DATA"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "251"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -22.86 22.86 0) (length 5.08)
+        (name "BT_CTS"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "62"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -22.86 20.32 0) (length 5.08)
+        (name "BT_TXD"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "59"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -22.86 -38.1 0) (length 5.08)
+        (name "COEX_TXD"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "67"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -22.86 -25.4 0) (length 5.08)
+        (name "ETH1_INT_N"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "221"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -22.86 -30.48 0) (length 5.08)
+        (name "ETH2_INT_N"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "104"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -22.86 -15.24 0) (length 5.08)
+        (name "EXT_INT"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "281"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -22.86 -7.62 0) (length 5.08)
+        (name "I2S_DOUT"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "255"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -22.86 -10.16 0) (length 5.08)
+        (name "I2S_WS"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "259"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 22.86 -2.54 180.0) (length 5.08)
+        (name "MAIN_DTR"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "258"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 22.86 -5.08 180.0) (length 5.08)
+        (name "MAIN_RI"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "100"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 22.86 -12.7 180.0) (length 5.08)
+        (name "MAIN_TXD"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "68"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output clock (at -22.86 -12.7 0) (length 5.08)
+        (name "MCLK"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "79"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 22.86 27.94 180.0) (length 5.08)
+        (name "NET_MODE"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "240"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 22.86 33.02 180.0) (length 5.08)
+        (name "NET_STATUS"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "243"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 22.86 -25.4 180.0) (length 5.08)
+        (name "PCM_DOUT"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "76"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 22.86 -30.48 180.0) (length 5.08)
+        (name "PCM_SYNC"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "71"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 22.86 35.56 180.0) (length 5.08)
+        (name "SLEEP_IND"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "102"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output clock (at 22.86 22.86 180.0) (length 5.08)
+        (name "SPI_CLK"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "210"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 22.86 20.32 180.0) (length 5.08)
+        (name "SPI_CS"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "207"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 22.86 17.78 180.0) (length 5.08)
+        (name "SPI_MOSI"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "204"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 22.86 30.48 180.0) (length 5.08)
+        (name "STATUS"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "237"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output clock (at -22.86 7.62 0) (length 5.08)
+        (name "USIM1_CLK"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "247"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -22.86 5.08 0) (length 5.08)
+        (name "USIM1_RST"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "244"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output clock (at 22.86 7.62 180.0) (length 5.08)
+        (name "USIM2_CLK"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "253"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 22.86 5.08 180.0) (length 5.08)
+        (name "USIM2_RST"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "254"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+    )
+    (symbol "RG520N_2_0"
+      (rectangle (start -22.86 -45.72) (end 22.86 45.72)
+        (stroke (width 0.254)) (fill (type background))
+      )
+      (pin power_in line (at 27.94 43.18 180.0) (length 5.08)
+        (name "SDIO_VDD"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "60"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 27.94 40.64 180.0) (length 5.08)
+        (name "USB_VBUS"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "82"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 27.94 -30.48 180.0) (length 5.08)
+        (name "ANT_GNSS"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "193"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 27.94 -20.32 180.0) (length 5.08)
+        (name "ANT2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "166"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 27.94 -22.86 180.0) (length 5.08)
+        (name "ANT3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "184"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 27.94 -25.4 180.0) (length 5.08)
+        (name "ANT4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "121"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 27.94 -27.94 180.0) (length 5.08)
+        (name "ANT5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "175"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -27.94 -38.1 0) (length 5.08)
+        (name "BT_EN"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "64"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 27.94 -35.56 180.0) (length 5.08)
+        (name "DBG_RXD"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "108"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -27.94 -15.24 0) (length 5.08)
+        (name "HST_LAA_TX_EN"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "135"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -27.94 -17.78 0) (length 5.08)
+        (name "HST_WL_TX_EN"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "138"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -27.94 10.16 0) (length 5.08)
+        (name "PCIE_CLKREQ_N"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "36"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -27.94 20.32 0) (length 5.08)
+        (name "PCIE_RX0_M"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "32"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -27.94 17.78 0) (length 5.08)
+        (name "PCIE_RX0_P"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "34"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -27.94 15.24 0) (length 5.08)
+        (name "PCIE_RX1_M"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "35"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -27.94 12.7 0) (length 5.08)
+        (name "PCIE_RX1_P"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "37"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -27.94 5.08 0) (length 5.08)
+        (name "PCIE_WAKE_N"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "30"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input clock (at -27.94 -43.18 0) (length 5.08)
+        (name "RF_CLK3_WL"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "246"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 27.94 20.32 180.0) (length 5.08)
+        (name "SDIO_DET"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "55"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 27.94 17.78 180.0) (length 5.08)
+        (name "SDIO_PWR_EN"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "53"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 27.94 15.24 180.0) (length 5.08)
+        (name "SDIO_PWR_VSET"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "56"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 27.94 0.0 180.0) (length 5.08)
+        (name "USB_SS_RX_M"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "86"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at 27.94 -2.54 180.0) (length 5.08)
+        (name "USB_SS_RX_P"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "88"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -27.94 -7.62 0) (length 5.08)
+        (name "WL_LAA_AS_EN"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "159"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -27.94 -10.16 0) (length 5.08)
+        (name "WL_LAA_RX"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "201"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -27.94 -5.08 0) (length 5.08)
+        (name "WL_SW_CTRL"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "180"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -27.94 -27.94 0) (length 5.08)
+        (name "WLAN_EN"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "222"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -27.94 -22.86 0) (length 5.08)
+        (name "WLAN_PWR_EN1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "216"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input line (at -27.94 -25.4 0) (length 5.08)
+        (name "WLAN_PWR_EN2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "219"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin input clock (at -27.94 -30.48 0) (length 5.08)
+        (name "WLAN_SLP_CLK"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "225"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 27.94 -15.24 180.0) (length 5.08)
+        (name "ANT0"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "130"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 27.94 -17.78 180.0) (length 5.08)
+        (name "ANT1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "157"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 27.94 33.02 180.0) (length 5.08)
+        (name "SDIO_CMD"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "48"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 27.94 30.48 180.0) (length 5.08)
+        (name "SDIO_DATA0"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "49"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 27.94 27.94 180.0) (length 5.08)
+        (name "SDIO_DATA1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "50"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 27.94 25.4 180.0) (length 5.08)
+        (name "SDIO_DATA2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "51"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 27.94 22.86 180.0) (length 5.08)
+        (name "SDIO_DATA3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "52"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 27.94 10.16 180.0) (length 5.08)
+        (name "USB_DM"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "85"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin bidirectional line (at 27.94 7.62 180.0) (length 5.08)
+        (name "USB_DP"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "83"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at 27.94 -7.62 180.0) (length 5.08)
+        (name "SDR_GRFC0"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "171"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at 27.94 -10.16 180.0) (length 5.08)
+        (name "SDR_GRFC1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "174"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at -27.94 0.0 0) (length 5.08)
+        (name "SDX_TO_WL_CTI"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "276"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at -27.94 -2.54 0) (length 5.08)
+        (name "WL_TO_SDX_CTI"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "275"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin passive line (at -27.94 -33.02 0) (length 5.08)
+        (name "WLAN_PA_MUTING"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "162"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 27.94 -38.1 180.0) (length 5.08)
+        (name "DBG_TXD"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "105"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output clock (at -27.94 35.56 0) (length 5.08)
+        (name "PCIE_REFCLK_M"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "38"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output clock (at -27.94 33.02 0) (length 5.08)
+        (name "PCIE_REFCLK_P"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "40"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -27.94 7.62 0) (length 5.08)
+        (name "PCIE_RST_N"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "39"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -27.94 30.48 0) (length 5.08)
+        (name "PCIE_TX0_M"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "44"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -27.94 27.94 0) (length 5.08)
+        (name "PCIE_TX0_P"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "46"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -27.94 25.4 0) (length 5.08)
+        (name "PCIE_TX1_M"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "41"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at -27.94 22.86 0) (length 5.08)
+        (name "PCIE_TX1_P"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "43"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output clock (at 27.94 35.56 180.0) (length 5.08)
+        (name "SDIO_CLK"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "47"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 27.94 5.08 180.0) (length 5.08)
+        (name "USB_SS_TX_M"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "89"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin output line (at 27.94 2.54 180.0) (length 5.08)
+        (name "USB_SS_TX_P"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "91"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+    )
+    (symbol "RG520N_3_0"
+      (rectangle (start -20.32 -7.62) (end 20.32 7.62)
+        (stroke (width 0.254)) (fill (type background))
+      )
+      (pin power_in line (at -25.4 5.08 0) (length 5.08)
+        (name "VBAT_BB"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "235"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -25.4 5.08 0) (length 5.08) hide
+        (name "VBAT_BB"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "236"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -25.4 5.08 0) (length 5.08) hide
+        (name "VBAT_BB"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "238"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 25.4 5.08 180.0) (length 5.08)
+        (name "VBAT_RF1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "229"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "VBAT_RF1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "230"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "VBAT_RF1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "232"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "VBAT_RF1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "233"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 25.4 -5.08 180.0) (length 5.08)
+        (name "VBAT_RF2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "107"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 25.4 -5.08 180.0) (length 5.08) hide
+        (name "VBAT_RF2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "109"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 25.4 -5.08 180.0) (length 5.08) hide
+        (name "VBAT_RF2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "110"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 25.4 -5.08 180.0) (length 5.08) hide
+        (name "VBAT_RF2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "112"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -25.4 -5.08 0) (length 5.08)
+        (name "VDD_EXT"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "66"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -25.4 -2.54 0) (length 5.08)
+        (name "VDD_WIFI_VH"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "269"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -25.4 2.54 0) (length 5.08)
+        (name "VDD_WIFI_VL"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "266"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -25.4 2.54 0) (length 5.08) hide
+        (name "VDD_WIFI_VL"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "267"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -25.4 0.0 0) (length 5.08)
+        (name "VDD_WIFI_VM"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "268"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+    )
+    (symbol "RG520N_4_0"
+      (rectangle (start -12.7 -5.08) (end 12.7 5.08)
+        (stroke (width 0.254)) (fill (type background))
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08)
+        (name "GND1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "12"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "18"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "26"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "33"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "42"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "84"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "90"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "96"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "113"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "115"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "116"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "118"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "119"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "122"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "123"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08)
+        (name "GND2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "124"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "125"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "126"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "127"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "128"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "129"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "131"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "132"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "133"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "134"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "136"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "137"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "140"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "141"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "142"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08)
+        (name "GND3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "143"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "144"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "145"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "146"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "147"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "149"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "151"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "152"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "154"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "155"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "156"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "158"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "160"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "161"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "163"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08)
+        (name "GND4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "164"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "167"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "168"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "169"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "170"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "172"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "173"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "176"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "178"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "179"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "181"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "182"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "185"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "187"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "188"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08)
+        (name "GND5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "190"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "191"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "194"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "195"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "196"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "197"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "200"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "202"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "203"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "205"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "206"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "209"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "211"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "212"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "214"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08)
+        (name "GND6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "215"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "224"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "226"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "227"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "228"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "231"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "234"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "299"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "300"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "301"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "302"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "303"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "304"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "305"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "306"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+    )
+    (symbol "RG520N_5_0"
+      (rectangle (start -12.7 -5.08) (end 12.7 5.08)
+        (stroke (width 0.254)) (fill (type background))
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08)
+        (name "GND10"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "352"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND10"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "353"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND10"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "354"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND10"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "355"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND10"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "356"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND10"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "357"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND10"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "358"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND10"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "359"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND10"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "360"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND10"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "361"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND10"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "362"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND10"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "363"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND10"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "364"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND10"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "365"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 2.54 180.0) (length 5.08) hide
+        (name "GND10"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "366"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08)
+        (name "GND11"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "367"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND11"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "368"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND11"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "369"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND11"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "370"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND11"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "371"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND11"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "372"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND11"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "373"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND11"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "374"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND11"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "375"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND11"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "376"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND11"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "377"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND11"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "378"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND11"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "379"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND11"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "380"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 0.0 180.0) (length 5.08) hide
+        (name "GND11"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "381"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08)
+        (name "GND12"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "382"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND12"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "383"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND12"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "384"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND12"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "385"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND12"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "386"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND12"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "387"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND12"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "388"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND12"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "389"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND12"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "390"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND12"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "391"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at 17.78 -2.54 180.0) (length 5.08) hide
+        (name "GND12"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "392"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08)
+        (name "GND7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "307"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "308"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "309"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "310"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "311"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "312"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "313"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "314"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "315"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "316"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "317"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "318"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "319"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "320"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 2.54 0) (length 5.08) hide
+        (name "GND7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "321"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08)
+        (name "GND8"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "322"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND8"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "323"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND8"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "324"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND8"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "325"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND8"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "326"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND8"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "327"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND8"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "328"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND8"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "329"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND8"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "330"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND8"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "331"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND8"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "332"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND8"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "333"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND8"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "334"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND8"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "335"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 0.0 0) (length 5.08) hide
+        (name "GND8"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "336"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08)
+        (name "GND9"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "337"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND9"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "338"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND9"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "339"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND9"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "340"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND9"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "341"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND9"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "342"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND9"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "343"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND9"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "344"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND9"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "345"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND9"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "346"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND9"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "347"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND9"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "348"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND9"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "349"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND9"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "350"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin power_in line (at -17.78 -2.54 0) (length 5.08) hide
+        (name "GND9"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "351"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+    )
+    (symbol "RG520N_6_0"
+      (rectangle (start -20.32 -5.08) (end 20.32 7.62)
+        (stroke (width 0.254)) (fill (type background))
+      )
+      (pin no_connect line (at -25.4 5.08 0) (length 5.08)
+        (name "RESERVED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "1"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 5.08 0) (length 5.08) hide
+        (name "RESERVED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "2"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 5.08 0) (length 5.08) hide
+        (name "RESERVED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "3"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 5.08 0) (length 5.08) hide
+        (name "RESERVED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "4"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 5.08 0) (length 5.08) hide
+        (name "RESERVED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "5"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 5.08 0) (length 5.08) hide
+        (name "RESERVED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "6"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 5.08 0) (length 5.08) hide
+        (name "RESERVED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "9"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 5.08 0) (length 5.08) hide
+        (name "RESERVED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "10"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 5.08 0) (length 5.08) hide
+        (name "RESERVED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "11"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 5.08 0) (length 5.08) hide
+        (name "RESERVED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "13"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 5.08 0) (length 5.08) hide
+        (name "RESERVED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "14"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 5.08 0) (length 5.08) hide
+        (name "RESERVED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "15"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 5.08 0) (length 5.08) hide
+        (name "RESERVED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "16"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 5.08 0) (length 5.08) hide
+        (name "RESERVED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "17"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 5.08 0) (length 5.08) hide
+        (name "RESERVED1"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "19"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 2.54 0) (length 5.08)
+        (name "RESERVED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "20"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 2.54 0) (length 5.08) hide
+        (name "RESERVED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "21"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 2.54 0) (length 5.08) hide
+        (name "RESERVED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "22"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 2.54 0) (length 5.08) hide
+        (name "RESERVED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "23"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 2.54 0) (length 5.08) hide
+        (name "RESERVED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "24"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 2.54 0) (length 5.08) hide
+        (name "RESERVED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "25"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 2.54 0) (length 5.08) hide
+        (name "RESERVED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "27"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 2.54 0) (length 5.08) hide
+        (name "RESERVED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "28"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 2.54 0) (length 5.08) hide
+        (name "RESERVED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "29"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 2.54 0) (length 5.08) hide
+        (name "RESERVED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "31"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 2.54 0) (length 5.08) hide
+        (name "RESERVED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "45"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 2.54 0) (length 5.08) hide
+        (name "RESERVED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "54"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 2.54 0) (length 5.08) hide
+        (name "RESERVED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "57"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 2.54 0) (length 5.08) hide
+        (name "RESERVED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "58"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 2.54 0) (length 5.08) hide
+        (name "RESERVED2"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "69"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 0.0 0) (length 5.08)
+        (name "RESERVED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "72"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 0.0 0) (length 5.08) hide
+        (name "RESERVED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "80"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 0.0 0) (length 5.08) hide
+        (name "RESERVED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "87"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 0.0 0) (length 5.08) hide
+        (name "RESERVED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "92"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 0.0 0) (length 5.08) hide
+        (name "RESERVED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "93"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 0.0 0) (length 5.08) hide
+        (name "RESERVED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "94"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 0.0 0) (length 5.08) hide
+        (name "RESERVED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "95"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 0.0 0) (length 5.08) hide
+        (name "RESERVED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "97"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 0.0 0) (length 5.08) hide
+        (name "RESERVED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "99"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 0.0 0) (length 5.08) hide
+        (name "RESERVED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "101"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 0.0 0) (length 5.08) hide
+        (name "RESERVED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "103"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 0.0 0) (length 5.08) hide
+        (name "RESERVED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "106"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 0.0 0) (length 5.08) hide
+        (name "RESERVED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "111"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 0.0 0) (length 5.08) hide
+        (name "RESERVED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "117"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at -25.4 0.0 0) (length 5.08) hide
+        (name "RESERVED3"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "120"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 5.08 180.0) (length 5.08)
+        (name "RESERVED4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "139"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "RESERVED4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "148"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "RESERVED4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "150"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "RESERVED4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "153"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "RESERVED4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "165"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "RESERVED4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "177"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "RESERVED4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "183"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "RESERVED4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "186"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "RESERVED4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "189"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "RESERVED4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "192"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "RESERVED4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "198"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "RESERVED4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "199"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "RESERVED4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "208"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "RESERVED4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "217"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 5.08 180.0) (length 5.08) hide
+        (name "RESERVED4"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "218"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 2.54 180.0) (length 5.08)
+        (name "RESERVED5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "239"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 2.54 180.0) (length 5.08) hide
+        (name "RESERVED5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "242"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 2.54 180.0) (length 5.08) hide
+        (name "RESERVED5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "260"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 2.54 180.0) (length 5.08) hide
+        (name "RESERVED5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "262"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 2.54 180.0) (length 5.08) hide
+        (name "RESERVED5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "263"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 2.54 180.0) (length 5.08) hide
+        (name "RESERVED5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "264"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 2.54 180.0) (length 5.08) hide
+        (name "RESERVED5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "265"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 2.54 180.0) (length 5.08) hide
+        (name "RESERVED5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "270"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 2.54 180.0) (length 5.08) hide
+        (name "RESERVED5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "271"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 2.54 180.0) (length 5.08) hide
+        (name "RESERVED5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "272"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 2.54 180.0) (length 5.08) hide
+        (name "RESERVED5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "273"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 2.54 180.0) (length 5.08) hide
+        (name "RESERVED5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "274"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 2.54 180.0) (length 5.08) hide
+        (name "RESERVED5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "277"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 2.54 180.0) (length 5.08) hide
+        (name "RESERVED5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "278"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 2.54 180.0) (length 5.08) hide
+        (name "RESERVED5"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "279"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 0.0 180.0) (length 5.08)
+        (name "RESERVED6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "280"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 0.0 180.0) (length 5.08) hide
+        (name "RESERVED6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "282"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 0.0 180.0) (length 5.08) hide
+        (name "RESERVED6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "283"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 0.0 180.0) (length 5.08) hide
+        (name "RESERVED6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "284"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 0.0 180.0) (length 5.08) hide
+        (name "RESERVED6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "285"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 0.0 180.0) (length 5.08) hide
+        (name "RESERVED6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "286"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 0.0 180.0) (length 5.08) hide
+        (name "RESERVED6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "287"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 0.0 180.0) (length 5.08) hide
+        (name "RESERVED6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "288"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 0.0 180.0) (length 5.08) hide
+        (name "RESERVED6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "289"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 0.0 180.0) (length 5.08) hide
+        (name "RESERVED6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "290"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 0.0 180.0) (length 5.08) hide
+        (name "RESERVED6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "291"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 0.0 180.0) (length 5.08) hide
+        (name "RESERVED6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "292"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 0.0 180.0) (length 5.08) hide
+        (name "RESERVED6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "293"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 0.0 180.0) (length 5.08) hide
+        (name "RESERVED6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "294"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 0.0 180.0) (length 5.08) hide
+        (name "RESERVED6"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "295"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 -2.54 180.0) (length 5.08)
+        (name "RESERVED7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "296"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 -2.54 180.0) (length 5.08) hide
+        (name "RESERVED7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "297"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+      (pin no_connect line (at 25.4 -2.54 180.0) (length 5.08) hide
+        (name "RESERVED7"
+          (effects (font (size 1.016 1.016)))
+        )
+        (number "298"
+          (effects (font (size 1.016 1.016)))
+        )
+      )
+    )
+  )
+)
