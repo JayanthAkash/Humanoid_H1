@@ -21,7 +21,7 @@
 			(color 0 0 0 0.0000)
 		)
 		(uuid "3336098e-2841-4536-a7c0-8585e273a375")
-		(property "Sheetname" "WifiBt"
+		(property "Sheetname" "WifiBt/CAN"
 			(at 92.71 17.0684 0)
 			(effects
 				(font
