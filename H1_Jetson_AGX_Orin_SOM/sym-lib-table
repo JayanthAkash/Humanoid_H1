@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "Jetson_orin")(type "KiCad")(uri "E:/Bosch_Hackathon/Humanoid_Robot/HR_H1_Design/H1_CPU_Design/Jayanth/Jetson_orin.kicad_sym")(options "")(descr ""))
+)

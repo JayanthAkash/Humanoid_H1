@@ -1,5 +1,0 @@
-(sym_lib_table
-  (version 7)
-  (lib (name "699Pin")(type "KiCad")(uri "${KIPRJMOD}/699Pin.kicad_sym")(options "")(descr ""))
-  (lib (name "Jetson_orin")(type "KiCad")(uri "${KIPRJMOD}/Jetson_orin.kicad_sym")(options "")(descr ""))
-)
