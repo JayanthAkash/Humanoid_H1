@@ -23,7 +23,7 @@ H1 is a consolidated high compute and communications electronics module that int
 - Manufacturing and service interfaces for development, testing and production use
 - Comprehensive health monitoring and telemetry for system diagnostics and fleet operation
 - A modular board assembly optimized for integration, routing and thermal design
-  
+
 # 3. Scope and Non-Goals
 
 ## 3.1 In-Scope (Electronics Only)
@@ -88,26 +88,25 @@ H1 is considered successful when it reliably delivers the performance, integrati
 - Reliable wireless connectivity:
 - Thermal & electrical robustness: No throttling, resets, or instability within the specified thermal and electrical operating envelope.
 
-### 4.3.2 Reliability & Safety Criteria
+### 4.3.2 Reliability and Safety Criteria
 
 - Fault-tolerant operation: System recovers gracefully from internal resets, communication errors, and subsystem faults.
 - Correct safety signaling: Heartbeats, watchdogs, and fault lines operate within defined timing constraints
 - Pre-compliance readiness:Passes internal EMC, ESD, and thermal pre-compliance thresholds without major redesign.
 - Stable long-duration operation:No unexpected resets, hangs, or unsafe behavior during extended stress and endurance tests.
 
-### 4.3.3 Integration & Manufacturing Criteria
+### 4.3.3 Integration and Manufacturing Criteria
 
 - Seamless integration: Interfaces with H2, H3 and H4 without architecture or pinout rework.
 - EVT/DVT/PVT progression:Meets acceptance criteria for engineering, design and production validation builds.
 - Manufacturing testability: All debug and test interfaces (JTAG, UART, boundary scan, test points) support automated EOL testing.
 - Scalable production:Design supports manufacturing at volumes up to 10,000 units/year.
 
-### 4.3.4 Business & Platform Criteria
+### 4.3.4 Business and Platform Criteria
 
 - Reusable compute platform: H1 is adopted as the standard compute module for multiple humanoid robot variants.
 - Reduced integration effort: Lowers integration complexity for autonomy, perception, and control teams.
 - Faster feature deployment: Enables rapid rollout of new humanoid capabilities without hardware redesign.
-- Fleet readiness: Telemetry, diagnostics, and connectivity support cloud and fleet-level operations.
   
 # 5. Constraints
 
@@ -138,7 +137,6 @@ All power electronics must operate within the system-defined voltage ranges, tra
 - 24-V bus electrical characteristics (surges, ripple, noise limits) will be defined and remain stable.
 - A centralized cooling solution will be provided by the system/mechanical team (e.g., shared heatsink or thermal interface), not by the H1 electronics team.
 - The selected compute module  will remain available throughout development.
-- Cloud, OTA, teleoperation, and software stacks will be implemented by software and platform teams, not by H1
 - Software will provide drivers for compute, WiFi, BT, 5G, and bring-up images before EVT.
 - Mechanical design will provide PCB outline, mounting, and antenna placement constraints.
 - Manufacturing partner supports 8-layer high-speed boards and EOL test processes. Manufacturing test infrastructure (fixtures, automation software) will be provided by the manufacturing engineering team; H1 will only provide electrical interfaces.
@@ -156,7 +154,6 @@ All power electronics must operate within the system-defined voltage ranges, tra
   - Manufacturing: EOL test requirements, fixture needs,Fixture readiness, AVL approvals
   - Quality and Compliance: Environmental & reliability test requirements (EVT/DVT/PVT), EMC/ESD/RF guidelines, certification considerations.
   - System Engineering: System architecture, timing budgets, mechanical/thermal constraints.
-  - Cloud / OTA Team: Telemetry data needs, OTA update flow, connectivity expectations.
 - External Vendors:
   - Compute module vendor (docs, errata, availability)
   - RF module vendors (5G, WiFi/BT)
@@ -180,7 +177,7 @@ The development of H1 involves multiple teams across hardware, software, system 
 | **Quality & Reliability Engineering**      | Environmental, thermal, vibration, reliability requirements; EVT/DVT/PVT validation and qualification testing.                            |
 | **Compliance / Regulatory Team**           | EMC, ESD, safety, RF guidelines; coordination of system-level certification programs.                                                     |
 | **System Engineering**                     | System architecture ownership; cross-subsystem constraints; timing/power/thermal budgets; H1-H2-H3-H4 integration.                        |
-| **Cloud / Fleet / OTA Team**               | Telemetry needs, OTA update workflow, remote diagnostics, connectivity requirements for fleet operations.                                 |
+
 
 ## 8.1 Stakeholders RACI Matrix for H1 development
 
@@ -208,9 +205,12 @@ The development of H1 involves multiple teams across hardware, software, system 
 | **EVT/DVT/PVT qualification**                         | I             | R           | C              | C          | C  | C  | C  | I        | C                   | R/A                   | C          | C           | I           |
 | **EMC/ESD pre-compliance**                            | I             | R           | C              | C          | I  | I  | I  | I        | C                   | R                     | A          | C           | I           |
 | **System integration & robot bring-up**               | I             | R           | C              | C          | C  | C  | C  | I        | I                   | C                     | I          | A/R         | I           |
-| **Telemetry, OTA, fleet readiness**                   | I             | C           | C              | I          | I  | I  | I  | C        | C                   | I                     | I          | C           | A/R         |
 
-# 9. High-Level Features
+# 10. Use case
+
+The humanoid robot is designed for service, industrial, research, and remote-operation environments where human-like 32-DOF movement, real-time AI processing (≥200 TOPS) and reliable wireless connectivity are essential. H1 enables these applications by providing the centralized compute, communication, and safety backbone of the robot.
+
+# 10. High-Level Features
 
 | **Category**                              | **High-Level Feature**                  | **What It Enables (Electronics Scope)**                     |
 | ----------------------------------------- | --------------------------------------- | ----------------------------------------------------------- |
@@ -242,6 +242,12 @@ The development of H1 involves multiple teams across hardware, software, system 
 
 
 # 10. Release Roadmap
+
+Assumptions
+
+- Subsystem ICD Maturity: Interface Control Documents (ICDs) from H2, H3, and H4 are currently in draft form and are expected to evolve during early design phases.
+- Design Reuse: No existing electronics or board designs are being reused for H1; the solution is assumed to be a new, from-scratch design.
+- Team Capacity: The electronics development team (schematic, layout, validation) consists of five or more engineers, with sufficient capacity for parallel work across design and bring-up phases.
 
 | **Phase**                                | **Timeline** | **Objectives**                                      | **Key Workstreams**                                                                                                                | **Exit Criteria**                                                       |
 | ---------------------------------------- | ------------ | --------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
