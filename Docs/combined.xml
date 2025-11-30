@@ -1,0 +1,4795 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE article>
+<article
+  xmlns="http://docbook.org/ns/docbook" version="5.0"
+  xmlns:xlink="http://www.w3.org/1999/xlink" >
+  <info>
+    <title></title>
+  </info>
+  <section xml:id="system-overview">
+    <title>3. System Overview</title>
+    <para>
+      The <emphasis role="strong">H1 – Main Robotics Processing &amp;
+      Communications Unit</emphasis> is the “brain” of the humanoid
+      robot. It concentrates all high-performance computing,
+      orchestrates the other electronics units and provides the main
+      interface to the outside world (lab network, cloud, tools).
+    </para>
+    <para>
+      At a glance, H1:
+    </para>
+    <itemizedlist spacing="compact">
+      <listitem>
+        <para>
+          Runs the perception, planning and coordination software on a
+          Jetson AGX Orin SOM.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Connects to the sensor &amp; perception unit (H2), the
+          mobility &amp; manipulation controller (H3) and the power
+          management unit (H4) using Ethernet and CAN.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Hosts the wireless interfaces (Wi-Fi 6, 5G, Bluetooth) and
+          persistent storage.
+        </para>
+      </listitem>
+      <listitem>
+        <para>
+          Implements safety modes (Off, Standby, Normal, Limp-Home,
+          Fault) using a dedicated safety/supervisor MCU chain.
+        </para>
+      </listitem>
+    </itemizedlist>
+    <section xml:id="h1-feature-summary-from-rfp-realised-in-h1-design">
+      <title>3.1 H1 Feature Summary (from RFP, realised in H1
+      design)</title>
+      <informaltable>
+        <tgroup cols="3">
+          <colspec colwidth="5*" align="left" />
+          <colspec colwidth="60*" align="left" />
+          <colspec colwidth="34*" align="left" />
+          <thead>
+            <row>
+              <entry>
+                #
+              </entry>
+              <entry>
+                Feature from RFP / System Need
+              </entry>
+              <entry>
+                Realisation in H1 Design
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                1
+              </entry>
+              <entry>
+                Central orchestration / brain
+              </entry>
+              <entry>
+                Jetson AGX Orin SOM acts as the main compute node
+                running all robotics and AI workloads; it exchanges
+                commands and telemetry with H2 (sensors), H3 (mobility)
+                and H4 (power) over Ethernet and two CAN buses.
+              </entry>
+            </row>
+            <row>
+              <entry>
+                2
+              </entry>
+              <entry>
+                High compute CPU+GPU, ≥ 200 TOPS
+              </entry>
+              <entry>
+                Jetson AGX Orin SOM integrates 8× Cortex-A78 CPU cores,
+                an Ampere-based GPU and accelerators (DLA, PVA, HDR ISP,
+                video encode/decode) delivering the required AI TOPS
+                budget for perception, planning and control.
+              </entry>
+            </row>
+            <row>
+              <entry>
+                3
+              </entry>
+              <entry>
+                32 GB memory
+              </entry>
+              <entry>
+                The design uses the 32-GB Jetson AGX Orin variant,
+                providing ≥32 GB LPDDR5 memory plus 4 MB system cache to
+                support multi-sensor perception and planning workloads.
+              </entry>
+            </row>
+            <row>
+              <entry>
+                4
+              </entry>
+              <entry>
+                Support for camera, lidar, monocular camera
+              </entry>
+              <entry>
+                H1 provides multiple high-bandwidth ports (USB 3.2 and
+                dual MIPI-CSI) that connect to the Intel RealSense head
+                unit, a 2D safety lidar (via USB/Ethernet) and an
+                additional high-resolution monocular camera. The
+                GPU/accelerators and HDR ISP process these streams in
+                real time.
+              </entry>
+            </row>
+            <row>
+              <entry>
+                5
+              </entry>
+              <entry>
+                High-bandwidth buses to H2 &amp; H3
+              </entry>
+              <entry>
+                A Gigabit Ethernet interface and
+                <emphasis role="strong">two independent CAN
+                interfaces</emphasis> provide deterministic,
+                high-bandwidth links. One CAN channel can be dedicated
+                to mobility (H3) and the other to power/BMS or auxiliary
+                devices (H4/other ECUs).
+              </entry>
+            </row>
+            <row>
+              <entry>
+                6
+              </entry>
+              <entry>
+                Wi-Fi 6, 5G, Bluetooth
+              </entry>
+              <entry>
+                An M.2 Key-E slot with PCIe and SDIO hosts the Wi-Fi 6 +
+                BT module; a 5G modem is connected via PCIe x2 and USB
+                3.2, with SIM socket and RF paths on the carrier. This
+                enables cloud connectivity and links to up to five
+                Bluetooth devices.
+              </entry>
+            </row>
+            <row>
+              <entry>
+                7
+              </entry>
+              <entry>
+                Operates on 24 V architecture
+              </entry>
+              <entry>
+                A power-converter stage accepts the 24 V input from H4
+                and generates an 18 V rail (if required) plus 5 V, 3.3 V
+                and 1.8 V rails to supply the SOM and peripherals.
+              </entry>
+            </row>
+            <row>
+              <entry>
+                8
+              </entry>
+              <entry>
+                Safety / failsafe capability
+              </entry>
+              <entry>
+                A safety/supervisor MCU chain (S32K116 at system level
+                and an EFM8SB10F2G on the carrier) monitors power rails,
+                button inputs and Jetson heartbeats and asserts
+                safe-state lines (Robot_Enable, STO, Limp_Home) towards
+                H3 as well as power-enable / pre-charge lines towards
+                H4.
+              </entry>
+            </row>
+            <row>
+              <entry>
+                9
+              </entry>
+              <entry>
+                External &amp; debug connectivity
+              </entry>
+              <entry>
+                Multiple USB 3.2 ports, a USB-C service/debug port,
+                Gigabit Ethernet, GPIO header, status LEDs, buzzer, fan
+                control and reset/user buttons are provided on the
+                carrier for development and field servicing.
+              </entry>
+            </row>
+            <row>
+              <entry>
+                10
+              </entry>
+              <entry>
+                Persistent storage
+              </entry>
+              <entry>
+                An M.2 Key-M slot provides an NVMe SSD for OS images, AI
+                models, sensor logs and diagnostics data.
+              </entry>
+            </row>
+            <row>
+              <entry>
+                11
+              </entry>
+              <entry>
+                Telemetry &amp; diagnostics
+              </entry>
+              <entry>
+                CAN and UART links allow H1 to exchange BMS telemetry
+                with H4 and motion/health data with H3; LEDs, buzzer and
+                the USB-C debug interface support board bring-up and
+                field diagnostics.
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+    <section xml:id="high-level-h1-block-diagram">
+      <title>3.2 High-Level H1 Block Diagram</title>
+      <figure>
+        <title>H1 High-Level Block Diagram</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="../Images/BlockDiagram.png" />
+          </imageobject>
+          <textobject><phrase>H1 High-Level Block
+          Diagram</phrase></textobject>
+        </mediaobject>
+      </figure>
+      <para>
+        Conceptually, H1 is composed of:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            A <emphasis role="strong">24 V power-input and converter
+            block</emphasis> that generates all local rails.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            The <emphasis role="strong">Jetson AGX Orin SOM</emphasis>
+            providing compute, graphics and AI acceleration.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            A <emphasis role="strong">safety/supervisor
+            subsystem</emphasis> (S32K116 + EFM8 supervisor) managing
+            power sequencing and safety lines.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Communications subsystems</emphasis>
+            (Ethernet, CAN, Wi-Fi, 5G) that link H1 to other units and
+            to external networks.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Sensor and storage
+            interfaces</emphasis> (USB 3.2, CSI cameras, NVMe SSD).
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Human/service interfaces</emphasis>
+            (USB-C, LEDs, buttons, buzzer, fan control).
+          </para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section xml:id="operating-modes">
+      <title>3.3 Operating Modes</title>
+      <para>
+        H1 supports five operating modes, controlled by the
+        safety/supervisor subsystem:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            <emphasis role="strong">Off</emphasis> – 24 V supply
+            removed; all rails off; actuators held in a safe state by
+            hardware defaults.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Standby</emphasis> – standby rail
+            and supervisors powered; Jetson and high-power loads off;
+            system ready to wake.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Normal</emphasis> – full power
+            applied; Jetson runs AI stack; perception, planning and
+            motion control active; robot operates at nominal performance
+            while safety conditions are satisfied.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Limp-Home</emphasis> –
+            reduced-performance mode used when a non-critical fault is
+            detected (for example partial sensor failure); motion
+            allowed only with limited speed/torque; non-essential loads
+            may be shed.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Fault / Emergency Stop</emphasis> –
+            critical fault or E-Stop; safety lines demand torque-off
+            from H3; 24 V may be disconnected; Jetson logs the event and
+            may shut down; operator must explicitly recover the system.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+  <section xml:id="hardware-architecture">
+    <title>4. Hardware Architecture</title>
+    <para>
+      This section details how H1 is realised in hardware on the carrier
+      board and safety board. It explains the major subsystems, their
+      interfaces and how they work together to fulfil the requirements
+      outlined in Section 3.
+    </para>
+    <section xml:id="main-compute-subsystem-jetson-agx-orin-som">
+      <title>4.1 Main Compute Subsystem (Jetson AGX Orin SOM)</title>
+      <para>
+        The main compute subsystem is built around an
+        <emphasis role="strong">NVIDIA Jetson AGX Orin SOM</emphasis>,
+        mounted on a high-density board-to-board connector in the middle
+        of the carrier board.
+      </para>
+      <figure>
+        <title>Jetson AGX Orin SOM</title>
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="../Images/SOM.png" />
+          </imageobject>
+          <textobject><phrase>Jetson AGX Orin SOM</phrase></textobject>
+        </mediaobject>
+      </figure>
+      <section xml:id="processing-resources">
+        <title>4.1.1 Processing resources</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              8× ARM Cortex-A78 CPU cores for the operating system,
+              middleware (e.g. ROS2) and control applications.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              An Ampere-architecture GPU with two graphics processing
+              clusters, used for neural-network inference, point-cloud
+              processing and other massively parallel workloads.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Dedicated accelerators:
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  <emphasis role="strong">DLA</emphasis> (Deep Learning
+                  Accelerators) for efficient inference of CNN models.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <emphasis role="strong">PVA</emphasis> (Programmable
+                  Vision Accelerator) for feature extraction and
+                  low-level image processing.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <emphasis role="strong">HDR ISP</emphasis> for camera
+                  pipeline processing (exposure, demosaicing, colour
+                  space conversion).
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  <emphasis role="strong">Video encode/decode
+                  engines</emphasis> for hardware-accelerated streaming
+                  and logging of camera feeds.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              Integrated <emphasis role="strong">Safety
+              Island</emphasis> for local safety monitoring, lockstep
+              execution and diagnostic coverage.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              32 GB LPDDR5 memory and system cache shared across CPU,
+              GPU and accelerators.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="power-integration">
+        <title>4.1.2 Power integration</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              The SOM is powered from a regulated
+              <emphasis role="strong">VIN_SOM</emphasis> rail (e.g. 18
+              V) generated by the carrier’s DC-DC converter from the 24
+              V bus.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              All core voltages (VDD_CPU, VDD_GPU, memory rails, etc.)
+              are generated on the SOM itself; the carrier provides bulk
+              and high-frequency decoupling close to the connector.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Dedicated power-control signals
+              (<literal>MODULE_POWER_ON</literal>,
+              <literal>MODULE_SHDN_N</literal>,
+              <literal>SYS_RESET_N</literal>) allow the supervisor MCU
+              to sequence power-up and controlled shutdown.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="high-speed-interfaces">
+        <title>4.1.3 High-speed interfaces</title>
+        <para>
+          The following high-speed interfaces from the SOM are used in
+          H1:
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              <emphasis role="strong">PCIe x4</emphasis> → M.2 Key-M
+              NVMe SSD.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">PCIe x1</emphasis> → M.2 Key-E
+              Wi-Fi 6 + Bluetooth module.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">PCIe x2</emphasis> → external 5G
+              modem.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">USB 3.2 (three ports)</emphasis> →
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  Head-mounted Intel RealSense camera,
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  2D safety lidar,
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  spare/service high-speed port on USB-C.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">Two MIPI-CSI ports</emphasis> →
+              22-pin CSI connectors for stereo or monocular cameras.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">RGMII Ethernet MAC</emphasis> →
+              Gigabit Ethernet PHY and RJ45 / internal connector.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">Two CAN controllers</emphasis> →
+              CAN-FD transceivers and 2-pin connectors.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="low-speed-interfaces">
+        <title>4.1.4 Low-speed interfaces</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              <emphasis role="strong">I²C</emphasis> buses configure the
+              Ethernet PHY, USB-C/Type-C controllers, power switches and
+              environmental sensors.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">SPI/UART</emphasis> links connect
+              to the S32K116 safety MCU and other support devices.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">GPIO</emphasis> pins drive status
+              LEDs, read interrupt lines from peripherals and provide
+              fan PWM/tach signals.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="thermal-and-mechanical-considerations">
+        <title>4.1.5 Thermal and mechanical considerations</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              The SOM is placed to mate with a heat-spreader or
+              heat-sink fixed to the humanoid chassis.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Fan control (PWM + tach) from the SOM ensures the module
+              stays within thermal limits under peak AI loads.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+    </section>
+    <section xml:id="safety-supervisor-subsystem-s32k116-mcu">
+      <title>4.2 Safety / Supervisor Subsystem (S32K116 MCU)</title>
+      <para>
+        The safety architecture follows a
+        <emphasis role="strong">two-layer</emphasis> approach: a local
+        power supervisor on the carrier and a system-level safety MCU.
+      </para>
+      <section xml:id="carrier-supervisor-mcu-efm8sb10">
+        <title>4.2.1 Carrier Supervisor MCU (EFM8SB10)</title>
+        <para>
+          The EFM8SB10 on the carrier focuses on
+          <emphasis role="strong">power integrity and controlled
+          sequencing</emphasis>:
+        </para>
+        <para>
+          <emphasis role="strong">Inputs</emphasis>
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Power-good outputs from each DC-DC regulator (24 V input,
+              18 V, 5 V, 3.3 V, 1.8 V).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              User power button and reset button signals.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Optional status or commands from the S32K116.
+            </para>
+          </listitem>
+        </itemizedlist>
+        <para>
+          <emphasis role="strong">Outputs</emphasis>
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              <literal>VIN_PWR_ON</literal> – enables the main 24 V →
+              VIN_SOM converter.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>CARRIER_PWR_ON</literal> – enables secondary
+              regulators for peripherals.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>MODULE_POWER_ON</literal> and
+              <literal>MODULE_SHDN_N</literal> – request Jetson power-up
+              or shutdown.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <literal>SYS_RESET_N</literal> – issues a hardware reset
+              to the SOM when needed.
+            </para>
+          </listitem>
+        </itemizedlist>
+        <para>
+          <emphasis role="strong">Behaviour</emphasis>
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Implements a power-state machine with states
+              <emphasis role="strong">OFF</emphasis>,
+              <emphasis role="strong">PRECHARGE</emphasis>,
+              <emphasis role="strong">RUN</emphasis>,
+              <emphasis role="strong">FAULT</emphasis>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Handles debounce and long-press detection for the power
+              button.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Ensures that undervoltage or overcurrent conditions result
+              in an orderly shutdown, preventing brown-outs or
+              latch-ups.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="system-safety-mcu-s32k116">
+        <title>4.2.2 System Safety MCU (S32K116)</title>
+        <para>
+          The S32K116 safety MCU sees the <emphasis role="strong">whole
+          robot</emphasis>:
+        </para>
+        <para>
+          <emphasis role="strong">Interfaces</emphasis>
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              UART/SPI + heartbeat GPIO to the Jetson SOM for liveness
+              monitoring and command exchange.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              CAN connection to H3 and H4 for motion and power
+              telemetry.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Discrete safety lines to H3:
+              <literal>Robot_Enable</literal>, <literal>STO</literal>
+              (Safe Torque Off), <literal>Limp_Home</literal>.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Digital inputs from E-Stop, safety switches and other
+              external safety circuits.
+            </para>
+          </listitem>
+        </itemizedlist>
+        <para>
+          <emphasis role="strong">Responsibilities</emphasis>
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Implements the operating mode state machine (Off, Standby,
+              Normal, Limp-Home, Fault).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Monitors Jetson heartbeat and internal watchdog,
+              triggering a controlled shutdown or fault if the compute
+              stack becomes unresponsive.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Checks plausibility of BMS data (voltages, currents,
+              temperatures, SoC) received from H4.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Latches and timestamps safety-relevant events for
+              diagnostics.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="safety-signals-and-fail-safe-behaviour">
+        <title>4.2.3 Safety Signals and Fail-safe Behaviour</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              In <emphasis role="strong">Normal</emphasis> mode,
+              <literal>Robot_Enable</literal> is high and
+              <literal>STO</literal> is de-asserted, allowing H3 to
+              drive the actuators.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              In <emphasis role="strong">Limp-Home</emphasis> mode,
+              <literal>Limp_Home</literal> is asserted to request
+              reduced torque and speed; <literal>Robot_Enable</literal>
+              may remain high but H3 interprets the combination as a
+              derated state.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              In <emphasis role="strong">Fault/E-Stop</emphasis>,
+              <literal>Robot_Enable</literal> is forced low and
+              <literal>STO</literal> is asserted; H3 must respond by
+              disabling torque at the drive level, independently of any
+              software commands.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Safety inputs and outputs are wired using hardware
+              defaults (pull-downs/pull-ups) so that loss of power or
+              broken wires tends to result in a safe state.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+    </section>
+    <section xml:id="communications-networking-subsystems">
+      <title>4.3 Communications &amp; Networking Subsystems</title>
+      <para>
+        The communications design distinguishes between internal
+        real-time networks and external connectivity.
+      </para>
+      <section xml:id="internal-real-time-networks">
+        <title>4.3.1 Internal Real-time Networks</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              <emphasis role="strong">Gigabit Ethernet
+              backbone</emphasis>
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  Jetson RGMII connects to a Gigabit PHY.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  The PHY links either to an RJ45 jack (for lab use) or
+                  to a board-to-board connector that continues to H2/H3.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Supports time-synchronised data exchange (e.g. camera
+                  frames, motion commands, joint states).
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">CAN / CAN-FD networks</emphasis>
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  <emphasis role="strong">CAN0</emphasis> – usually
+                  assigned to <emphasis role="strong">H3 Mobility &amp;
+                  Manipulation</emphasis>. Carries:
+                </para>
+                <itemizedlist spacing="compact">
+                  <listitem>
+                    <para>
+                      joint set-points and trajectory references,
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      drive feedback (currents, temperatures, faults),
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      drive firmware version and diagnostics.
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </listitem>
+              <listitem>
+                <para>
+                  <emphasis role="strong">CAN1</emphasis> – usually
+                  assigned to <emphasis role="strong">H4 Power/BMS and
+                  auxiliaries</emphasis>. Carries:
+                </para>
+                <itemizedlist spacing="compact">
+                  <listitem>
+                    <para>
+                      battery voltages, currents and SoC,
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      charger status and power-path information,
+                    </para>
+                  </listitem>
+                  <listitem>
+                    <para>
+                      fault flags (over-voltage, under-voltage,
+                      over-temperature).
+                    </para>
+                  </listitem>
+                </itemizedlist>
+              </listitem>
+              <listitem>
+                <para>
+                  Each bus can be galvanically separated from the SOM
+                  side if required by the safety concept.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="external-connectivity">
+        <title>4.3.2 External Connectivity</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              <emphasis role="strong">Wi-Fi 6 + Bluetooth
+              module</emphasis>
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  M.2 Key-E card connected via PCIe x1 and/or SDIO.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Provides a high-bandwidth link to the lab network and
+                  Bluetooth connectivity for controllers or wearable
+                  devices.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Power-enable and reset lines allow the Jetson or
+                  supervisor to power-cycle the module to recover from
+                  faults.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">5G modem</emphasis>
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  Connected via PCIe x2 and USB 3.2, with a SIM slot on
+                  the carrier.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Multiple RF connectors route to external antennas on
+                  the humanoid shell.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Used for remote tele-operation, telemetry streaming
+                  and OTA updates when Wi-Fi is not available.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="sensor-connectivity">
+        <title>4.3.3 Sensor Connectivity</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              <emphasis role="strong">USB 3.2 ports</emphasis> are used
+              for:
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  Intel RealSense depth camera in the head,
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  2D safety lidar,
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  spare high-speed device (e.g. extra camera or debug
+                  dongle).
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">CSI camera ports</emphasis>
+              connect to:
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  a forward-facing stereo or RGB camera cluster,
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  an optional downward-facing or side-facing monocular
+                  camera.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </itemizedlist>
+        <para>
+          These links are sized so that all required sensors can stream
+          simultaneously while still leaving headroom for logging and
+          control traffic.
+        </para>
+      </section>
+    </section>
+    <section xml:id="storage-subsystem-nvme-emmc">
+      <title>4.4 Storage Subsystem (NVMe, eMMC)</title>
+      <para>
+        The storage subsystem is designed for both
+        <emphasis role="strong">performance</emphasis> and
+        <emphasis role="strong">serviceability</emphasis>.
+      </para>
+      <section xml:id="on-module-emmc">
+        <title>4.4.1 On-module eMMC</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Contains:
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  boot loaders and secure boot infrastructure,
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  a factory-reset OS image,
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  minimal diagnostics environment.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              Normally used read-only in the field; updates are rare and
+              carefully controlled.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="nvme-ssd-on-m.2-key-m">
+        <title>4.4.2 NVMe SSD on M.2 Key-M</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Provides the main high-performance storage:
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  primary root filesystem for day-to-day operation,
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  AI models and configuration data,
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  experiment logs and datasets.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              Typical capacities: 512 GB – 2 TB, selectable depending on
+              product tier.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Connected via PCIe x4 for high throughput; the PCIe link
+              training and power-good status are monitored so that SSD
+              faults can be detected early.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Power-switch and enable lines allow:
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  forced power-cycle of the SSD during debug,
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  partial power-down in low-energy modes.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="data-protection-considerations">
+        <title>4.4.3 Data Protection Considerations</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Logs can be written to journalling filesystems to reduce
+              corruption risk after hard faults.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Critical configuration and calibration files are
+              periodically backed up from the SSD to a reserved eMMC
+              partition.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+    </section>
+    <section xml:id="human-service-interfaces-usb-c-leds-buttons">
+      <title>4.5 Human / Service Interfaces (USB-C, LEDs,
+      Buttons)</title>
+      <para>
+        Human interaction and servicing are primarily through the
+        carrier’s front-panel interfaces.
+      </para>
+      <section xml:id="usb-c-ports">
+        <title>4.5.1 USB-C ports</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              <emphasis role="strong">USB-C 1 / USB-C 2</emphasis> –
+              multi-role high-speed ports:
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  default to USB host for connecting external drives,
+                  sensors or debug adapters,
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  can be reconfigured as device ports for direct
+                  connection to a laptop (mass-storage gadget,
+                  USB-Ethernet gadget, etc.).
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">USB-C 3 (Service)</emphasis> –
+              normally dedicated to engineering use:
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  used to flash OS images, access serial console or
+                  recover the system,
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  protected with ESD diodes and current-limited power
+                  switches.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </itemizedlist>
+        <para>
+          Each port is managed by a USB Type-C/PD controller that:
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              negotiates orientation and role,
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              limits inrush and fault currents,
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              reports over-current events to the supervisor or Jetson.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="status-leds-and-buzzer">
+        <title>4.5.2 Status LEDs and buzzer</title>
+        <para>
+          Typical indicators include:
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              <emphasis role="strong">POWER</emphasis> – 24 V and local
+              rails present.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">RUN</emphasis> – Jetson has booted
+              and is in Normal mode.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">FAULT</emphasis> – safety fault
+              latched; system in Limp-Home or Fault mode.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">NET</emphasis> – Ethernet link and
+              activity (integrated into the RJ45).
+            </para>
+          </listitem>
+        </itemizedlist>
+        <para>
+          A small <emphasis role="strong">buzzer</emphasis> can be
+          driven by the supervisor or Jetson to signal power-up, errors
+          or mode changes (e.g. different beep patterns for Fault vs
+          Limp-Home).
+        </para>
+      </section>
+      <section xml:id="buttons-and-fan-interface">
+        <title>4.5.3 Buttons and fan interface</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              <emphasis role="strong">Power button</emphasis>
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  Short press: request power-up or clean shutdown via
+                  the supervisor.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Long press (configurable): force transition to Fault
+                  or power-cut for recovery in case of software lock-up.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">Reset button</emphasis>
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  Generates a supervisor-mediated reset of the Jetson
+                  (and optionally some peripherals) without fully
+                  depowering the board.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">Fan control</emphasis>
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  Jetson PWM output drives the cooling fan.
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Fan tachometer feedback is monitored; if the fan
+                  stalls, the supervisor can limit performance or force
+                  shutdown to protect the SOM.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="debug-expansion-header">
+        <title>4.5.4 Debug / expansion header</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Provides access to:
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  a UART console for low-level debugging if required,
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  spare GPIO, I²C and power pins for attaching temporary
+                  sensors, logic analysers or measurement equipment.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </itemizedlist>
+        <para>
+          These interfaces ensure that the H1 unit can be assembled,
+          brought up, diagnosed and maintained conveniently throughout
+          the project lifecycle, from hackathon prototype to potential
+          product.
+        </para>
+      </section>
+    </section>
+  </section>
+  <section xml:id="power-architecture">
+    <title>5. Power Architecture</title>
+    <figure>
+      <title>PowerFlow Architecture</title>
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="../Images/PowerFlow.png" />
+        </imageobject>
+        <textobject><phrase>PowerFlow Architecture</phrase></textobject>
+      </mediaobject>
+    </figure>
+    <section xml:id="v-input-dc-dc-power-tree">
+      <title>5.1 24 V Input &amp; DC-DC Power Tree</title>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            <emphasis role="strong">24 V Input from H4</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                H1 is supplied from the 24 V robot bus provided by H4
+                (Robotics Power Management Unit).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                The input path includes connector + reverse-polarity
+                protection and transient suppression (TVS diodes and
+                MOSFET ideal-diode arrangement).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Primary Conversion</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                A primary buck converter stage generates the
+                intermediate <emphasis role="strong">VIN_SOM / 18 V
+                rail</emphasis> that feeds the Jetson AGX Orin SOM.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Two high-current buck regulators generate the
+                <emphasis role="strong">5 V DC-DC</emphasis> and
+                <emphasis role="strong">3.3 V DC-DC</emphasis> rails
+                from the 24 V input.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Secondary &amp; Standby
+            Rails</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                A <emphasis role="strong">3.3 V standby LDO</emphasis>
+                (3V3_STBY) is always present when 24 V is on; it powers:
+              </para>
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>
+                    EFM8 supervisor MCU,
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    S32K116 safety MCU (via system harness),
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    wake / button circuitry and key pull-ups.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <para>
+                A <emphasis role="strong">1.8 V LDO</emphasis> generates
+                the rail for CSI level shifters, I/O expanders and other
+                1.8 V logic.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Load Switching</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                High-side MOSFETs switch the 5 V and SOM supply rails
+                (<literal>+5V_SOM</literal>, etc.) under MCU control,
+                allowing the Jetson and high-power peripherals to be
+                cleanly turned on/off without dropping the whole 24 V
+                bus.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+      <para>
+        Overall, the tree is:
+      </para>
+      <blockquote>
+        <para>
+          24 V (from H4) → Primary buck → VIN_SOM/18 V → Jetson internal
+          rails 24 V → 5 V DC-DC → USB, 5G, Wi-Fi, misc. 24 V → 3.3 V
+          DC-DC → logic, Ethernet PHY, CAN, GPIO 24 V → 3.3 V_STBY LDO →
+          supervisors &amp; wake logic 24 V → 1.8 V LDO → CSI /
+          low-voltage logic
+        </para>
+      </blockquote>
+    </section>
+    <section xml:id="power-rails-loads-jetson-radios-peripherals">
+      <title>5.2 Power Rails &amp; Loads (Jetson, Radios,
+      Peripherals)</title>
+      <para>
+        <emphasis role="strong">Jetson AGX Orin SOM (VIN_SOM / 18
+        V)</emphasis>
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            Typical operating power:
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                ~30–40 W for moderate robotics workload,
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                configuration-dependent maximum up to ~60 W.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            Uses VIN_SOM as input and locally generates all internal
+            core and memory rails.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Loads: CPU, GPU, DLAs, memory, Safety Island and on-module
+            support logic.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        <emphasis role="strong">5 V Rail</emphasis>
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            Dimensioned for high-current loads (up to ~12 A from the 24
+            V bus).
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Primary consumers:
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                USB 3.2 ports (sensors, external drives),
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                NVMe SSD (via M.2 Key-M),
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                5G modem (USB + PCIe),
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Wi-Fi/BT module (when powered from 5 V then locally
+                regulated),
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                fan and any auxiliary 5 V devices.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+      <para>
+        <emphasis role="strong">3.3 V Rail</emphasis>
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            High-current 3.3 V DC-DC (up to ~12 A) feeds:
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Ethernet PHY and magnetics,
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                CAN transceivers,
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                I²C expanders, GPIO expanders, level shifters,
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                control side of power switches, USB-C controllers, LEDs,
+                etc.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+      <para>
+        <emphasis role="strong">3.3 V_STBY Rail</emphasis>
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            Low-power, always-on rail (~150 mA) for:
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                EFM8 supervisor MCU,
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                pull-ups on power-control lines
+                (<literal>VIN_PWR_ON</literal>,
+                <literal>CARRIER_POWER_ON</literal>,
+                <literal>MODULE_POWER_ON</literal>, etc.),
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                safety / wake inputs and indicators that must work in
+                Standby mode.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+      <para>
+        <emphasis role="strong">1.8 V Rail</emphasis>
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            1.8 V LDO (~200 mA capacity) powering:
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                CSI level shifters, I²C multiplexers, GPIO expanders for
+                cameras,
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                other 1.8 V peripherals as required by the sensor stack.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section xml:id="power-sequencing-control-supervisor-driven">
+      <title>5.3 Power Sequencing &amp; Control
+      (Supervisor-driven)</title>
+      <para>
+        Power sequencing is handled by the
+        <emphasis role="strong">EFM8SB10 supervisor MCU</emphasis> on
+        the H1 carrier, in coordination with the
+        <emphasis role="strong">S32K116 safety MCU</emphasis> at system
+        level.
+      </para>
+      <para>
+        <emphasis role="strong">Key control signals (EFM8 ↔ power tree /
+        Jetson)</emphasis>
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            <literal>VIN_PWR_ON</literal> – enables primary DCDC from 24
+            V to VIN_SOM/18 V.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>CARRIER_POWER_ON</literal> – enables the 5 V and
+            3.3 V DC-DC converters.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>MODULE_POWER_ON</literal> – requests Jetson to
+            power up; works with <literal>MODULE_SHDN_N</literal> and
+            <literal>POWER_BTN_N</literal> for orderly power
+            transitions.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>SYS_RESET_N</literal> – hardware reset line to
+            Jetson SOM.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <literal>VDDIN_PWR_BAD_N</literal> – power-good / fault
+            aggregation from the DC-DC converters.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        <emphasis role="strong">Sequence (power-up)</emphasis>
+      </para>
+      <orderedlist numeration="arabic" spacing="compact">
+        <listitem>
+          <para>
+            24 V is present; 3.3 V_STBY LDO powers up supervisor logic.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            EFM8 performs initial checks (button state, any latched
+            faults) and asserts <literal>VIN_PWR_ON</literal>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Once VIN_SOM and intermediate rails are stable, the EFM8
+            asserts <literal>CARRIER_POWER_ON</literal> to bring up 5 V
+            and 3.3 V.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            After all power-good signals are valid, EFM8 pulses
+            <literal>MODULE_POWER_ON</literal> /
+            <literal>POWER_BTN_N</literal> to start the Jetson boot
+            sequence.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            S32K116 monitors Jetson heartbeat and, if valid, allows
+            transition to Normal mode (see Section 6).
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>
+        <emphasis role="strong">Sequence (shutdown)</emphasis>
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            Initiated by user long-press, software request, or safety
+            fault.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            S32K116 instructs Jetson to shut down; Jetson signals
+            completion or times out.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            EFM8 asserts <literal>MODULE_SHDN_N</literal> /
+            <literal>POWER_BTN_N</literal> as needed, then disables
+            <literal>CARRIER_POWER_ON</literal> and finally
+            <literal>VIN_PWR_ON</literal>, leaving only 3.3 V_STBY
+            active.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section xml:id="power-states-consumption-targets">
+      <title>5.4 Power States &amp; Consumption Targets</title>
+      <para>
+        Approximate electrical behaviour per system mode:
+      </para>
+      <informaltable>
+        <tgroup cols="4">
+          <colspec colwidth="11*" align="left" />
+          <colspec colwidth="31*" align="left" />
+          <colspec colwidth="40*" align="left" />
+          <colspec colwidth="17*" align="left" />
+          <thead>
+            <row>
+              <entry>
+                Mode
+              </entry>
+              <entry>
+                Powered rails
+              </entry>
+              <entry>
+                Typical Loads
+              </entry>
+              <entry>
+                Target Power (H1 only)
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                <emphasis role="strong">Off</emphasis>
+              </entry>
+              <entry>
+                None (or minimal sensing on H4 side)
+              </entry>
+              <entry>
+                –
+              </entry>
+              <entry>
+                ~0 W
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <emphasis role="strong">Standby</emphasis>
+              </entry>
+              <entry>
+                24 V, 3.3 V_STBY
+              </entry>
+              <entry>
+                EFM8, S32K116, wake logic, a few LEDs
+              </entry>
+              <entry>
+                ~0.5–1.5 W
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <emphasis role="strong">Normal</emphasis>
+              </entry>
+              <entry>
+                All rails (VIN_SOM, 5 V, 3.3 V, 1.8 V)
+              </entry>
+              <entry>
+                Jetson at configured TDP, sensors, radios, SSD, fan
+              </entry>
+              <entry>
+                ~60–120 W (config-dep)
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <emphasis role="strong">Limp-Home</emphasis>
+              </entry>
+              <entry>
+                All rails, but non-essential loads can be disabled
+              </entry>
+              <entry>
+                Jetson at reduced performance, safety-critical sensors
+                only, radios/SSD may be throttled
+              </entry>
+              <entry>
+                ~40–80 W
+              </entry>
+            </row>
+            <row>
+              <entry>
+                <emphasis role="strong">Fault</emphasis>
+              </entry>
+              <entry>
+                3.3 V_STBY always on; other rails as needed for logging,
+                then off
+              </entry>
+              <entry>
+                Jetson may be forced off, actuators disabled
+              </entry>
+              <entry>
+                → Standby after handling
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>
+        Exact values depend on final module variants and power-limit
+        configuration of Jetson AGX Orin; the table expresses the design
+        intent and relative differences between modes.
+      </para>
+    </section>
+    <section xml:id="protection-monitoring">
+      <title>5.5 Protection &amp; Monitoring</title>
+      <para>
+        Key protection and monitoring mechanisms:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            <emphasis role="strong">Electrical protection</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Input reverse-polarity protection and surge suppression
+                on the 24 V line.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                TVS diodes on 24 V and key 5 V / 3.3 V rails for
+                transient immunity.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Current-limit and fault-flag features of the load
+                switches (e.g. on USB-C, camera and NVMe supplies).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Regulator monitoring</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Power-good pins from the buck regulators and LDOs are
+                wired to the EFM8, which aggregates them into
+                <literal>VDDIN_PWR_BAD_N</literal> and status bits.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                If any rail falls outside limits, the supervisor can
+                initiate a controlled shutdown or block further
+                startups.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Current and voltage
+            telemetry</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                H4 BMS provides detailed 24 V bus telemetry (voltage,
+                current, SoC, temperature) to H1 over CAN; S32K116 uses
+                this to enforce derating or shutdown strategies.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Optional local current-sense shunts and amplifiers on
+                the 24 V input allow H1 to estimate its own consumption
+                for diagnostics and logging.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Thermal management</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Fan speed feedback is monitored; loss of airflow can
+                trigger throttling or shutdown.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Over-temperature warnings from Jetson and peripherals
+                are exposed to the safety MCU.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Diagnostics hooks</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Test pads on all major rails (24 V, VIN_SOM, 5 V, 3.3 V,
+                3.3 V_STBY, 1.8 V) and control lines enable lab
+                measurements and end-of-line testing.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+    </section>
+  </section>
+  <section xml:id="safety-failsafe-concept">
+    <title>6. Safety &amp; Failsafe Concept</title>
+    <section xml:id="safety-goals-assumptions">
+      <title>6.1 Safety Goals &amp; Assumptions</title>
+      <para>
+        The safety design of H1 is guided by these goals:
+      </para>
+      <orderedlist numeration="arabic" spacing="compact">
+        <listitem>
+          <para>
+            <emphasis role="strong">Prevent unintended motion</emphasis>
+            during power-up, shutdown and fault conditions.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Ensure a controlled stop</emphasis>
+            (Limp-Home or full torque-off) whenever critical faults
+            occur in compute, power or communication paths.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Maintain sufficient
+            diagnostics</emphasis> so that faults can be analysed and
+            are not silently ignored.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Fail to a safe state by
+            default</emphasis> if any safety-related component loses
+            power or becomes disconnected.
+          </para>
+        </listitem>
+      </orderedlist>
+      <para>
+        Assumptions:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            H3 implements Safe Torque Off (STO) at the motor drive level
+            when commanded via STO line(s).
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            H4 can disconnect the 24 V bus from downstream loads via
+            contactors or solid-state switches.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Mechanical structure (brakes, joint limits) is sized to
+            survive a controlled stop from the speeds specified in the
+            RFP.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section xml:id="safety-functions-implemented-in-h1">
+      <title>6.2 Safety Functions Implemented in H1</title>
+      <para>
+        H1 contributes the following safety functions:
+      </para>
+      <orderedlist numeration="arabic" spacing="compact">
+        <listitem>
+          <para>
+            <emphasis role="strong">Monitoring of compute
+            health</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                S32K116 monitors a periodic heartbeat / watchdog from
+                Jetson. Loss of the heartbeat within a defined timeout
+                places the system into Fault mode.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Management of operating
+            modes</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                The safety state machine (Off, Standby, Normal,
+                Limp-Home, Fault) lives in S32K116. It decides when H1
+                is allowed to command motion and when it must request
+                STO or reduced performance.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Safe enable / disable of
+            motion</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Discrete outputs:
+              </para>
+              <itemizedlist spacing="compact">
+                <listitem>
+                  <para>
+                    <literal>Robot_Enable</literal> – grants permission
+                    for motion in H3 when high.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    <literal>STO</literal> – causes Safe Torque Off when
+                    asserted.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                    <literal>Limp_Home</literal> – requests
+                    reduced-speed, reduced-torque mode.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+            <listitem>
+              <para>
+                Lines are designed so that loss of power or broken wires
+                tends to drive them to a safe combination (Robot_Enable
+                low, STO asserted).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Power-path control</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                H1 can request H4 to cut or restore 24 V power; EFM8 can
+                disable local DC-DC converters and high-power loads.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Non-critical loads (5G modem, some sensors, fan if
+                failed, etc.) can be shed in Limp-Home to protect the
+                battery and thermal margins.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Supervision of power
+            integrity</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Under-voltage, over-voltage or regulator faults are
+                identified by the power-good network and interpreted as
+                safety-relevant events by S32K116.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Logging and reporting of safety
+            events</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Jetson logs safety state transitions and root-cause
+                codes provided by S32K116 (e.g. “E-Stop”, “CAN loss H3”,
+                “Over-temp H4”).
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                These logs are stored on NVMe and can be retrieved via
+                USB-C or network.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section xml:id="interaction-with-h2h3h4-for-safety-sto-robot_enable-limp_home">
+      <title>6.3 Interaction with H2/H3/H4 for Safety (STO,
+      Robot_Enable, Limp_Home)</title>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            <emphasis role="strong">With H3 – Mobility &amp;
+            Manipulation Controller</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Fast, deterministic safety signals:
+                <literal>Robot_Enable</literal>, <literal>STO</literal>,
+                <literal>Limp_Home</literal>.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Motion commands and state feedback over Ethernet and/or
+                CAN.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                In Normal mode, Robot_Enable is high and STO
+                de-asserted; H3 follows high-level commands from Jetson.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                In Limp-Home mode, Limp_Home is asserted; H3 must
+                enforce reduced limits regardless of application
+                commands.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                In Fault mode, Robot_Enable is low and STO asserted; H3
+                must disable torque and bring the robot to a stop.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">With H4 – Power Management
+            Unit</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                CAN messages carry BMS status, charger state and power
+                faults to S32K116 and Jetson.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Discrete lines allow H1 to request pre-charge, main
+                contactor open/close, and power-enable for H1 itself and
+                potentially other loads.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Severe faults in H4 (e.g. over-current, thermal runaway)
+                result in contactor opening, which H1 treats as a safety
+                fault and logs appropriately.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">With H2 – Sensory &amp; Perception
+            Unit</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Although H2 is not primarily safety-critical, loss of
+                key perception inputs (e.g. lidar, depth camera) can
+                trigger transition to Limp-Home if redundancy is
+                reduced.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                H1 uses health/status messages from H2 (over
+                Ethernet/CAN) to decide whether full-speed operation is
+                allowed.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section xml:id="safe-state-behaviour-diagnostics">
+      <title>6.4 Safe State Behaviour &amp; Diagnostics</title>
+      <para>
+        <emphasis role="strong">Safe states</emphasis>
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            <emphasis role="strong">No-motion safe state</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                <literal>Robot_Enable</literal> low,
+                <literal>STO</literal> asserted, actuators disabled in
+                H3.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                24 V may remain present for logging and communication,
+                or H4 may open contactors.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Limp-Home safe state</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                <literal>Limp_Home</literal> asserted,
+                <literal>Robot_Enable</literal> may stay high.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                H3 restricts speed/torque and may only allow specific
+                trajectories (e.g. standing upright, slow walk to a safe
+                zone).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+      <para>
+        <emphasis role="strong">Diagnostics &amp; fault
+        handling</emphasis>
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            Faults are classified (sensor, compute, power,
+            communication, user E-Stop) and latched in S32K116 until
+            cleared.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Jetson exposes a diagnostic API (service tool, web
+            interface, or command-line) to read:
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                current safety mode,
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                last N fault events with timestamps,
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                rail status and power-on counters from EFM8.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            During development and production, debug connectors and test
+            pads allow the team to observe safety signals and power
+            behaviour with a logic analyser or scope.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        These mechanisms ensure that any single serious failure results
+        in a predictable, analysable safe state rather than uncontrolled
+        behaviour.
+      </para>
+    </section>
+  </section>
+  <section xml:id="interfaces-connectors">
+    <title>7. Interfaces &amp; Connectors</title>
+    <section xml:id="interface-summary-table">
+      <title>7.1 Interface Summary Table</title>
+      <informaltable>
+        <tgroup cols="4">
+          <colspec colwidth="17*" align="left" />
+          <colspec colwidth="28*" align="left" />
+          <colspec colwidth="18*" align="left" />
+          <colspec colwidth="35*" align="left" />
+          <thead>
+            <row>
+              <entry>
+                Group
+              </entry>
+              <entry>
+                Interface / Bus
+              </entry>
+              <entry>
+                Direction (w.r.t. H1)
+              </entry>
+              <entry>
+                Typical Use
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                Power
+              </entry>
+              <entry>
+                24 V from H4
+              </entry>
+              <entry>
+                Input
+              </entry>
+              <entry>
+                Primary supply for H1
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Power
+              </entry>
+              <entry>
+                Pre-charge / Enable lines
+              </entry>
+              <entry>
+                Bi-directional
+              </entry>
+              <entry>
+                Contactors and inrush control with H4
+              </entry>
+            </row>
+            <row>
+              <entry>
+                To H2
+              </entry>
+              <entry>
+                Ethernet / CSI / USB
+              </entry>
+              <entry>
+                Bi-directional
+              </entry>
+              <entry>
+                High-bandwidth sensor data, configuration
+              </entry>
+            </row>
+            <row>
+              <entry>
+                To H3
+              </entry>
+              <entry>
+                Ethernet and/or CAN0
+              </entry>
+              <entry>
+                Bi-directional
+              </entry>
+              <entry>
+                Motion commands, joint feedback
+              </entry>
+            </row>
+            <row>
+              <entry>
+                To H3
+              </entry>
+              <entry>
+                Robot_Enable, STO, Limp_Home
+              </entry>
+              <entry>
+                Output
+              </entry>
+              <entry>
+                Safety control of actuators
+              </entry>
+            </row>
+            <row>
+              <entry>
+                To H4
+              </entry>
+              <entry>
+                CAN1
+              </entry>
+              <entry>
+                Bi-directional
+              </entry>
+              <entry>
+                BMS and power telemetry
+              </entry>
+            </row>
+            <row>
+              <entry>
+                To H4
+              </entry>
+              <entry>
+                Power status / reset lines
+              </entry>
+              <entry>
+                Bi-directional
+              </entry>
+              <entry>
+                H1 power control, reset
+              </entry>
+            </row>
+            <row>
+              <entry>
+                External network
+              </entry>
+              <entry>
+                RJ45 Gigabit Ethernet
+              </entry>
+              <entry>
+                Bi-directional
+              </entry>
+              <entry>
+                Lab / debug network
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Wireless
+              </entry>
+              <entry>
+                M.2 Key-E Wi-Fi/BT
+              </entry>
+              <entry>
+                Bi-directional
+              </entry>
+              <entry>
+                Wi-Fi and Bluetooth connectivity
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Wireless
+              </entry>
+              <entry>
+                5G modem (PCIe + USB)
+              </entry>
+              <entry>
+                Bi-directional
+              </entry>
+              <entry>
+                Cellular data link
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Storage
+              </entry>
+              <entry>
+                M.2 Key-M NVMe SSD
+              </entry>
+              <entry>
+                Local
+              </entry>
+              <entry>
+                OS, models, logging
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Cameras &amp; lidar
+              </entry>
+              <entry>
+                USB 3.2, CSI connectors
+              </entry>
+              <entry>
+                Bi-directional
+              </entry>
+              <entry>
+                RealSense, monocular camera, lidar
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Service
+              </entry>
+              <entry>
+                USB-C ports (2× user, 1× service)
+              </entry>
+              <entry>
+                Bi-directional
+              </entry>
+              <entry>
+                Firmware update, console, external devices
+              </entry>
+            </row>
+            <row>
+              <entry>
+                Debug / Manufacturing
+              </entry>
+              <entry>
+                JTAG/SWD, UART, test pads
+              </entry>
+              <entry>
+                Bi-directional
+              </entry>
+              <entry>
+                Programming, bring-up, end-of-line test
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+    </section>
+    <section xml:id="connector-to-h2-sensory-perception-unit">
+      <title>7.2 Connector to H2 – Sensory &amp; Perception Unit</title>
+      <para>
+        The H2 unit concentrates head-mounted cameras and IMUs. H1
+        connects to it via:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            <emphasis role="strong">Gigabit Ethernet</emphasis> (if H2
+            has its own MCU or FPGA):
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Carries compressed image streams, time stamps and
+                health/status messages.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Alternatively / additionally, CSI
+            &amp; USB links</emphasis>:
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+<literallayout>CSI flat-flex cables from H1’s CSI connectors to head camera modules.
+</literallayout>
+            </listitem>
+            <listitem>
+              <para>
+                USB 3.2 for Intel RealSense and other USB-based sensors.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Control &amp; sync GPIOs</emphasis>
+            (optional):
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Frame-sync signals, trigger lines or GPIO interrupts can
+                be routed via spare pins on the H2 harness.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+      <para>
+        The logical view is that H1 receives all perception data from H2
+        with sufficient bandwidth and low latency to feed its vision
+        pipelines.
+      </para>
+    </section>
+    <section xml:id="connector-to-h3-mobility-manipulation-controller">
+      <title>7.3 Connector to H3 – Mobility &amp; Manipulation
+      Controller</title>
+      <para>
+        The H3 controller interfaces the joint drives and grippers. H1
+        provides:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            <emphasis role="strong">CAN0 bus</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Deterministic messaging for joint targets, drive
+                telemetry and fault reporting.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Optional Ethernet link</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Higher-bandwidth channel for richer state (joint
+                torques, temperature maps) or future extensions (TSN,
+                distributed control).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Safety lines</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+<literallayout><literal>Robot_Enable</literal>, <literal>STO</literal>, <literal>Limp_Home</literal> are wired in a dedicated twisted-pair harness for noise immunity.
+</literallayout>
+            </listitem>
+            <listitem>
+              <para>
+                These lines must be interpreted by H3 even if
+                CAN/Ethernet is lost.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+      <para>
+        H3 returns the robot’s motion state and safety acknowledgement
+        signals (e.g. “drives ready”, “STO active”) so that H1 can
+        supervise transitions between modes.
+      </para>
+    </section>
+    <section xml:id="connector-to-h4-power-management-unit">
+      <title>7.4 Connector to H4 – Power Management Unit</title>
+      <para>
+        The H4 unit manages the 24 V Li-ion battery pack and charging.
+        The H1–H4 interface consists of:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+<literallayout><emphasis role="strong">24 V main power feed</emphasis> into H1’s power tree.
+</literallayout>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">CAN1 bus</emphasis> for:
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+<literallayout>BMS measurements (voltage, currents, SoC, temperatures),
+</literallayout>
+            </listitem>
+            <listitem>
+<literallayout>charger status (plugged in, charging current),
+</literallayout>
+            </listitem>
+            <listitem>
+<literallayout>fault codes (over-voltage, under-voltage, over-current).
+</literallayout>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Discrete control lines</emphasis>
+            (number and polarity to be finalised):
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+<literallayout><literal>H1_POWER_EN</literal> / <literal>H1_PRECHARGE</literal> – request to energise H1.
+</literallayout>
+            </listitem>
+            <listitem>
+              <para>
+                Optional <literal>RESET_OUT</literal> /
+                <literal>FAULT_IN</literal> lines for tighter
+                coordination in severe fault cases.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+      <para>
+        This interface allows H1 to both
+        <emphasis role="strong">influence</emphasis> and
+        <emphasis role="strong">react to</emphasis> power decisions at
+        system level.
+      </para>
+    </section>
+    <section xml:id="external-rf-network-interfaces-wi-fibt-5g-ethernet">
+      <title>7.5 External RF &amp; Network Interfaces (Wi-Fi/BT, 5G,
+      Ethernet)</title>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            <emphasis role="strong">Wi-Fi/BT (M.2 Key-E)</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+<literallayout>PCIe / SDIO + UART control lines connect to Jetson’s host interface.
+</literallayout>
+            </listitem>
+            <listitem>
+<literallayout>RF ports lead to external dual-band antennas on the humanoid shell.
+</literallayout>
+            </listitem>
+            <listitem>
+              <para>
+                GPIOs from Jetson or S32K116 control
+                <literal>W_DISABLE</literal>, reset and power-enable
+                pins.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">5G Modem</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+<literallayout>PCIe x2 and USB 3.2 signals connect to the modem; a SIM card connector is provided on the carrier.
+</literallayout>
+            </listitem>
+            <listitem>
+              <para>
+                Multiple RF ports route to 4G/5G and GNSS antennas,
+                respecting modem layout guidelines.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Ethernet</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                RGMII connection from Jetson to Gigabit PHY, then to:
+              </para>
+              <itemizedlist spacing="compact">
+                <listitem>
+<literallayout>RJ45 for lab network, or
+</literallayout>
+                </listitem>
+                <listitem>
+                  <para>
+                    internal harness connector towards other humanoid
+                    units.
+                  </para>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+      <para>
+        These interfaces make H1 the primary network and cloud gateway
+        for the robot.
+      </para>
+    </section>
+    <section xml:id="debug-manufacturing-interfaces-jtagswd-uart-test-pads">
+      <title>7.6 Debug &amp; Manufacturing Interfaces (JTAG/SWD, UART,
+      Test Pads)</title>
+      <para>
+        To support development, bring-up and manufacturing test, H1
+        exposes:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            <emphasis role="strong">JTAG/SWD headers</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+<literallayout>For S32K116 safety MCU and EFM8 supervisor.
+</literallayout>
+            </listitem>
+            <listitem>
+              <para>
+                Used for programming firmware, updating bootloaders and
+                running boundary-scan or production tests.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Jetson debug access</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+<literallayout>USB-C service port can place Jetson into recovery mode for reflashing.
+</literallayout>
+            </listitem>
+            <listitem>
+              <para>
+                Optional UART console broken out via an internal header
+                for low-level debugging.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Test pads (TPs) on critical
+            nets</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+<literallayout>Power rails: 24 V in, VIN_SOM, 5 V, 3.3 V, 3.3 V_STBY, 1.8 V.
+</literallayout>
+            </listitem>
+            <listitem>
+<literallayout>Power-control lines: <literal>VIN_PWR_ON</literal>, <literal>CARRIER_POWER_ON</literal>, <literal>MODULE_POWER_ON</literal>, <literal>MODULE_SHDN_N</literal>, <literal>SYS_RESET_N</literal>, <literal>FORCE_SHUTDOWN</literal>.
+</literallayout>
+            </listitem>
+            <listitem>
+              <para>
+                High-speed / differential nets (PCIe, USB, CSI) may have
+                carefully placed pads or loop-backs for eye-diagram and
+                signal-integrity validation (where allowed by the
+                layout).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Manufacturing test hooks</emphasis>
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Reserved GPIOs and I²C lines from Jetson or S32K116 can
+                be temporarily re-purposed for in-circuit test (ICT)
+                patterns, LED blink codes, etc.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+      <para>
+        Together, these interfaces ensure that H1 can be efficiently
+        verified in the lab, tested on the production line and serviced
+        in the field without dismantling the entire humanoid.
+      </para>
+    </section>
+  </section>
+  <section xml:id="worst-case-analysis-wca-report">
+    <title>Worst-Case Analysis (WCA) Report</title>
+    <section xml:id="purpose">
+      <title>1. Purpose</title>
+      <para>
+        This document captures the <emphasis role="strong">Worst-Case
+        Analysis (WCA)</emphasis> performed on the H1 carrier board for
+        the Jetson AGX Orin SOM.
+      </para>
+      <para>
+        Objective: show that, under <emphasis role="strong">combined
+        component tolerances, input variations, and environmental
+        extremes</emphasis>, all critical voltages and thresholds remain
+        within safe limits defined by device specs and system
+        requirements.
+      </para>
+      <para>
+        This is a <emphasis role="strong">schematic-level</emphasis>
+        analysis (no PCB measurement data yet).
+      </para>
+    </section>
+    <section xml:id="scope">
+      <title>2. Scope</title>
+      <para>
+        Analysed blocks (from
+        <literal>H1_Jetson_AGX_Orin_SOM.kicad_sch</literal>):
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            24 V input → XL4015 pre-regulator →
+            <literal>VIN_SOM</literal>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            5 V and 3.3 V high-current bucks (SiC431)
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            3.3 V_STBY LDO (NCP730B)
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            1.8 V LDO (TPS7A0518)
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Buck <emphasis role="strong">UVLO / enable
+            thresholds</emphasis>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            First-order <emphasis role="strong">thermal WCA</emphasis>
+            on the 5 V buck
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        Other functions (LEDs, small logic pull-ups, etc.) are not WCA’d
+        individually.
+      </para>
+    </section>
+    <section xml:id="assumptions-corner-conditions">
+      <title>3. Assumptions &amp; Corner Conditions</title>
+      <section xml:id="electrical-and-environmental-corners">
+        <title>3.1 Electrical and Environmental Corners</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              <emphasis role="strong">24 V bus at robot level</emphasis>
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  Nominal: 24 V
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Operating corner for H1: 20 V … 28 V
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">Ambient temperature inside
+              torso</emphasis>
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  Operating range for WCA: <emphasis role="strong">–10
+                  °C … +45 °C</emphasis>
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">H1 power tree loads (design
+              target)</emphasis>
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  5 V buck: up to <emphasis role="strong">10 A
+                  continuous</emphasis>, 12 A peak
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  3.3 V buck: up to <emphasis role="strong">8 A
+                  continuous</emphasis> (assumed for logic, radios,
+                  etc.)
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  3.3 V_STBY: ≤ 150 mA
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  1.8 V LDO: ≤ 200 mA
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">Jetson AGX Orin VDD_IN
+              range</emphasis>
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  Carrier must provide <emphasis role="strong">7–20
+                  V</emphasis> to VDD_IN
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  H1 therefore aims for ~18.6 V pre-regulated
+                  <literal>VIN_SOM</literal>.
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="component-tolerances-unless-noted">
+        <title>3.2 Component Tolerances (Unless Noted)</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              All feedback / divider resistors:
+              <emphasis role="strong">±1 %</emphasis>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              SiC431 feedback reference (VFB):
+              <emphasis role="strong">±1 % over –40…+125 °C</emphasis>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              NCP730B LDO output accuracy: <emphasis role="strong">±1
+              %</emphasis>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              TPS7A0518 1.8 V LDO output accuracy:
+              <emphasis role="strong">±3 % (max)</emphasis>
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+    </section>
+    <section xml:id="methodology">
+      <title>4. Methodology</title>
+      <para>
+        For each node / parameter:
+      </para>
+      <orderedlist numeration="arabic" spacing="compact">
+        <listitem>
+          <para>
+            Use the design equations in the schematic comments (for
+            SiC431 and UVLO) and the regulators’ datasheets.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Apply <emphasis role="strong">absolute worst-case</emphasis>
+            combinations of tolerances (not RMS):
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                For <emphasis role="strong">minimum</emphasis> output,
+                drive all tolerances in the direction that reduces it.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                For <emphasis role="strong">maximum</emphasis> output,
+                drive all in the direction that increases it.
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            Compute <literal>Value_min</literal> and
+            <literal>Value_max</literal>.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Compare with:
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Device absolute min / max and
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Functional system spec (USB, Jetson VDD_IN, etc.).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+        <listitem>
+          <para>
+            Record <emphasis role="strong">margin</emphasis> and
+            <emphasis role="strong">status (PASS / RISK)</emphasis>.
+          </para>
+        </listitem>
+      </orderedlist>
+    </section>
+    <section xml:id="wca-results-main-power-rails-sic431-bucks-pre-reg">
+      <title>5. WCA Results – Main Power Rails (SiC431 Bucks &amp;
+      Pre-reg)</title>
+      <section xml:id="design-equations-from-schematic">
+        <title>5.1 Design equations from schematic</title>
+        <itemizedlist>
+          <listitem>
+            <para>
+              <emphasis role="strong">Buck output equation</emphasis> [
+              V_{OUT} = V_{REF} ] with (V_{REF} = 0.6; ) (SIC431
+              feedback reference).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">5 V buck feedback
+              network</emphasis>
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  (R_{FB_H} = 73.2 )
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  (R_{FB_L} = 10 )
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Comment in schematic: (V_{OUT} = 0.6(73k2+10k)/10k =
+                  4.992 )
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">3.3 V buck feedback
+              network</emphasis>
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  (R_{FB_H} = 45.3 )
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  (R_{FB_L} = 10 )
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  Comment in schematic: (V_{OUT} = 0.6(45k3+10k)/10k =
+                  3.318 )
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+          <listitem>
+            <para>
+              <emphasis role="strong">Pre-regulator (XL4015
+              style)</emphasis>
+            </para>
+            <itemizedlist spacing="compact">
+              <listitem>
+                <para>
+                  Comment in schematic: [ V_{OUT} = 1.25(1 + R_6/R_7),
+                  V_{OUT,nom}   ]
+                </para>
+              </listitem>
+              <listitem>
+                <para>
+                  This implies (R_6/R_7 ).
+                </para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="rail-level-wca-summary">
+        <title>5.2 Rail-level WCA summary</title>
+        <para>
+          <emphasis role="strong">Assumptions for WCA:</emphasis>
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              SiC431 feedback reference tolerance: ±1 %
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              XL4015 (pre-reg) reference: assumed ±1 % (typical for 1.25
+              V buck regulators).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              All feedback resistors: ±1 %.
+            </para>
+          </listitem>
+        </itemizedlist>
+        <informaltable>
+          <tgroup cols="7">
+            <colspec colwidth="2*" align="left" />
+            <colspec colwidth="11*" align="left" />
+            <colspec colwidth="25*" align="left" />
+            <colspec colwidth="17*" align="left" />
+            <colspec colwidth="13*" align="left" />
+            <colspec colwidth="25*" align="left" />
+            <colspec colwidth="4*" align="left" />
+            <thead>
+              <row>
+                <entry>
+                  ID
+                </entry>
+                <entry>
+                  Rail / Node
+                </entry>
+                <entry>
+                  Equation &amp; Resistors
+                </entry>
+                <entry>
+                  Spec (Min…Max)
+                </entry>
+                <entry>
+                  WCA Result (Min…Max)
+                </entry>
+                <entry>
+                  Margin vs spec
+                </entry>
+                <entry>
+                  Status
+                </entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry>
+                  P1
+                </entry>
+                <entry>
+                  5 V buck output
+                </entry>
+                <entry>
+                  SiC431, R_H = 73.2k, R_L = 10k
+                </entry>
+                <entry>
+                  4.75…5.25 V (USB 5 V ±5 %)
+                </entry>
+                <entry>
+                  4.856…5.132 V
+                </entry>
+                <entry>
+                  ≥106 mV from each limit
+                </entry>
+                <entry>
+                  PASS
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  P2
+                </entry>
+                <entry>
+                  3.3 V buck output
+                </entry>
+                <entry>
+                  SiC431, R_H = 45.3k, R_L = 10k
+                </entry>
+                <entry>
+                  3.135…3.465 V (3.3 V ±5 %)
+                </entry>
+                <entry>
+                  3.232…3.407 V
+                </entry>
+                <entry>
+                  ≥97 mV from each limit
+                </entry>
+                <entry>
+                  PASS
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  P3
+                </entry>
+                <entry>
+                  VIN_SOM pre-reg
+                </entry>
+                <entry>
+                  XL4015, Vref = 1.25 V, R_6/R_7 ≈ 13.88
+                </entry>
+                <entry>
+                  7…20 V (Jetson VDD_IN range)
+                </entry>
+                <entry>
+                  18.074…19.140 V
+                </entry>
+                <entry>
+                  ≥11.074 V above min, 0.860 V below max
+                </entry>
+                <entry>
+                  PASS
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  P4
+                </entry>
+                <entry>
+                  3.3 V_STBY LDO
+                </entry>
+                <entry>
+                  NCP730B fixed 3.3 V, ±1 %
+                </entry>
+                <entry>
+                  3.135…3.465 V
+                </entry>
+                <entry>
+                  3.267…3.333 V
+                </entry>
+                <entry>
+                  Far inside ±5 % window
+                </entry>
+                <entry>
+                  PASS
+                </entry>
+              </row>
+              <row>
+                <entry>
+                  P5
+                </entry>
+                <entry>
+                  1.8 V LDO
+                </entry>
+                <entry>
+                  TPS7A0518 fixed 1.8 V, ±3 % max
+                </entry>
+                <entry>
+                  1.71…1.89 V
+                </entry>
+                <entry>
+                  1.746…1.854 V
+                </entry>
+                <entry>
+                  Far inside ±5 % window
+                </entry>
+                <entry>
+                  PASS
+                </entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </section>
+      <section xml:id="worked-example-5-v-buck-p1">
+        <title>5.3 Worked example – 5 V buck (P1)</title>
+        <para>
+          Inputs:
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Vref = 0.6 V ±1 %
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              R_H = 73.2 kΩ ±1 %
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              R_L = 10.0 kΩ ±1 %
+            </para>
+          </listitem>
+        </itemizedlist>
+        <para>
+          Worst-case <emphasis role="strong">minimum</emphasis> (all
+          tolerances toward lower Vout):
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Vref_min = 0.6·0.99 = 0.594 V
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              R_H_min = 73.2k·0.99 = 72.468 kΩ
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              R_L_max = 10k·1.01 = 10.10 kΩ
+            </para>
+          </listitem>
+        </itemizedlist>
+        <para>
+          [ V_{OUT,min} = 0.594 = 4.856  ]
+        </para>
+        <para>
+          Worst-case <emphasis role="strong">maximum</emphasis> (all
+          toward higher Vout):
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Vref_max = 0.606 V
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              R_H_max = 73.2k·1.01 = 73.932 kΩ
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              R_L_min = 10k·0.99 = 9.90 kΩ
+            </para>
+          </listitem>
+        </itemizedlist>
+        <para>
+          [ V_{OUT,max} = 0.606 = 5.132  ]
+        </para>
+        <para>
+          Comparison with spec:
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Spec window: 4.75…5.25 V
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              WCA result: 4.856…5.132 V
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Minimum margin to any limit: <emphasis role="strong">106
+              mV</emphasis> → <emphasis role="strong">PASS</emphasis>.
+            </para>
+          </listitem>
+        </itemizedlist>
+        <para>
+          (Similar calculations were done for the 3.3 V buck and
+          pre-reg.)
+        </para>
+      </section>
+    </section>
+    <section xml:id="wca-uvlo-enable-thresholds">
+      <title>6. WCA – UVLO / Enable Thresholds</title>
+      <para>
+        Using the standard SiC431 formula for UVLO:
+      </para>
+      <para>
+        [ R_{FB_H} = ]
+      </para>
+      <para>
+        For an intended VIN turn-on threshold of 8.4 V,
+        (R_{FB_H}/R_{FB_L} = (8.4/0.6) - 1 = 13).
+      </para>
+      <para>
+        Assuming:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            Vref (FB) = 0.6 V ±1 %
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            R_H and R_L = ±1 %
+          </para>
+        </listitem>
+      </itemizedlist>
+      <informaltable>
+        <tgroup cols="6">
+          <colspec colwidth="3*" align="left" />
+          <colspec colwidth="22*" align="left" />
+          <colspec colwidth="14*" align="right" />
+          <colspec colwidth="20*" align="left" />
+          <colspec colwidth="31*" align="left" />
+          <colspec colwidth="7*" align="left" />
+          <thead>
+            <row>
+              <entry>
+                ID
+              </entry>
+              <entry>
+                Function / Node
+              </entry>
+              <entry>
+                Nominal VIN_ON
+              </entry>
+              <entry>
+                WCA VIN_ON (Min…Max)
+              </entry>
+              <entry>
+                Comment
+              </entry>
+              <entry>
+                Status
+              </entry>
+            </row>
+          </thead>
+          <tbody>
+            <row>
+              <entry>
+                U1
+              </entry>
+              <entry>
+                Pre-reg UVLO (24→VIN_SOM)
+              </entry>
+              <entry>
+                8.4 V
+              </entry>
+              <entry>
+                8.163…8.643 V
+              </entry>
+              <entry>
+                Keeps converter off below ~8.2 V
+              </entry>
+              <entry>
+                PASS
+              </entry>
+            </row>
+          </tbody>
+        </tgroup>
+      </informaltable>
+      <para>
+        Interpretation:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            Even with tolerances, the pre-reg will
+            <emphasis role="strong">not</emphasis> enable below ~8.16 V
+            (well above brownout levels for a 24 V robot bus).
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Upper end 8.64 V is acceptable; gives clean start without
+            chatter.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section xml:id="wca-ldo-rails-3.3-v_stby-and-1.8-v">
+      <title>7. WCA – LDO Rails (3.3 V_STBY and 1.8 V)</title>
+      <para>
+        These are fixed-output parts; WCA is straightforward:
+      </para>
+      <section xml:id="v_stby-ncp730b">
+        <title>7.1 3.3 V_STBY (NCP730B)</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Output accuracy: ±1 % over temp
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Nominal: 3.300 V
+            </para>
+          </listitem>
+        </itemizedlist>
+        <para>
+          [ V_{out,min} = 3.3 = 3.267  ] [ V_{out,max} = 3.3 = 3.333  ]
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              System spec for 3.3 V logic: 3.135…3.465 V (±5 %).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              WCA result sits well inside →
+              <emphasis role="strong">large margin, PASS</emphasis>.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="v-ldo-tps7a0518">
+        <title>7.2 1.8 V LDO (TPS7A0518)</title>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Output accuracy: ±3 % max
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Nominal: 1.800 V
+            </para>
+          </listitem>
+        </itemizedlist>
+        <para>
+          [ V_{out,min} = 1.8 = 1.746  ] [ V_{out,max} = 1.8 = 1.854  ]
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Common 1.8 V logic range: 1.71…1.89 V (±5 %).
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Again, well inside →
+              <emphasis role="strong">PASS</emphasis>.
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+    </section>
+    <section xml:id="thermal-wca-sic431-5-v-buck">
+      <title>8. Thermal WCA – SiC431 5 V Buck</title>
+      <para>
+        From SiC431 datasheet:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            θ_JA ≈ <emphasis role="strong">16 °C/W</emphasis> in
+            reference layout
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Maximum junction temperature rating:
+            <emphasis role="strong">150 °C</emphasis> {index=11}
+          </para>
+        </listitem>
+      </itemizedlist>
+      <section xml:id="continuous-10-a-load-case-design-target">
+        <title>8.1 Continuous 10 A load case (design target)</title>
+        <para>
+          Assumptions:
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              VOUT = 5.0 V
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              IOUT = 10 A → P_OUT = 50 W
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Worst-case efficiency at this load: ~94 % (assumed from
+              datasheet curves).
+            </para>
+          </listitem>
+        </itemizedlist>
+        <para>
+          Then:
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              P_IN = 50 / 0.94 = 53.19 W
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              P_LOSS = P_IN – P_OUT = <emphasis role="strong">3.19
+              W</emphasis>
+            </para>
+          </listitem>
+        </itemizedlist>
+        <para>
+          With ambient = 45 °C:
+        </para>
+        <para>
+          [ T_J = T_A + P_{LOSS}_{JA} = 45 + 3.19 = 96 ^ ]
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Margin to 150 °C abs max: <emphasis role="strong">54
+              °C</emphasis>
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Margin to 125 °C recommended operating Tj:
+              <emphasis role="strong">29 °C</emphasis> →
+              <emphasis role="strong">Thermally comfortable –
+              PASS</emphasis> (assuming PCB copper similar to
+              reference).
+            </para>
+          </listitem>
+        </itemizedlist>
+      </section>
+      <section xml:id="peak-12-a-load-case-short-duration">
+        <title>8.2 Peak 12 A load case (short duration)</title>
+        <para>
+          Assumptions:
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              VOUT = 5.0 V, IOUT = 12 A → P_OUT = 60 W
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              Worst-case efficiency at this load: ~92 %
+            </para>
+          </listitem>
+        </itemizedlist>
+        <para>
+          Then:
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              P_IN = 60 / 0.92 = 65.22 W
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              P_LOSS ≈ <emphasis role="strong">5.22 W</emphasis>
+            </para>
+          </listitem>
+        </itemizedlist>
+        <para>
+          [ T_J = 45 + 5.22  ^ ]
+        </para>
+        <itemizedlist spacing="compact">
+          <listitem>
+            <para>
+              Below 150 °C abs max but <emphasis role="strong">slightly
+              above</emphasis> 125 °C recommended operating junction.
+            </para>
+          </listitem>
+        </itemizedlist>
+        <blockquote>
+          <para>
+            <emphasis role="strong">Conclusion:</emphasis> 10 A
+            continuous, 12 A short burst is realistic. For
+            <emphasis role="strong">12 A continuous</emphasis> operation
+            at +45 °C ambient, it is close to the safe limit and should:
+            - Improve cooling (larger copper area, airflow, or
+            heatsinking).
+          </para>
+        </blockquote>
+      </section>
+    </section>
+    <section xml:id="summary">
+      <title>9. Summary</title>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            <emphasis role="strong">5 V buck:</emphasis> WCA 4.856…5.132
+            V – meets USB/logic requirements with good margin.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">3.3 V buck:</emphasis> WCA
+            3.232…3.407 V – comfortably within ±5 % window.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">3.3 V_STBY &amp; 1.8 V
+            LDOs:</emphasis> accuracy of the LDOs gives excellent
+            margin.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">UVLO for pre-reg:</emphasis>
+            8.16…8.64 V – ensures clean start and avoids low-VIN
+            operation.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Thermal:</emphasis> 5 V buck is safe
+            for 10 A continuous at 45 °C ambient; 12 A peak is
+            acceptable but continuous 12 A is close to Tj limits.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section xml:id="references">
+      <title>10. References</title>
+      <orderedlist numeration="arabic">
+        <listitem>
+          <para>
+            SiC431 – Vishay, “SiC431 3 V to 24 V Input, 24 A microBUCK
+            DC/DC Converter”
+            https://www.vishay.com/docs/74589/sic431.pdf
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            NCP730B – onsemi, “NCP730 150 mA LDO Regulator” Product
+            page:
+            https://www.onsemi.com/products/power-management/linear-regulators-ldo/ncp730
+            Datasheet:
+            https://www.onsemi.com/download/data-sheet/pdf/ncp730-d.pdf
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            TPS7A0518 (TPS7A05 family) – Texas Instruments, “TPS7A05 Low
+            IQ LDO” Product page: https://www.ti.com/product/TPS7A05
+            Datasheet: https://www.ti.com/lit/ds/symlink/tps7a05.pdf
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            AP22615 / AP22815 – Diodes Inc., “AP22815/615 Power
+            Distribution Switches” Product page:
+            https://www.diodes.com/part/view/AP22615 Datasheet:
+            https://www.diodes.com/assets/Datasheets/AP22815_615.pdf
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Jetson AGX Orin – “Jetson Module Adaptation and Bring-Up:
+            Checklists” General checklist:
+            https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/JetsonModuleAdaptationAndBringUp/Checklists.html
+            AGX Orin series:
+            https://docs.nvidia.com/jetson/archives/r35.6.1/DeveloperGuide/HR/JetsonModuleAdaptationAndBringUp/JetsonAgxOrinSeries.html
+          </para>
+        </listitem>
+      </orderedlist>
+    </section>
+  </section>
+  <section xml:id="preliminary-mtbf-mttf-result-for-h1-vendor-based-fit">
+    <title>Preliminary MTBF / MTTF Result for H1 (Vendor-Based
+    FIT)</title>
+    <section xml:id="method-and-data-sources">
+      <title>1. Method and Data Sources</title>
+      <para>
+        For this revision, the MTBF prediction for H1 is based on:
+      </para>
+      <orderedlist numeration="arabic">
+        <listitem>
+          <para>
+            <emphasis role="strong">BOM-based parts-count</emphasis>
+            Using <literal>H1_Jetson_AGX_Orin_SOM.csv</literal>, all
+            components on the H1 carrier PCB were grouped by type:
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Resistors
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Capacitors
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Inductors / ferrite beads
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                LEDs
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Diodes &amp; ESD / TVS devices
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                MOSFETs / transistors
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Digital ICs (logic, level shifters, GPIO expanders,
+                muxes, etc.)
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Analog / power ICs (DC-DC, LDOs, power switches,
+                transceivers)
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Oscillators (crystal &amp; MEMS oscillator)
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Connectors (AGX connector, M.2 sockets, USB-C, RJ45,
+                FFCs, etc.)
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Mechanical / test points (ignored for MTBF)
+              </para>
+            </listitem>
+          </itemizedlist>
+          <para>
+            From the BOM we obtained the following
+            <emphasis role="strong">population per category</emphasis>:
+          </para>
+          <informaltable>
+            <tgroup cols="2">
+              <colspec align="left" />
+              <colspec align="right" />
+              <thead>
+                <row>
+                  <entry>
+                    Category
+                  </entry>
+                  <entry>
+                    Qty
+                  </entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>
+                    Resistors
+                  </entry>
+                  <entry>
+                    147
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Capacitors
+                  </entry>
+                  <entry>
+                    117
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Inductors / beads
+                  </entry>
+                  <entry>
+                    3
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    LEDs
+                  </entry>
+                  <entry>
+                    7
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Diodes / ESD
+                  </entry>
+                  <entry>
+                    19
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    MOSFETs / trans.
+                  </entry>
+                  <entry>
+                    13
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Digital ICs
+                  </entry>
+                  <entry>
+                    14
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Analog / power ICs
+                  </entry>
+                  <entry>
+                    13
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Oscillators
+                  </entry>
+                  <entry>
+                    2
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Connectors
+                  </entry>
+                  <entry>
+                    21
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Mech / testpoints
+                  </entry>
+                  <entry>
+                    27
+                  </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Reference FIT rates from vendor
+            documents</emphasis>
+          </para>
+          <para>
+            Exact FIT values for every individual MPN are generally
+            <emphasis role="strong">not published in the
+            datasheet</emphasis>; they are usually provided via separate
+            reliability or functional safety documents, or on request.
+            Instead, we rely on <emphasis role="strong">category-level
+            reference FIT tables</emphasis> from major vendors:
+          </para>
+          <itemizedlist>
+            <listitem>
+              <para>
+                <emphasis role="strong">TI application report
+                SLOA294A</emphasis> – “Understanding Functional Safety
+                FIT Base Failure Rate Estimates per IEC 62380 and SN
+                29500” This document provides
+                <emphasis role="strong">reference FIT rates</emphasis>
+                for integrated circuits, discrete semiconductors, and
+                passive components by type and complexity.
+                :contentReferenceoaicite:1
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                TI Functional Safety FIT notes for logic devices
+                (e.g. <emphasis role="strong">SN74LVC3G07-Q1</emphasis>
+                8 FIT at 55 °C as a typical CMOS logic reference).
+                :contentReferenceoaicite:2
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <emphasis role="strong">Murata MLCC FAQ</emphasis> –
+                confirms that failure rate / FIT data for ceramic
+                capacitors can be provided and that ceramic caps
+                generally exhibit very low FIT in benign conditions.
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                <emphasis role="strong">Würth Elektronik connector FIT
+                guide</emphasis> – provides temperature-dependent FIT
+                data for connectors; typical values at 40–60 °C lie in
+                the order of tens of FIT per mated pair.
+              </para>
+            </listitem>
+          </itemizedlist>
+          <para>
+            Based on those references (and staying conservative for a
+            ground-benign, ~40 °C environment), we assign the following
+            <emphasis role="strong">per-device FIT</emphasis>:
+          </para>
+          <informaltable>
+            <tgroup cols="3">
+              <colspec colwidth="22*" align="left" />
+              <colspec colwidth="47*" align="right" />
+              <colspec colwidth="29*" align="left" />
+              <thead>
+                <row>
+                  <entry>
+                    Category
+                  </entry>
+                  <entry>
+                    Assumed FIT / device (failures / 10⁹ h)
+                  </entry>
+                  <entry>
+                    Justification (summary)
+                  </entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>
+                    Resistors
+                  </entry>
+                  <entry>
+                    0.05 FIT
+                  </entry>
+                  <entry>
+                    Passive, low-stress; in line with SN29500/IEC style
+                    tables. :contentReferenceoaicite:5
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Capacitors (MLCC)
+                  </entry>
+                  <entry>
+                    0.5 FIT
+                  </entry>
+                  <entry>
+                    MLCCs have low FIT in benign env.; value chosen
+                    conservatively above Murata silicon-cap examples.
+                    :contentReferenceoaicite:6
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Inductors / beads
+                  </entry>
+                  <entry>
+                    1 FIT
+                  </entry>
+                  <entry>
+                    Passive magnetic parts; simple construction.
+                    :contentReferenceoaicite:7
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    LEDs
+                  </entry>
+                  <entry>
+                    2 FIT
+                  </entry>
+                  <entry>
+                    Simple opto-semiconductors, moderate FIT.
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Diodes / ESD / TVS
+                  </entry>
+                  <entry>
+                    5 FIT
+                  </entry>
+                  <entry>
+                    Discrete semis per TI/IEC reference ranges.
+                    :contentReferenceoaicite:8
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    MOSFETs / trans.
+                  </entry>
+                  <entry>
+                    5 FIT
+                  </entry>
+                  <entry>
+                    Discrete MOSFETs / BJTs as above.
+                    :contentReferenceoaicite:9
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Digital ICs
+                  </entry>
+                  <entry>
+                    10 FIT
+                  </entry>
+                  <entry>
+                    CMOS logic / small digital ICs around ~5–10 FIT
+                    typical; we choose 10 FIT as conservative.
+                    :contentReferenceoaicite:10
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Analog / power ICs
+                  </entry>
+                  <entry>
+                    15 FIT
+                  </entry>
+                  <entry>
+                    Power / analog devices typically somewhat higher FIT
+                    than simple logic (more area &amp; stress).
+                    :contentReferenceoaicite:11
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Oscillators
+                  </entry>
+                  <entry>
+                    20 FIT
+                  </entry>
+                  <entry>
+                    Crystals / oscillators often dominate field
+                    failures; assigned higher value.
+                    :contentReferenceoaicite:12
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Connectors
+                  </entry>
+                  <entry>
+                    15 FIT
+                  </entry>
+                  <entry>
+                    Based on Würth FIT curves at moderate temperature,
+                    using a mid-range value for mated pairs.
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Mech / testpoints
+                  </entry>
+                  <entry>
+                    0 FIT
+                  </entry>
+                  <entry>
+                    Not counted as electronic failure sources at this
+                    stage.
+                  </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Calculate category FIT and total
+            board FIT</emphasis>
+          </para>
+          <para>
+            For each category:
+          </para>
+          <para>
+            [ <emphasis>{} = </emphasis>{} ]
+          </para>
+          <para>
+            This gives:
+          </para>
+          <informaltable>
+            <tgroup cols="4">
+              <colspec align="left" />
+              <colspec align="right" />
+              <colspec align="right" />
+              <colspec align="right" />
+              <thead>
+                <row>
+                  <entry>
+                    Category
+                  </entry>
+                  <entry>
+                    Qty
+                  </entry>
+                  <entry>
+                    FIT / device
+                  </entry>
+                  <entry>
+                    Category FIT
+                  </entry>
+                </row>
+              </thead>
+              <tbody>
+                <row>
+                  <entry>
+                    Resistors
+                  </entry>
+                  <entry>
+                    147
+                  </entry>
+                  <entry>
+                    0.05
+                  </entry>
+                  <entry>
+                    7.35
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Capacitors
+                  </entry>
+                  <entry>
+                    117
+                  </entry>
+                  <entry>
+                    0.5
+                  </entry>
+                  <entry>
+                    58.50
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Inductors / beads
+                  </entry>
+                  <entry>
+                    3
+                  </entry>
+                  <entry>
+                    1.0
+                  </entry>
+                  <entry>
+                    3.00
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    LEDs
+                  </entry>
+                  <entry>
+                    7
+                  </entry>
+                  <entry>
+                    2.0
+                  </entry>
+                  <entry>
+                    14.00
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Diodes / ESD
+                  </entry>
+                  <entry>
+                    19
+                  </entry>
+                  <entry>
+                    5.0
+                  </entry>
+                  <entry>
+                    95.00
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    MOSFETs / trans.
+                  </entry>
+                  <entry>
+                    13
+                  </entry>
+                  <entry>
+                    5.0
+                  </entry>
+                  <entry>
+                    65.00
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Digital ICs
+                  </entry>
+                  <entry>
+                    14
+                  </entry>
+                  <entry>
+                    10.0
+                  </entry>
+                  <entry>
+                    140.00
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Analog / power ICs
+                  </entry>
+                  <entry>
+                    13
+                  </entry>
+                  <entry>
+                    15.0
+                  </entry>
+                  <entry>
+                    195.00
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Oscillators
+                  </entry>
+                  <entry>
+                    2
+                  </entry>
+                  <entry>
+                    20.0
+                  </entry>
+                  <entry>
+                    40.00
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    Connectors
+                  </entry>
+                  <entry>
+                    21
+                  </entry>
+                  <entry>
+                    15.0
+                  </entry>
+                  <entry>
+                    315.00
+                  </entry>
+                </row>
+                <row>
+                  <entry>
+                    <emphasis role="strong">Total</emphasis>
+                  </entry>
+                  <entry>
+                  </entry>
+                  <entry>
+                  </entry>
+                  <entry>
+                    <emphasis role="strong">932.85</emphasis>
+                  </entry>
+                </row>
+              </tbody>
+            </tgroup>
+          </informaltable>
+          <para>
+            So the <emphasis role="strong">H1 carrier-board failure
+            rate</emphasis> is:
+          </para>
+          <para>
+            [ <emphasis>{} = 932.85  ] [ </emphasis>{} =   ]
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            <emphasis role="strong">Compute MTBF / MTTF</emphasis>
+          </para>
+          <para>
+            For a constant failure rate, <emphasis role="strong">MTBF ≈
+            MTTF = 1/λ</emphasis>:
+          </para>
+          <para>
+            [ _{} = ^6  ]
+          </para>
+          <para>
+            So, rounded:
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                <emphasis role="strong">MTBF ≈ 1,070,000
+                hours</emphasis>
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ≈ <emphasis role="strong">122 years</emphasis> if
+                operated 24 h/day
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                ≈ <emphasis role="strong">366 years of “calendar
+                usage”</emphasis> if operated 8 h/day, 365 days/year
+              </para>
+            </listitem>
+          </itemizedlist>
+          <para>
+            This is clearly <emphasis role="strong">far above</emphasis>
+            the intended product life (e.g. 10 years), which is what we
+            want: the electronics are not expected to be the limiting
+            factor under the assumed environment.
+          </para>
+        </listitem>
+      </orderedlist>
+      <blockquote>
+        <para>
+          <emphasis role="strong">Important</emphasis> This MTBF is for
+          the <emphasis role="strong">H1 carrier PCB only</emphasis>
+          (components in <literal>H1_Jetson_AGX_Orin_SOM.csv</literal>).
+          The <emphasis role="strong">Jetson AGX Orin SOM, modem
+          modules, and other controllers</emphasis> are treated as
+          separate field-replaceable units (FRUs) with their
+          <emphasis role="strong">own vendor-supplied FIT /
+          MTBF</emphasis> values and are
+          <emphasis role="strong">not</emphasis> expanded into
+          individual internal components here.
+        </para>
+      </blockquote>
+    </section>
+    <section xml:id="category-contribution-and-design-focus">
+      <title>2. Category Contribution and Design Focus</title>
+      <para>
+        Percentage contribution to total FIT:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            Analog / power ICs: 195 / 932.85 ≈
+            <emphasis role="strong">21 %</emphasis>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Digital ICs: 140 / 932.85 ≈ <emphasis role="strong">15
+            %</emphasis>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Connectors: 315 / 932.85 ≈ <emphasis role="strong">34
+            %</emphasis>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Protection (diodes, MOSFETs): (95 + 65) / 932.85 ≈
+            <emphasis role="strong">17 %</emphasis>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Passives (R, C, L) + LEDs + osc: remaining ≈
+            <emphasis role="strong">13 %</emphasis>
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        This confirms that, in line with industry experience:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            <emphasis role="strong">Connectors</emphasis> and
+            <emphasis role="strong">active ICs (especially power
+            devices)</emphasis> dominate the predicted failure rate.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Large populations of <emphasis role="strong">resistors and
+            capacitors</emphasis> do <emphasis>not</emphasis> dominate
+            FIT in a benign environment when properly derated.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        In practice this means:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            Our focus on <emphasis role="strong">WCA +
+            derating</emphasis> for the power tree and connector ratings
+            is aligned with reliability impact.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            For any further reliability improvement, we would first look
+            at:
+          </para>
+          <itemizedlist spacing="compact">
+            <listitem>
+              <para>
+                Derating or redundancy on
+                <emphasis role="strong">critical power ICs</emphasis>,
+                and
+              </para>
+            </listitem>
+            <listitem>
+              <para>
+                Mechanical / environmental robustness of
+                <emphasis role="strong">connectors</emphasis> (strain
+                relief, locking mechanisms, ingress protection).
+              </para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section xml:id="example-mission-profile-10-years">
+      <title>3. Example Mission Profile (10 Years)</title>
+      <para>
+        For a nominal mission:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            10 years
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            8 h/day operation
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Indoor, 0…45 °C (as assumed in WCA)
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        Mission time:
+      </para>
+      <para>
+        [ t = 10      200  ]
+      </para>
+      <para>
+        With (_{} = 932.85 / 10^9 <superscript>{-7} </superscript>{-1}):
+      </para>
+      <para>
+        [ t ^{-7} ] [ R(t) = e^{-t} e^{-0.0273} ]
+      </para>
+      <para>
+        So, for <emphasis role="strong">one H1 carrier board</emphasis>:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            Probability of <emphasis role="strong">surviving 10
+            years</emphasis> at 8 h/day ≈ <emphasis role="strong">97.3
+            %</emphasis>
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Probability of at least one failure in that period ≈
+            <emphasis role="strong">2.7 %</emphasis>
+          </para>
+        </listitem>
+      </itemizedlist>
+      <para>
+        This is a <emphasis role="strong">first-order, vendor-based
+        estimate</emphasis> and will be refined with:
+      </para>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            Actual junction temperatures from post-layout thermal
+            analysis,
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Vendor-specific FIT data for the Jetson SOM and other
+            modules, and
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Any field data collected from prototype and early production
+            units.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section xml:id="limitations-and-next-steps">
+      <title>4. Limitations and Next Steps</title>
+      <itemizedlist spacing="compact">
+        <listitem>
+          <para>
+            The per-device FIT rates are
+            <emphasis role="strong">category-level estimates derived
+            from vendor reference documents</emphasis>,
+            <emphasis>not</emphasis> exact values for each individual
+            MPN in the BOM.
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Some vendors (e.g. Murata for MLCC, major IC vendors for
+            automotive parts) explicitly state FIT / MTBF data is
+            available <emphasis role="strong">on request</emphasis>, not
+            directly in the public datasheet.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <orderedlist numeration="arabic">
+        <listitem>
+          <para>
+            TI – Understanding Functional Safety FIT Base Failure Rate
+            Estimates Title: “Understanding Functional Safety FIT Base
+            Failure Rate Estimates per IEC 62380 and SN 29500 (Rev. A)”
+            Link: https://www.ti.com/lit/SLOA294A
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            TI – Example Functional Safety / FIT application (CAN
+            transceiver) Title: “TCAN1042x-Q1 Functional Safety, FIT
+            Rate, Failure Mode Distribution and Diagnostic Coverage”
+            Link: https://www.ti.com/lit/pdf/slla502
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Murata – MLCC Reliability / FIT and MTBF Data FAQ: “Is data
+            from reliability tests on ceramic capacitors available?”
+            Link:
+            https://www.murata.com/en-sg/support/faqs/capacitor/ceramiccapacitor/qlty/0020
+          </para>
+          <para>
+            FAQ: “Do you have data on failure rate, FIT value, MTTF and
+            MTBF?” Link:
+            https://www.murata.com/en-sg/support/faqs/capacitor/ceramiccapacitor/qlty/0022
+          </para>
+          <para>
+            General capacitor reliability / selection: Link:
+            https://www.murata.com/en-sg/support/faqs/capacitor
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            TDK – FIT and MTTF / MTBF for MLCCs FAQ: “FIT and MTTF /
+            MTBF (7): How does TDK calculate Failure Rate of MLCCs
+            (Multilayer Ceramic Capacitors)?” Link:
+            https://product.tdk.com/en/contact/faq/capacitors-0107.html
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Würth Elektronik – Connector Reliability Context (used as
+            reference for connector FIT assumptions) Connectors
+            overview: Link:
+            https://www.we-online.com/en/components/products/em/connectors
+          </para>
+          <para>
+            “Trilogy of Connectors” reference guide: Link:
+            https://www.we-online.com/en/components/products/TRILOGY_OF_CONNECTORS_ENGLISH
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Siemens SN 29500 – Standard for Failure Rates Overview /
+            description: Link:
+            https://www.isograph.com/software/reliability-workbench/prediction-software/siemens-sn-29500/
+          </para>
+          <para>
+            Alternate reference/summary: Link:
+            https://aldservice.com/SN-29500-Siemens.html
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            General SN 29500 / FIT usage examples Paper: “Reliability
+            prediction for automotive electronics” (discusses SN 29500
+            failure rate use) Link:
+            https://dialnet.unirioja.es/descarga/articulo/9722426.pdf
+          </para>
+          <para>
+            Blog walkthrough: “Your Step-by-Step Guide for Performance
+            Level Calculations of Safety-Critical Electronics (How to
+            calculate FIT using SN29500)” Link:
+            https://oxeltech.de/your-step-by-step-guide-for-performance-level-calculations-of-safety-critical-electronics/
+          </para>
+        </listitem>
+        <listitem>
+          <para>
+            Murata Silicon Capacitor Reliability Example (very low FIT
+            baseline) Link:
+            https://www.murata.com/products/capacitor/siliconcapacitors/overview/passivecomponentnetwork/reliability
+          </para>
+        </listitem>
+      </orderedlist>
+    </section>
+  </section>
+</article>
