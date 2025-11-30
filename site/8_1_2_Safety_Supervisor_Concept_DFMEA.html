@@ -1,0 +1,1469 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="8_1_1_Carrier_DFMEA_%28Implemented%29.html">
+      
+      
+        <link rel="next" href="8_1_3_Rating_Scales.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>8.1.2. Safety Supervisor Concept - VoltEdge H1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#safety-supervisor-concept-dfmea" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-header__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VoltEdge H1 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8.1.2. Safety Supervisor Concept
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-nav__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VoltEdge H1 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_Product_Requirments_Document.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Requirments Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_Requirements_Specification.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Requirements Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_System_Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. System Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Hardware_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Hardware Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Power_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Power Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Safety_and_Failsafe_Concept.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Safety and Failsafe Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_Interfaces_and_Connectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Interfaces and Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Design Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8. Design Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1. FMEA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8.1. FMEA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_FMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. FMEA Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_1_Carrier_DFMEA_%28Implemented%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. Carrier Board DFMEA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="8_1_2_Safety_Supervisor_Concept_DFMEA.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Safety Supervisor Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_3_Rating_Scales.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Rating Scales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_2_Worst_Case_Analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2. Worst Case Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_3_Mean_Time_Between_Failure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3. Reliability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_4_DesignAnalysis_Tolerance_Stackup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4. Tolerance Stackup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Test Plan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    9. Test Plan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_1_High_level_summary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1. High level summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_2_Component_Test_Plan%28bySchematicBlock%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2. Component Test Plan(bySchematicBlock)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_3_Module_Test_Plan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3. Module Test Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="safety-supervisor-concept-dfmea">Safety Supervisor Concept DFMEA<a class="headerlink" href="#safety-supervisor-concept-dfmea" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Item</th>
+<th>Function</th>
+<th>Potential Failure Mode</th>
+<th>Effects of Failure</th>
+<th>Severity</th>
+<th>Causes</th>
+<th>Occurrence</th>
+<th>Current Design Controls – Prevention</th>
+<th>Current Design Controls – Detection</th>
+<th>Detection</th>
+<th>RPN</th>
+<th>Recommended Actions</th>
+<th>Owner</th>
+<th>Date Due</th>
+<th>Action Results</th>
+<th>Date Completed</th>
+<th>Severity (Post)</th>
+<th>Occurrence (Post)</th>
+<th>Detection (Post)</th>
+<th>RPN (Post)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#</td>
+<td>Product component or part</td>
+<td>Primary function</td>
+<td>How could the system / item / process potentially fail?</td>
+<td>Consequential impact on other systems, departments, etc.</td>
+<td></td>
+<td>All contributing factors</td>
+<td></td>
+<td>Prevention</td>
+<td>Detection</td>
+<td></td>
+<td>Risk Priority Number</td>
+<td>Steps required to reduce severity, occurrence, and detection</td>
+<td>Organization, team, or individual responsible</td>
+<td>Target date of completion</td>
+<td>Actions taken</td>
+<td>Actual date of completion</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Risk Priority Number</td>
+</tr>
+<tr>
+<td>1</td>
+<td>SUP-CORE: Safety Supervisor MCU (S32K116)</td>
+<td>Execute safety state machine &amp; monitoring</td>
+<td>MCU stuck / internal lock-up</td>
+<td>Safety outputs frozen; e.g. Robot_Enable may stay high; STO may not be asserted on request → loss of safety function</td>
+<td>9</td>
+<td>EMI, clock instability, supply dips, internal HW fault</td>
+<td>4</td>
+<td>Use automotive-grade MCU; proper decoupling; robust clock and reset circuitry; separate noisy power domains where needed</td>
+<td>Independent hardware watchdog and reset; external circuits pull safety outputs to safe state when MCU is not actively driving them</td>
+<td>5</td>
+<td>180</td>
+<td>Requirement: Design safety outputs so that on reset/tri-state they go to safe level via external resistors; use an independent watchdog/reset configuration such that loss of MCU activity forces a reset and safe output state.</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>SUP-NVM: MCU non-volatile memory (code/data storage cells)</td>
+<td>Retain configuration and control logic</td>
+<td>Bit-cell corruption in non-volatile memory</td>
+<td>MCU may execute unintended control sequences or use wrong internal parameters → safety behaviour may deviate from design</td>
+<td>10</td>
+<td>Radiation/ESD upset of memory cells, supply transients</td>
+<td>2</td>
+<td>Select MCU with ECC or parity on NVM; ensure clean power and proper decoupling; protect NVM supply and control pins</td>
+<td>Hardware error flags from NVM (ECC/parity) if available; abnormal behaviour detected in lab validation</td>
+<td>7</td>
+<td>140</td>
+<td>Requirement: Use NVM with hardware error protection where possible; enable any hardware error signalling pins; protect debug/programming pins physically (e.g. not exposed in production) to avoid unintended modification.</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>SUP-PWR-MON-24V-I: 24 V current shunt &amp; ADC channel</td>
+<td>Sense load current drawn from 24 V bus</td>
+<td>Shunt resistor open (reads ~0 A)</td>
+<td>Over-current or short-circuit conditions not detected; thermal or wiring faults on robot may go unnoticed</td>
+<td>7</td>
+<td>Solder crack, mechanical stress on shunt, over-temperature</td>
+<td>4</td>
+<td>Use Kelvin-connected, automotive shunt sized for worst-case current; robust footprint and mounting</td>
+<td>Comparison of current reading vs other indicators during test (e.g. measured power vs ADC current)</td>
+<td>7</td>
+<td>196</td>
+<td>Requirement: Include continuity check of shunt in production (measured drop at known current); document that persistent “zero-current” indication with known load must be treated as a service fault on the current-sense hardware.</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>SUP-PWR-MON-24V-PATH: 24 V current sense wiring + amplifier / filter</td>
+<td>Provide accurate sense voltage to ADC</td>
+<td>Sense path shorted or bypassed</td>
+<td>Same as above: near-zero sensed current even during overload; supervisor is blind to over-current</td>
+<td>7</td>
+<td>Solder bridge, PCB contamination, misaligned components</td>
+<td>3</td>
+<td>Adequate clearances and solder mask between shunt pads and sense traces; use proven amplifier/filter parts</td>
+<td>Production electrical test of voltage across shunt at a known load</td>
+<td>8</td>
+<td>168</td>
+<td>Requirement: Add an electrical test step: drive a known load on 24 V and verify sense-chain output; if readings are inconsistent, board is rejected or reworked; document sense-path as safety-related hardware.</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SUP-PWR-MON-24V-V: 24 V voltage divider &amp; ADC channel</td>
+<td>Monitor 24 V bus voltage</td>
+<td>Divider resistor drift/open → wrong voltage reading</td>
+<td>Supervisor may think voltage is OK when it is low/high; may not react correctly to battery fault or brown-out</td>
+<td>8</td>
+<td>Resistor ageing, wrong value, contamination, cracked solder</td>
+<td>3</td>
+<td>Use 1% automotive resistors; place away from high-contamination areas; follow derating and creepage rules</td>
+<td>Voltage reading compared against external measurement during validation</td>
+<td>7</td>
+<td>168</td>
+<td>Requirement: Provide access to 24 V measurement for calibration (testpoint); document tolerance limits; ensure mechanical design minimises stress on divider resistors (no large copper “anchors” nearby without relief).</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>SUP-H4-CAN: Safety Supervisor ↔ H4 CAN-FD physical interface</td>
+<td>Exchange state &amp; safety info with BMS/power</td>
+<td>CAN transceiver / bus fault (bus-off, short, stuck dominant)</td>
+<td>Supervisor loses visibility of battery &amp; system faults; may continue operating with unknown power state</td>
+<td>8</td>
+<td>Short on CAN lines, incorrect termination, ESD damage</td>
+<td>4</td>
+<td>Use automotive CAN transceiver with integrated protections; correct termination; TVS/ESD devices on bus</td>
+<td>Hardware bus-off / error indication from transceiver or controller; physical tests of CAN wiring</td>
+<td>6</td>
+<td>192</td>
+<td>Requirement: Route CAN transceiver error/bus-off indications to a dedicated MCU pin; specify that loss of valid CAN communication is treated as hardware-fault input to safety logic; include CAN short/open tests in HW validation.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>SUP-JETSON-POWER: Safety Supervisor control of Jetson power enable</td>
+<td>Allow/deny power to Jetson SOM</td>
+<td>POWER_EN path stuck high (power always on)</td>
+<td>Jetson cannot be turned off by supervisor; on serious fault, only external protections (e.g. STO, breakers) remain</td>
+<td>7</td>
+<td>Power FET short, gate short to supply, PCB short</td>
+<td>3</td>
+<td>Design POWER_EN stage so default (no drive) = OFF; use gate pull-down; adequate spacing around power FET</td>
+<td>Observation of Jetson supply presence vs enable command during hardware testing</td>
+<td>6</td>
+<td>126</td>
+<td>Requirement: Include feedback (e.g. power-good or voltage monitor) that shows whether Jetson supply actually turns on/off; design so that if power FET fails shorted it is detectable by discrepancy between command and measured state.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>8</td>
+<td>SUP-JETSON-RESET: Supervisor-controlled Jetson reset line</td>
+<td>Provide reliable reset</td>
+<td>RESET line stuck low (always asserted)</td>
+<td>Jetson never boots; system remains unavailable but safe</td>
+<td>5</td>
+<td>Short to ground, missing pull-up, reset IC output stuck</td>
+<td>3</td>
+<td>Use recommended reset IC or RC network with proper pull-up; keep routing away from aggressors</td>
+<td>Continuity and level check during production; simple “Jetson alive” functional test</td>
+<td>4</td>
+<td>60</td>
+<td>Requirement: Provide test access (pad or header) to RESET line; specify manufacturing test to verify correct idle level and pulse behaviour; mechanical design should protect reset line from accidental shorts.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>SUP-JETSON-SHUTDOWN-LINK: Shutdown/handshake lines between Jetson and Supervisor</td>
+<td>Coordinate clean power removal</td>
+<td>Handshake lines not routed or shorted</td>
+<td>Jetson power may be removed without sufficient warning; may lose unsaved internal state</td>
+<td>4</td>
+<td>Omitted connections, mis-routed nets, connector/pin-out errors</td>
+<td>5</td>
+<td>Provide dedicated lines for “shutdown request” and “allow power removal” as shown in HLD; ensure correct pin-out and labelling</td>
+<td>Checked during bring-up by observing signal transitions while manually commanding shutdown</td>
+<td>5</td>
+<td>100</td>
+<td>Requirement: Define clear mapping of handshake signals in schematics; verify continuity and pin-out during board bring-up; ensure Jetson supply has adequate hold-up capacitance to tolerate specified shutdown delay.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>SUP-JETSON-HEALTH-LINK: Health/heartbeat lines between Jetson and Supervisor</td>
+<td>Indicate Jetson health to Supervisor</td>
+<td>Health/heartbeat wiring open, shorted, or mis-routed</td>
+<td>Supervisor cannot distinguish Jetson failure from idle state; may not trigger safe reaction in time</td>
+<td>6</td>
+<td>Connector damage, cable strain, wiring error</td>
+<td>5</td>
+<td>Use series resistors and ESD protection on lines; keep routing short and away from high-noise zones</td>
+<td>Continuity test of pins; functional test to confirm Jetson can toggle health signal and Supervisor can see it</td>
+<td>4</td>
+<td>120</td>
+<td>Requirement: Reserve at least one dedicated health/heartbeat line between Jetson and Supervisor; include this in harness continuity tests; clearly document connector pin assignments to avoid cross-wiring.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>SAF-STO-CMD: STO command path Supervisor → H3 drives</td>
+<td>Command Safety Torque Off (STO)</td>
+<td>STO command path open or optocoupler failure (no signal delivered)</td>
+<td>On emergency stop, motors may continue to have torque → potential injury</td>
+<td>10</td>
+<td>Optocoupler LED/transistor failure, solder crack, open wire</td>
+<td>3</td>
+<td>Use safety-rated optocoupler; derate LED current; robust PCB footprint and creepage/clearance</td>
+<td>STO wiring continuity and functional stop tests on assembled system</td>
+<td>9</td>
+<td>270</td>
+<td>Requirement: Architecture shall include a separate feedback signal from H3 confirming STO state; wiring for STO shall be duplicated or robustly protected; regular system-level STO function tests shall be part of validation and service.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>SAF-ROBOT-ENABLE: Enable line Supervisor → H3</td>
+<td>Enable/disable robot motion</td>
+<td>Enable line stuck high (short to supply, output driver fault)</td>
+<td>H3 may remain enabled even when Supervisor intends to disable; safety then relies solely on STO and internal H3 functions</td>
+<td>9</td>
+<td>Short on PCB/harness, GPIO driver failure</td>
+<td>4</td>
+<td>External pull-down so default = DISABLE; physical separation from high-voltage or noisy nets</td>
+<td>Enable line continuity tests; functional tests toggling enable and observing drive response</td>
+<td>7</td>
+<td>252</td>
+<td>Requirement: Specify in interface that H3 shall not rely only on a single enable line; H3 shall require consistency with other signals (e.g. STO inactive, health OK); include periodic enable-line toggle tests in system validation.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>SAF-LIMP-HOME: Reduced-performance request Supervisor → H3</td>
+<td>Request limp-home mode</td>
+<td>LIMP_HOME line open, shorted or not connected</td>
+<td>On degraded sensors/conditions, robot may either stop fully or remain in full-performance mode depending only on other mechanisms</td>
+<td>8</td>
+<td>Wiring fault, missing net connection, pin assignment error</td>
+<td>4</td>
+<td>Provide a dedicated line for limp-home separate from STO and Enable; use defined pull-up/down to known default state</td>
+<td>Continuity tests; functional tests where limp-home is commanded and H3 response observed</td>
+<td>7</td>
+<td>224</td>
+<td>Requirement: Clearly define this signal in interface connector; document default level and behaviour; ensure harness and PCB pin-outs are verified; include at least one system test that exercises limp-home signal behaviour.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>SAF-H3-MOTION-HEALTHY: Motion controller health feedback H3 → Supervisor</td>
+<td>Report internal health of motion controller</td>
+<td>MOTION_HEALTHY stuck at fixed level (always “OK” or always “fault”)</td>
+<td>Supervisor receives misleading health information, may not correctly respond to internal H3 faults</td>
+<td>10</td>
+<td>Output driver fault, wiring short/open, connector damage</td>
+<td>3</td>
+<td>Provide defined pull-up/down to detect open-circuit; route away from aggressive signals</td>
+<td>Continuity testing; functional test where H3 output is toggled and Supervisor input observed</td>
+<td>8</td>
+<td>240</td>
+<td>Requirement: Design the interface so this line can be actively toggled during tests; provide test mode in H3 hardware/bench setup to toggle the line; verify that different levels are correctly sensed by Supervisor electronics.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td>SAF-H3-DRIVE-FAULT: Drive fault feedback H3 → Supervisor</td>
+<td>Report drive-level faults</td>
+<td>DRIVE_FAULT line open or stuck at one level</td>
+<td>Supervisor never sees drive faults or sees constant fault; additional warnings or reactions based on this signal are unavailable</td>
+<td>7</td>
+<td>Harness failure, connector/pin damage, bias resistor missing</td>
+<td>4</td>
+<td>Provide local bias (pull-up/down) so open-circuit can be detected; robust connector system</td>
+<td>Continuity testing; functional test where H3 asserts and clears drive-fault indication</td>
+<td>7</td>
+<td>196</td>
+<td>Requirement: Ensure the drive-fault line is accessible in test (e.g. via test pads or connector breakout); require a production test that verifies both logic levels from H3 are correctly received by Supervisor input circuitry.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td>H2-POWER-CTRL: Supervisor-controlled 5 V power to H2</td>
+<td>Power and reset perception unit H2</td>
+<td>Power switch to H2 stuck OFF</td>
+<td>H2 never powers; perception sensors may be unavailable; robot may operate without expected sensor data</td>
+<td>8</td>
+<td>FET stuck open, gate not driven, PCB open-circuit</td>
+<td>3</td>
+<td>Use proven load switch/FET device; derate for inrush; provide known default gate bias</td>
+<td>Continuity check and voltage presence on H2-supply pin during test</td>
+<td>5</td>
+<td>120</td>
+<td>Requirement: Provide testpoint on H2 5 V rail; define production test that toggles the H2 power control and verifies presence/absence of 5 V at the connector; document that loss of H2 supply is a detectable hardware condition.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>17</td>
+<td>H2-RESET-CTRL: Supervisor ability to reset or power-cycle H2</td>
+<td>Recover H2 from faults</td>
+<td>Reset/power-cycle path stuck ON (cannot reset)</td>
+<td>Persistent H2 faults cannot be cleared by power-cycle; full robot power removal may be required</td>
+<td>6</td>
+<td>FET stuck on, reset line short to supply</td>
+<td>4</td>
+<td>Use FET/reset driver with adequate derating; provide gate/line bias to known default state</td>
+<td>Functional test: confirm that reset or power-cycle of H2 can be commanded and observed</td>
+<td>6</td>
+<td>144</td>
+<td>Requirement: Provide separate reset/power control line for H2, not shared with other functions; ensure the line is accessible for testing; specify that inability to toggle this line is a hardware fault requiring repair.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>18</td>
+<td>H2-FAULT-HEALTH: H2 sensor fault / health signal H2 → Supervisor</td>
+<td>Indicate H2 internal faults</td>
+<td>Health/fault line open or stuck at single level</td>
+<td>Supervisor unaware of degraded perception or falsely sees permanent fault; decisions using this line become unreliable</td>
+<td>8</td>
+<td>Connector/contact failure, broken trace, short to rail</td>
+<td>4</td>
+<td>Bias network (pull-up/down) to make open-circuit detectable; robust connector and strain relief</td>
+<td>Continuity testing and simple functional test where H2 toggles health line during integration</td>
+<td>7</td>
+<td>224</td>
+<td>Requirement: Reserve at least one dedicated health/fault line for H2; require continuity check in harness production; ensure that H2 can toggle this line during integration test to prove connectivity.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>19</td>
+<td>USER-FAULT-ACK: Local fault-acknowledge button to Supervisor</td>
+<td>Allow operator to clear latched faults</td>
+<td>Button stuck closed or making continuous contact</td>
+<td>Faults may appear to be acknowledged repeatedly without deliberate operator action; system might re-enable when not intended</td>
+<td>7</td>
+<td>Mechanical wear, contamination, switch short to ground</td>
+<td>3</td>
+<td>Use quality switch; physical protection against contamination; suitable contact rating</td>
+<td>Switch contact resistance/level checked during manufacturing; visual inspection</td>
+<td>6</td>
+<td>126</td>
+<td>Requirement: Design the circuit so stuck-closed condition is detectable (e.g. via pull-ups and level timing in test rigs); specify that boards showing stuck contacts in production tests must be rejected or reworked.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>20</td>
+<td>USER-INDICATION: Status LEDs &amp; buzzer driven by Supervisor</td>
+<td>Indicate states &amp; faults to operator</td>
+<td>Individual LED or buzzer open or short</td>
+<td>Operator may not notice certain fault indications; relies only on remote indications and tools</td>
+<td>4</td>
+<td>Component failure, solder defect, connector issue</td>
+<td>3</td>
+<td>Derating of LED/buzzer currents; adequate series resistors; suitable connectors</td>
+<td>Power-on visual/audible check during commissioning</td>
+<td>5</td>
+<td>60</td>
+<td>Requirement: At commissioning, run a simple indicator test (all LEDs on, buzzer active) and record result; specify that failed indicators must be treated as hardware maintenance items and cannot be ignored for safety-relevant states.</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

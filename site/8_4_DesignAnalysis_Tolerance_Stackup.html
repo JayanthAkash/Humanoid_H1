@@ -1,0 +1,2010 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="8_3_Mean_Time_Between_Failure.html">
+      
+      
+        <link rel="next" href="9_1_High_level_summary.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>8.4. Tolerance Stackup - VoltEdge H1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#h1-tolerance-stack-up-analysis-critical-aspects" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-header__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VoltEdge H1 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8.4. Tolerance Stackup
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-nav__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VoltEdge H1 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_Product_Requirments_Document.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Requirments Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_Requirements_Specification.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Requirements Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_System_Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. System Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Hardware_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Hardware Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Power_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Power Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Safety_and_Failsafe_Concept.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Safety and Failsafe Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_Interfaces_and_Connectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Interfaces and Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Design Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8. Design Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1. FMEA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8.1. FMEA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_FMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. FMEA Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_1_Carrier_DFMEA_%28Implemented%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. Carrier Board DFMEA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_2_Safety_Supervisor_Concept_DFMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Safety Supervisor Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_3_Rating_Scales.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Rating Scales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_2_Worst_Case_Analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2. Worst Case Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_3_Mean_Time_Between_Failure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3. Reliability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4. Tolerance Stackup
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="8_4_DesignAnalysis_Tolerance_Stackup.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4. Tolerance Stackup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-objective-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Objective &amp; Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Assumptions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Assumptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-electrical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Electrical
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-component-tolerances-unless-otherwise-stated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Component Tolerances (unless otherwise stated)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-out-of-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Out of Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dc-supply-voltages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. DC Supply Voltages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. DC Supply Voltages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Summary Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-key-calculations-short" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Key Calculations (Short)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-currents-limits-shunts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Currents, Limits &amp; Shunts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Currents, Limits &amp; Shunts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-ap22615-load-switch-current-limit-per-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 AP22615 Load-Switch Current Limit (per Channel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-shunt-current-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Shunt Current &amp; Power
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-adc-measurement-paths-s32k116" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. ADC &amp; Measurement Paths (S32K116)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. ADC &amp; Measurement Paths (S32K116)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-24-v-bus-voltage-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 24 V Bus Voltage Monitor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-24-v-bus-current-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 24 V Bus Current Monitor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-logic-levels-straps-safety-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Logic Levels, Straps &amp; Safety Defaults
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Logic Levels, Straps &amp; Safety Defaults">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-33-v-rail-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 3.3 V Rail Considerations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-example-ethernet-phy-strap-pin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Example: Ethernet PHY Strap Pin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-representative-summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Representative Summary Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-reset-power-up-timing-rc-based" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Reset &amp; Power-Up Timing (RC-Based)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Reset &amp; Power-Up Timing (RC-Based)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-s32k116-reset_b-rc-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 S32K116 RESET_b RC Delay
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-notes-on-remaining-aspects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Notes on Remaining Aspects
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-overall-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Overall Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Test Plan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    9. Test Plan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_1_High_level_summary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1. High level summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_2_Component_Test_Plan%28bySchematicBlock%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2. Component Test Plan(bySchematicBlock)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_3_Module_Test_Plan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3. Module Test Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-objective-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Objective &amp; Scope
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Assumptions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Assumptions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-electrical" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Electrical
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-component-tolerances-unless-otherwise-stated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Component Tolerances (unless otherwise stated)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-out-of-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Out of Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-dc-supply-voltages" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. DC Supply Voltages
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. DC Supply Voltages">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Summary Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-key-calculations-short" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Key Calculations (Short)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-currents-limits-shunts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Currents, Limits &amp; Shunts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Currents, Limits &amp; Shunts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-ap22615-load-switch-current-limit-per-channel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 AP22615 Load-Switch Current Limit (per Channel)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-shunt-current-power" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Shunt Current &amp; Power
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-adc-measurement-paths-s32k116" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. ADC &amp; Measurement Paths (S32K116)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. ADC &amp; Measurement Paths (S32K116)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-24-v-bus-voltage-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 24 V Bus Voltage Monitor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-24-v-bus-current-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 24 V Bus Current Monitor
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-logic-levels-straps-safety-defaults" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Logic Levels, Straps &amp; Safety Defaults
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. Logic Levels, Straps &amp; Safety Defaults">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-33-v-rail-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 3.3 V Rail Considerations
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-example-ethernet-phy-strap-pin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Example: Ethernet PHY Strap Pin
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-representative-summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Representative Summary Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-reset-power-up-timing-rc-based" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Reset &amp; Power-Up Timing (RC-Based)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Reset &amp; Power-Up Timing (RC-Based)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-s32k116-reset_b-rc-delay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 S32K116 RESET_b RC Delay
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-notes-on-remaining-aspects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Notes on Remaining Aspects
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-overall-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Overall Conclusion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="h1-tolerance-stack-up-analysis-critical-aspects">H1 – Tolerance Stack-Up Analysis (Critical Aspects)<a class="headerlink" href="#h1-tolerance-stack-up-analysis-critical-aspects" title="Permanent link">&para;</a></h1>
+<p><strong>Board:</strong> H1 – Main Robotics Processing &amp; Communications Unit (etson AGX Orin carrier -schematic-only)  </p>
+<hr />
+<h2 id="1-objective-scope">1. Objective &amp; Scope<a class="headerlink" href="#1-objective-scope" title="Permanent link">&para;</a></h2>
+<p>The objective of this report is to compute <strong>worst-case min/max values</strong> for the most <strong>critical electrical quantities</strong> in the H1 schematic, considering component tolerances and the specified system input range of <strong>7–24 V</strong>.</p>
+<p>The analysis verifies that, under worst-case combinations of tolerances:</p>
+<ul>
+<li>All <strong>critical supply rails</strong> stay within the limits required by Jetson AGX Orin, S32K116, and other peripherals.</li>
+<li><strong>Current limits and shunt measurements</strong> operate within safe and predictable bands.</li>
+<li><strong>ADC front-ends</strong> used by S32K116 do not exceed absolute maximum ratings and have bounded error.</li>
+<li><strong>Logic-level straps and safety defaults</strong> remain valid at tolerance extremes.</li>
+<li><strong>Reset and power-up timing</strong> remains safe.</li>
+</ul>
+<p>This is a <strong>schematic-level</strong> analysis and will serve as input to later <strong>Worst-Case Analysis (WCA)</strong> and <strong>FMEA</strong> documents.</p>
+<hr />
+<h2 id="2-assumptions">2. Assumptions<a class="headerlink" href="#2-assumptions" title="Permanent link">&para;</a></h2>
+<h3 id="21-electrical">2.1 Electrical<a class="headerlink" href="#21-electrical" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>System supply (24 V bus):</strong> 7 V … 24 V (as per system specification).</li>
+<li><strong>Temperature range:</strong> Covered implicitly by datasheet worst-case values (no separate thermal model here).</li>
+</ul>
+<h3 id="22-component-tolerances-unless-otherwise-stated">2.2 Component Tolerances (unless otherwise stated)<a class="headerlink" href="#22-component-tolerances-unless-otherwise-stated" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Standard resistors: <strong>±1 %</strong></li>
+<li>Shunt resistors: <strong>±3 %</strong></li>
+<li>XL4015 (1.25 V ref buck): <strong>±2 % Vref</strong></li>
+<li>SIC431 (0.6 V ref buck): <strong>±1 % Vref</strong></li>
+<li>NCP730 3.3 V LDO: <strong>±2 % Vout</strong></li>
+<li>TPS7A05 1.8 V LDO: <strong>±2 % Vout</strong></li>
+<li>AP22615 current-limit coefficient: <strong>±5 %</strong></li>
+<li>Capacitors in RC timing: <strong>±10 %</strong></li>
+</ul>
+<h3 id="23-out-of-scope">2.3 Out of Scope<a class="headerlink" href="#23-out-of-scope" title="Permanent link">&para;</a></h3>
+<ul>
+<li>PCB-dependent SI (impedance, eye diagrams, crosstalk, via stubs)  </li>
+<li>Mechanical tolerances (connector positions, hole sizes, etc.)  </li>
+<li>Long-term ageing, thermal cycling and detailed MTBF (covered in reliability analysis)  </li>
+<li>Detailed CAN/RGMII/USB protocol timing (will be covered by interface timing budget)</li>
+</ul>
+<hr />
+<h2 id="3-dc-supply-voltages">3. DC Supply Voltages<a class="headerlink" href="#3-dc-supply-voltages" title="Permanent link">&para;</a></h2>
+<h3 id="31-summary-table">3.1 Summary Table<a class="headerlink" href="#31-summary-table" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Rail</th>
+<th>Source / Circuit</th>
+<th>Nominal</th>
+<th>Worst-Case Min</th>
+<th>Worst-Case Max</th>
+<th>Comments / Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>24 V system bus</td>
+<td>External PSU/BMS</td>
+<td>24 V</td>
+<td><strong>7 V</strong></td>
+<td><strong>24 V</strong></td>
+<td>System-level spec; H1 designed to tolerate full range.</td>
+</tr>
+<tr>
+<td>VCC / VIN_SOM</td>
+<td>XL4015 buck (R30=100 kΩ, R31=7.2 kΩ)</td>
+<td>18.6 V</td>
+<td><strong>17.9 V</strong></td>
+<td><strong>19.3 V</strong></td>
+<td>Intermediate bus feeding 5 V &amp; 3.3 V bucks; ~±3.8 % spread.</td>
+</tr>
+<tr>
+<td>5 V main</td>
+<td>SIC431 buck</td>
+<td>4.99 V</td>
+<td><strong>4.86 V</strong></td>
+<td><strong>5.13 V</strong></td>
+<td>Jetson / USB / camera / external 5 V; within 5.0 V ±5 %.</td>
+</tr>
+<tr>
+<td>3.3 V main</td>
+<td>SIC431 buck</td>
+<td>3.32 V</td>
+<td><strong>3.23 V</strong></td>
+<td><strong>3.41 V</strong></td>
+<td>For PHY, IO, sensors; within 3.3 V ±5 %.</td>
+</tr>
+<tr>
+<td>3.3 V_STBY</td>
+<td>NCP730 LDO from 5 V</td>
+<td>3.3 V</td>
+<td><strong>3.23 V</strong></td>
+<td><strong>3.37 V</strong></td>
+<td>Always-on S32K116/supervisor domain; within MCU supply range.</td>
+</tr>
+<tr>
+<td>3.3 V_ANA (VDDA)</td>
+<td>3.3 V_STBY via ferrite bead + filter</td>
+<td>~3.3 V</td>
+<td><strong>≈3.22 V</strong></td>
+<td><strong>≈3.36 V</strong></td>
+<td>Same tolerance as 3.3 V_STBY minus bead drop; safe for ADC.</td>
+</tr>
+<tr>
+<td>1.8 V IO</td>
+<td>TPS7A05 fixed 1.8 V LDO</td>
+<td>1.8 V</td>
+<td><strong>1.76 V</strong></td>
+<td><strong>1.84 V</strong></td>
+<td>CSI/MIPI and low-voltage IO; within typical 1.8 V IO window.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="32-key-calculations-short">3.2 Key Calculations (Short)<a class="headerlink" href="#32-key-calculations-short" title="Permanent link">&para;</a></h3>
+<p><strong>VCC / VIN_SOM – XL4015 buck</strong></p>
+<ul>
+<li>Formula:<br />
+  ( V_\text{VCC} = V_\text{REF} \cdot \left(1 + \dfrac{R_{30}}{R_{31}}\right) )</li>
+<li>Vref_nom = 1.25 V, R30 = 100 kΩ, R31 = 7.2 kΩ<br />
+  → V_VCC_nom ≈ 18.6 V</li>
+<li>With Vref ±2 %, R30/R31 ±1 % → VCC_min ≈ 17.9 V, VCC_max ≈ 19.3 V.</li>
+</ul>
+<p><strong>5 V main – SIC431</strong></p>
+<ul>
+<li>Formula:<br />
+  ( V_{5V} = 0.6 \cdot \dfrac{R_\text{TOP}+R_\text{BOT}}{R_\text{BOT}} )</li>
+<li>RTOP = 73.2 kΩ, RBOT = 10 kΩ → V_5V_nom ≈ 4.99 V</li>
+<li>With Vref ±1 %, resistors ±1 % → V_5V_min ≈ 4.86 V, V_5V_max ≈ 5.13 V.</li>
+</ul>
+<p><strong>3.3 V main – SIC431</strong></p>
+<ul>
+<li>Same formula with RTOP = 45.3 kΩ, RBOT = 10 kΩ → V_3V3_nom ≈ 3.32 V</li>
+<li>→ V_3V3_min ≈ 3.23 V, V_3V3_max ≈ 3.41 V.</li>
+</ul>
+<p><strong>3.3 V_STBY / 1.8 V LDOs</strong></p>
+<ul>
+<li>3.3 V_STBY = 3.3 V ±2 % → 3.23–3.37 V  </li>
+<li>1.8 V = 1.8 V ±2 % → 1.76–1.84 V</li>
+</ul>
+<p><strong>Outcome:</strong> All DC rails that power Jetson, S32K116 and main peripherals are inside their standard ±5 % design windows under worst-case tolerances.</p>
+<hr />
+<h2 id="4-currents-limits-shunts">4. Currents, Limits &amp; Shunts<a class="headerlink" href="#4-currents-limits-shunts" title="Permanent link">&para;</a></h2>
+<h3 id="41-ap22615-load-switch-current-limit-per-channel">4.1 AP22615 Load-Switch Current Limit (per Channel)<a class="headerlink" href="#41-ap22615-load-switch-current-limit-per-channel" title="Permanent link">&para;</a></h3>
+<p><strong>Use case:</strong> CSI rails, USB VBUS, 5V_H2 and other protected 5 V / 3.3 V outputs.</p>
+<p><strong>Datasheet relationship (approx):</strong></p>
+<p>[
+I_\text{LIM}[\text{A}] \approx \dfrac{6800}{R_\text{LIM}[\Omega]}
+]</p>
+<p><strong>Example design:</strong></p>
+<ul>
+<li>RLIM = 6.8 kΩ → I_LIM_nom ≈ 1.0 A</li>
+</ul>
+<p><strong>Tolerances:</strong></p>
+<ul>
+<li>RLIM = ±1 %  </li>
+<li>Internal coefficient = ±5 %</li>
+</ul>
+<p><strong>Worst-case ILIM:</strong></p>
+<ul>
+<li>I_LIM_min ≈ 1.0 · (1 − 0.05 − 0.01) ≈ 0.94 A  </li>
+<li>I_LIM_max ≈ 1.0 · (1 + 0.05 + 0.01) ≈ 1.06 A  </li>
+</ul>
+<p><strong>Verdict:</strong></p>
+<ul>
+<li>Rail and connector sizing is based on I_LIM_max.  </li>
+<li>Short-circuits are limited to ≈1.06 A, protecting upstream DC/DC converters and wiring.</li>
+</ul>
+<hr />
+<h3 id="42-shunt-current-power">4.2 Shunt Current &amp; Power<a class="headerlink" href="#42-shunt-current-power" title="Permanent link">&para;</a></h3>
+<p><strong>Circuit:</strong></p>
+<ul>
+<li>Shunt resistor R_SHUNT in the 24 V path.  </li>
+<li>Current-sense amplifier with gain G.  </li>
+<li>Output into S32K116 ADC.</li>
+</ul>
+<p><strong>Transfer function:</strong></p>
+<p>[
+V_\text{OUT} = I_\text{BUS} \cdot R_\text{SHUNT} \cdot G
+]</p>
+<p><strong>Tolerances:</strong></p>
+<ul>
+<li>R_SHUNT: ±3 %  </li>
+<li>G: ±1 %</li>
+</ul>
+<p><strong>Effective gain spread:</strong></p>
+<ul>
+<li>G_eff,min ≈ 0.96 · G  </li>
+<li>G_eff,max ≈ 1.04 · G  </li>
+</ul>
+<p>→ ≈ ±4 % error due to shunt + amplifier.</p>
+<p><strong>Shunt power at I_MAX:</strong></p>
+<p>[
+P_\text{SHUNT,max} = I_\text{MAX}^2 \cdot R_\text{SHUNT,max}
+]
+[
+R_\text{SHUNT,max} = R_\text{nom}(1 + 0.03)
+]</p>
+<p>Shunt is chosen so that P_SHUNT_max remains below its rated power with derating margin, considering worst-case I_MAX from DC/DC limits and AP22615 limits.</p>
+<p><strong>Verdict:</strong></p>
+<ul>
+<li>Current measurement error ≈ ±5–6 % when ADC reference tolerance is included.  </li>
+<li>Shunt operates within its safe power envelope, protected by upstream current limits.</li>
+</ul>
+<hr />
+<h2 id="5-adc-measurement-paths-s32k116">5. ADC &amp; Measurement Paths (S32K116)<a class="headerlink" href="#5-adc-measurement-paths-s32k116" title="Permanent link">&para;</a></h2>
+<h3 id="51-24-v-bus-voltage-monitor">5.1 24 V Bus Voltage Monitor<a class="headerlink" href="#51-24-v-bus-voltage-monitor" title="Permanent link">&para;</a></h3>
+<p><strong>Circuit:</strong></p>
+<ul>
+<li>V_BUS → R_top → node → R_bot → GND  </li>
+<li>Node → S32K116 ADC input</li>
+</ul>
+<p>Example values:</p>
+<ul>
+<li>R_top = 150 kΩ  </li>
+<li>R_bot = 10 kΩ  </li>
+</ul>
+<p>Divider ratio:</p>
+<p>[
+k = \dfrac{10k}{150k + 10k} = 0.0625
+]</p>
+<p>Nominal values:</p>
+<ul>
+<li>At 24 V: V_ADC = 24 · 0.0625 = 1.50 V  </li>
+<li>At 30 V (surge example): V_ADC = 30 · 0.0625 = 1.875 V  </li>
+</ul>
+<p><strong>Tolerances:</strong></p>
+<ul>
+<li>R_top, R_bot: ±1 % → ratio error ≈ ±2 %</li>
+</ul>
+<p>At 30 V:</p>
+<ul>
+<li>V_ADC_min ≈ 30 · 0.0613 ≈ 1.84 V  </li>
+<li>V_ADC_max ≈ 30 · 0.0638 ≈ 1.91 V  </li>
+</ul>
+<p><strong>Requirements:</strong></p>
+<ul>
+<li>ADC input range: 0–VREFH (≈3.3 V typical).  </li>
+<li>Abs max &gt; 3.3 V (device-dependent), so 1.9 V is very safe.</li>
+</ul>
+<p><strong>Verdict:</strong></p>
+<ul>
+<li>24 V monitor never exceeds ADC limits, even with surge + tolerance.  </li>
+<li>Gain error ≈ ±2 %, acceptable for diagnostics and can be corrected in software if required.</li>
+</ul>
+<hr />
+<h3 id="52-24-v-bus-current-monitor">5.2 24 V Bus Current Monitor<a class="headerlink" href="#52-24-v-bus-current-monitor" title="Permanent link">&para;</a></h3>
+<p><strong>Circuit:</strong></p>
+<ul>
+<li>R_SHUNT + amplifier with gain G → S32K116 ADC.</li>
+</ul>
+<p>From Section 4.2:</p>
+<ul>
+<li>Front-end gain error ≈ ±4 %  </li>
+<li>ADC reference adds ≈ ±1–2 %  </li>
+</ul>
+<p><strong>Total current measurement error:</strong> ≈ ±5–6 %</p>
+<p><strong>Verdict:</strong></p>
+<ul>
+<li>Adequate accuracy for safety thresholds, load monitoring and logging.  </li>
+<li>Output scaled so that at maximum expected I_BUS, V_ADC remains below ~2–2.5 V, safely under VREFH and abs max.</li>
+</ul>
+<hr />
+<h2 id="6-logic-levels-straps-safety-defaults">6. Logic Levels, Straps &amp; Safety Defaults<a class="headerlink" href="#6-logic-levels-straps-safety-defaults" title="Permanent link">&para;</a></h2>
+<h3 id="61-33-v-rail-considerations">6.1 3.3 V Rail Considerations<a class="headerlink" href="#61-33-v-rail-considerations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>3.3 V main: 3.23–3.41 V  </li>
+<li>3.3 V_STBY: 3.23–3.37 V  </li>
+</ul>
+<p>Typical 3.3 V logic levels:</p>
+<ul>
+<li>VIH_min ≈ 2.0 V  </li>
+<li>VIL_max ≈ 0.8 V  </li>
+</ul>
+<h3 id="62-example-ethernet-phy-strap-pin">6.2 Example: Ethernet PHY Strap Pin<a class="headerlink" href="#62-example-ethernet-phy-strap-pin" title="Permanent link">&para;</a></h3>
+<p><strong>Circuit:</strong></p>
+<ul>
+<li>Strap pin with pull-up (10 kΩ) to 3.3 V_STBY.  </li>
+<li>Optional pull-down / divider depending on the desired strap value.</li>
+</ul>
+<p>Worst-case logic high:</p>
+<ul>
+<li>VDD_min = 3.23 V  </li>
+<li>Negligible leakage → V_HIGH_min ≈ 3.23 V  </li>
+<li>Margin: 3.23 V − 2.0 V = 1.23 V above VIH_min.</li>
+</ul>
+<p>Worst-case logic low (0-strap):</p>
+<ul>
+<li>Designed so nominal &lt; 0.3–0.4 V.  </li>
+<li>With ±1 % resistors and VDD_max = 3.37 V, V_LOW_max still well below 0.8 V.</li>
+</ul>
+<h3 id="63-representative-summary-table">6.3 Representative Summary Table<a class="headerlink" href="#63-representative-summary-table" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Signal</th>
+<th>Function</th>
+<th>V_LOW,max (worst)</th>
+<th>VIL,max</th>
+<th>V_HIGH,min (worst)</th>
+<th>VIH,min</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PHY_STRAP_x</td>
+<td>PHY addr/mode</td>
+<td>~0.3–0.4 V</td>
+<td>0.8 V</td>
+<td>~3.23 V</td>
+<td>2.0 V</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>S32K_BOOT_CFGx</td>
+<td>MCU boot config</td>
+<td>~0.3–0.4 V</td>
+<td>0.8 V</td>
+<td>~3.23 V</td>
+<td>2.0 V</td>
+<td>OK</td>
+</tr>
+<tr>
+<td>Safety default lines (e.g. ROBOT_ENABLE)</td>
+<td>Safe idle state</td>
+<td>~0.3–0.4 V or ~3.23 V depending on design</td>
+<td>0.8 V</td>
+<td>3.23 V</td>
+<td>2.0 V</td>
+<td>OK</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Verdict:</strong></p>
+<ul>
+<li>Even at tolerance extremes, logic 0 and 1 levels are far from VIL/VIH thresholds.  </li>
+<li>Mis-strapping or unsafe default states due solely to tolerances are highly unlikely.</li>
+</ul>
+<hr />
+<h2 id="7-reset-power-up-timing-rc-based">7. Reset &amp; Power-Up Timing (RC-Based)<a class="headerlink" href="#7-reset-power-up-timing-rc-based" title="Permanent link">&para;</a></h2>
+<h3 id="71-s32k116-reset_b-rc-delay">7.1 S32K116 RESET_b RC Delay<a class="headerlink" href="#71-s32k116-reset_b-rc-delay" title="Permanent link">&para;</a></h3>
+<p><strong>Circuit:</strong></p>
+<ul>
+<li>R_RESET = 10 kΩ (±1 %) from 3.3 V_STBY to RESET_b.  </li>
+<li>C_RESET = 100 nF (±10 %) from RESET_b to GND.</li>
+</ul>
+<p>Approximation for time to reach ~0.6 · VDD:</p>
+<p>[
+t \approx 0.92 \cdot R C
+]</p>
+<p>Nominal:</p>
+<ul>
+<li>t_nom ≈ 0.92 · 10 kΩ · 100 nF ≈ 0.92 ms.</li>
+</ul>
+<p>Worst-case spread:</p>
+<ul>
+<li>R: 9.9 kΩ … 10.1 kΩ  </li>
+<li>C: 90 nF … 110 nF  </li>
+<li>VDD variation has small effect on factor (0.92).</li>
+</ul>
+<p>Result:</p>
+<ul>
+<li>t_min ≈ 0.7–0.8 ms  </li>
+<li>t_max ≈ 1.1–1.2 ms  </li>
+</ul>
+<p><strong>Requirement:</strong></p>
+<ul>
+<li>Reset must stay low until 3.3 V_STBY has settled (tens to hundreds of microseconds).</li>
+</ul>
+<p><strong>Verdict:</strong></p>
+<ul>
+<li>Even at t_min, reset is held long enough to guarantee stable supply before S32K116 starts.  </li>
+<li>Other RC-based delays (e.g., soft-enable of power switches) will have similar relative spreads and are not timing-critical at this stage.</li>
+</ul>
+<hr />
+<h2 id="8-notes-on-remaining-aspects">8. Notes on Remaining Aspects<a class="headerlink" href="#8-notes-on-remaining-aspects" title="Permanent link">&para;</a></h2>
+<p>To keep this report focused while still demonstrating coverage of important areas:</p>
+<ol>
+<li><strong>UVLO / EN thresholds:</strong>  </li>
+<li>
+<p>EN and UVLO pins on regulators are either tied directly to rails or managed by the S32K116 (software-supervised). Exact min/max VIN_ON and VIN_OFF thresholds can be added in a dedicated power-sequencing WCA; current analysis assumes regulators operate within their published UVLO bounds whenever rails are declared “valid”.</p>
+</li>
+<li>
+<p><strong>High-speed timing budgets (RGMII, CAN, etc.):</strong>  </p>
+</li>
+<li>
+<p>Clock ppm, PHY internal delays and PCB skew are not yet quantified here. They will be captured in a separate <strong>interface timing &amp; SI</strong> document. At schematic stage, no tolerance-driven show-stoppers are identified.</p>
+</li>
+<li>
+<p><strong>Protection &amp; clamp levels:</strong>  </p>
+</li>
+<li>
+<p>TVS and surge components are chosen such that their clamping voltages remain below the voltage ratings of downstream components (24 V → clamp &lt; component ratings; USB/Ethernet → standard ESD components). Detailed surge waveforms and clamping behaviour will be part of the EMC/protection analysis.</p>
+</li>
+<li>
+<p><strong>Component stress / derating:</strong>  </p>
+</li>
+<li>
+<p>Capacitor voltage ratings and resistor power ratings exceed worst-case rail voltages and I²R levels derived from this stack-up. A full derating analysis will quantify margins per component type.</p>
+</li>
+<li>
+<p><strong>Safety behaviour:</strong>  </p>
+</li>
+<li>The worst-case voltages, currents and logic levels from this report will be used in FMEA to show:  <ul>
+<li>Jetson cannot be over-supplied (5 V stays below worst-case spec).  </li>
+<li>ADC inputs are never over-driven.  </li>
+<li>Short-circuits on camera/USB rails are limited to ILIM_max.  </li>
+<li>Safety lines remain in their intended “safe” default state, even at tolerance extremes.</li>
+</ul>
+</li>
+</ol>
+<hr />
+<h2 id="9-overall-conclusion">9. Overall Conclusion<a class="headerlink" href="#9-overall-conclusion" title="Permanent link">&para;</a></h2>
+<p>At schematic stage, the <strong>worst-case tolerance stack-up</strong> for H1 shows that:</p>
+<ul>
+<li>All critical <strong>DC rails</strong> (VCC, 5 V, 3.3 V, 3.3 V_STBY, 3.3 V_ANA, 1.8 V) remain within or tighter than standard ±5 % windows, providing safe supplies for Jetson AGX Orin, S32K116 and peripherals.</li>
+<li><strong>Measurement and protection circuits</strong> (24 V voltage divider, 24 V current monitor, AP22615 load switches) never exceed ADC or device absolute maximum ratings and exhibit bounded error bands suitable for diagnostics and safety logic.</li>
+<li><strong>Logic-level straps and safety defaults</strong> show large margins to VIH/VIL, making mis-strapping due to tolerances very unlikely.</li>
+<li><strong>Reset and RC-based power-up delays</strong> reliably keep the S32K116 in reset until rails are stable, across all tolerance combinations considered.</li>
+</ul>
+<p>No critical violations are identified by this tolerance analysis. The results provide a strong foundation for the next steps: detailed <strong>Worst-Case Analysis (WCA)</strong>, <strong>FMEA</strong>, and <strong>SI/timing</strong> analysis in subsequent design phases.</p>
+<hr />
+<h2 id="10-references">10. References<a class="headerlink" href="#10-references" title="Permanent link">&para;</a></h2>
+<ol>
+<li>XL4015 – Adjustable Step-Down (Buck) Converter Datasheet  </li>
+<li>SIC431 – Synchronous Buck Regulator Datasheet  </li>
+<li>NCP730 – 3.3 V LDO Regulator Datasheet  </li>
+<li>TPS7A05 – 1.8 V LDO Regulator Datasheet  </li>
+<li>AP22615 – Adjustable Current-Limited High-Side Power Switch Datasheet  </li>
+<li>NXP S32K116 – Datasheet and Reference Manual  </li>
+<li>NVIDIA Jetson AGX Orin – Module Datasheet and Carrier Board Design Guide  </li>
+<li>KSZ9031 (or equivalent) – Gigabit Ethernet PHY Datasheet  </li>
+<li>H1 Schematic Set – H1_Jetson_AGX_Orin_SOM and S32K116 Supervisor Schematics</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,2475 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="index.html">
+      
+      
+        <link rel="next" href="2_Requirements_Specification.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>1. Product Requirments Document - VoltEdge H1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#h1-product-requirements-document-prd" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-header__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VoltEdge H1 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Product Requirments Document
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-nav__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VoltEdge H1 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Requirments Document
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="1_Product_Requirments_Document.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Requirments Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main-robotics-processing-and-communications-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main Robotics Processing And Communications Unit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Main Robotics Processing And Communications Unit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-product-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Product Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-product-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Product Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-scope-and-non-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Scope and Non-Goals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Scope and Non-Goals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-in-scope-electronics-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 In-Scope (Electronics Only)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-out-of-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Out of Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-product-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Product Goals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Product Goals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-primary-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Primary goals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-business-and-product-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Business and Product Goals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-success-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Success Criteria
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 Success Criteria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431-technical-success-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.1 Technical Success Criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432-reliability-and-safety-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.2 Reliability and Safety Criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#433-integration-and-manufacturing-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.3 Integration and Manufacturing Criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#434-business-and-platform-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.4 Business and Platform Criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Constraints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-system-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 System Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-electrical-environmental-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Electrical &amp; Environmental Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-organizational-project-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Organizational &amp; Project Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Assumptions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-stakeholders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Stakeholders
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Stakeholders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-stakeholders-raci-matrix-for-h1-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Stakeholders RACI Matrix for H1 development
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-high-level-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. High-Level Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-release-roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Release Roadmap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Release Roadmap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-key-risks-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1. Key Risks &amp; Impact
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-risk-adjusted-timeline-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2. Risk-Adjusted Timeline Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_Requirements_Specification.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Requirements Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_System_Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. System Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Hardware_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Hardware Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Power_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Power Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Safety_and_Failsafe_Concept.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Safety and Failsafe Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_Interfaces_and_Connectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Interfaces and Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Design Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8. Design Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1. FMEA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8.1. FMEA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_FMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. FMEA Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_1_Carrier_DFMEA_%28Implemented%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. Carrier Board DFMEA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_2_Safety_Supervisor_Concept_DFMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Safety Supervisor Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_3_Rating_Scales.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Rating Scales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_2_Worst_Case_Analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2. Worst Case Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_3_Mean_Time_Between_Failure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3. Reliability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_4_DesignAnalysis_Tolerance_Stackup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4. Tolerance Stackup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Test Plan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    9. Test Plan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_1_High_level_summary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1. High level summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_2_Component_Test_Plan%28bySchematicBlock%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2. Component Test Plan(bySchematicBlock)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_3_Module_Test_Plan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3. Module Test Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#main-robotics-processing-and-communications-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Main Robotics Processing And Communications Unit
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Main Robotics Processing And Communications Unit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-product-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Product Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-product-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Product Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-scope-and-non-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Scope and Non-Goals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Scope and Non-Goals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-in-scope-electronics-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 In-Scope (Electronics Only)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-out-of-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Out of Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-product-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Product Goals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Product Goals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-primary-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Primary goals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-business-and-product-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Business and Product Goals
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-success-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Success Criteria
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 Success Criteria">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431-technical-success-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.1 Technical Success Criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432-reliability-and-safety-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.2 Reliability and Safety Criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#433-integration-and-manufacturing-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.3 Integration and Manufacturing Criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#434-business-and-platform-criteria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.4 Business and Platform Criteria
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Constraints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Constraints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-system-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 System Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-electrical-environmental-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Electrical &amp; Environmental Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-organizational-project-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Organizational &amp; Project Constraints
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-assumptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Assumptions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Dependencies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-stakeholders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Stakeholders
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Stakeholders">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-stakeholders-raci-matrix-for-h1-development" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Stakeholders RACI Matrix for H1 development
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-use-case" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Use case
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-high-level-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. High-Level Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-release-roadmap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. Release Roadmap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="12. Release Roadmap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#121-key-risks-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.1. Key Risks &amp; Impact
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#122-risk-adjusted-timeline-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12.2. Risk-Adjusted Timeline Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="h1-product-requirements-document-prd">H1 Product Requirements Document (PRD)<a class="headerlink" href="#h1-product-requirements-document-prd" title="Permanent link">&para;</a></h1>
+<h2 id="main-robotics-processing-and-communications-unit">Main Robotics Processing And Communications Unit<a class="headerlink" href="#main-robotics-processing-and-communications-unit" title="Permanent link">&para;</a></h2>
+<h3 id="1-product-purpose">1. Product Purpose<a class="headerlink" href="#1-product-purpose" title="Permanent link">&para;</a></h3>
+<p>H1 is the main robotics processing and communications unit for the 32-DOF humanoid robot. It is designed to solve the fundamental challenge in humanoid robotics: the need for a unified, high-performance compute and communication platform that can reliably process large volumes of sensor data, execute advanced AI workloads and coordinate all distributed subsystems in real time.</p>
+<p>H1 provides the essential intelligence and communication backbone for the entire humanoid platform acting as the robot’s high compute “brain”.
+H1 provides the foundational electronics infrastructureor autonomy algorithms, connectivity, diagnostics, safety-state coordination and fleet-level scalability. As a modular and production-ready platform, it supports current and future humanoid robot variants</p>
+<p>The primary users of H1 are the robot’s internal subsystems : H2 (sensing), H3 (mobility and joint controllers) and H4 (power and energy management) which depend on continuous, deterministic communication with a central compute unit. In addition, engineering teams, manufacturing teams and cloud/operations teams rely on H1 as the foundation for integration, testing, deployment, telemetry and OTA updates. Ultimately, end users benefit from the system performance, reliability, and capabilities enabled by H1.</p>
+<h3 id="2-product-overview">2. Product Overview<a class="headerlink" href="#2-product-overview" title="Permanent link">&para;</a></h3>
+<p>H1 is a consolidated high compute and communications electronics module that integrates:</p>
+<ul>
+<li>A scalable high-performance compute module delivering ≥200 TOPS of AI performance, with high memory capacity and high memory bandwidth for fast and efficient data processing</li>
+<li>High-speed data interfaces and low-latency control buses for real-time subsystem communication</li>
+<li>Integrated wireless connectivity, including WiFi-6, Bluetooth 5.x and support for external 5G modems</li>
+<li>A robust power subsystem with regulation, protection and sequencing</li>
+<li>Industrial-grade reliability features and safety-critical hardware</li>
+<li>Manufacturing and service interfaces for development, testing and production use</li>
+<li>Comprehensive health monitoring and telemetry for system diagnostics and fleet operation</li>
+<li>A modular board assembly optimized for integration, routing and thermal design</li>
+</ul>
+<h3 id="3-scope-and-non-goals">3. Scope and Non-Goals<a class="headerlink" href="#3-scope-and-non-goals" title="Permanent link">&para;</a></h3>
+<h4 id="31-in-scope-electronics-only">3.1 In-Scope (Electronics Only)<a class="headerlink" href="#31-in-scope-electronics-only" title="Permanent link">&para;</a></h4>
+<p>H1 focuses exclusively on the electronics required to deliver compute, communication and system orchestration.
+H1 responsibilities include:</p>
+<ul>
+<li>High-performance compute subsystem integration</li>
+<li>Carrier board electronics design</li>
+<li>Power regulation, sequencing and protection</li>
+<li>High-speed communication bus interfaces</li>
+<li>Wireless and cellular connectivity</li>
+<li>Diagnostics and testability</li>
+<li>Security hooks and manufacturing interfaces</li>
+<li>PCB and integration elements</li>
+</ul>
+<h4 id="32-out-of-scope">3.2 Out of Scope<a class="headerlink" href="#32-out-of-scope" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Mechanical parts (enclosure, heatsinks, brackets)</li>
+<li>Software/OS/AI algorithms (middleware, autonomy, locomotion logic)</li>
+<li>Sensor/motor/actuator electronics</li>
+<li>Battery, BMS and high-power distribution</li>
+<li>Cloud services and OTA back-end logic</li>
+<li>Formal regulatory certifications (FCC/CE/UL/PTCRB/RED; only pre-compliance is considered)</li>
+<li>Manufacturing operations (fixtures, automation, supply chain mgmt.)</li>
+</ul>
+<h3 id="4-product-goals">4. Product Goals<a class="headerlink" href="#4-product-goals" title="Permanent link">&para;</a></h3>
+<p>The following goals define the essential outcomes H1 must achieve as the centralized compute and communications platform for the humanoid robot. These goals guide the design direction, engineering decisions and validation criteria for the product.</p>
+<h4 id="41-primary-goals">4.1 Primary goals<a class="headerlink" href="#41-primary-goals" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>Centralize high-performance computation</strong>: Provide the robot with a unified compute platform capable of supporting real-time perception, planning and decision-making workloads.</p>
+</li>
+<li>
+<p><strong>Enable deterministic subsystem communication</strong>: Enable deterministic, low-latency communication with all internal subsystems (H2 sensing, H3 mobility, H4 power) for coordinated robot operation.</p>
+</li>
+<li>
+<p><strong>Provide robust internal and external connectivity</strong></p>
+</li>
+<li>
+<p><strong>Deliver a reliable power integration subsystem</strong> with proper protection, regulation, sequencing</p>
+</li>
+</ul>
+<h4 id="42-business-and-product-goals">4.2 Business and Product Goals<a class="headerlink" href="#42-business-and-product-goals" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>Reduce system integration complexity</strong>: Standardize the compute and communication architecture across the humanoid platform, simplifying hardware and software integration</p>
+</li>
+<li>
+<p><strong>Enable scalable manufacturing</strong>: Support reliable production at volumes up to 10,000 units per year through a manufacturable and testable electronics design.</p>
+</li>
+<li>
+<p><strong>Accelerate development of humanoid capabilities and time-to-market</strong>: Provide a stable compute foundation that shortens development cycles for autonomy, perception, control and cloud-connected features.</p>
+</li>
+<li>
+<p><strong>Ensure long-term extensibility</strong>: Enable future enhancements in AI, autonomy, software, and cloud services without requiring major hardware redesigns.</p>
+</li>
+<li>
+<p><strong>Establish a reusable platform baseline</strong>: Position H1 as the standard compute module for current and future humanoid robot variants, ensuring consistent architecture, predictable performance and reduced engineering effort across product generations</p>
+</li>
+</ul>
+<h4 id="43-success-criteria">4.3 Success Criteria<a class="headerlink" href="#43-success-criteria" title="Permanent link">&para;</a></h4>
+<p>H1 is considered successful when it reliably delivers the performance, integration capability, and operational stability required for the humanoid robot platform. The following criteria define measurable outcomes across technical, reliability, integration, and business dimensions.</p>
+<h5 id="431-technical-success-criteria">4.3.1 Technical Success Criteria<a class="headerlink" href="#431-technical-success-criteria" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Real-time compute performance:Supports perception, planning, and control workloads without missed cycles, dropped frames, or latency overruns</li>
+<li>Deterministic subsystem communication: maintains low-latency, low-jitter communication with H2, H3, and H4 under full load.</li>
+<li>Stable power operation: Correct regulation, sequencing, protection, and telemetry across the full voltage and load range.</li>
+<li>Reliable wireless connectivity:</li>
+<li>Thermal &amp; electrical robustness: No throttling, resets, or instability within the specified thermal and electrical operating envelope.</li>
+</ul>
+<h5 id="432-reliability-and-safety-criteria">4.3.2 Reliability and Safety Criteria<a class="headerlink" href="#432-reliability-and-safety-criteria" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Fault-tolerant operation: System recovers gracefully from internal resets, communication errors, and subsystem faults.</li>
+<li>Correct safety signaling: Heartbeats, watchdogs, and fault lines operate within defined timing constraints</li>
+<li>Pre-compliance readiness:Passes internal EMC, ESD, and thermal pre-compliance thresholds without major redesign.</li>
+<li>Stable long-duration operation:No unexpected resets, hangs, or unsafe behavior during extended stress and endurance tests.</li>
+</ul>
+<h5 id="433-integration-and-manufacturing-criteria">4.3.3 Integration and Manufacturing Criteria<a class="headerlink" href="#433-integration-and-manufacturing-criteria" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Seamless integration: Interfaces with H2, H3 and H4 without architecture or pinout rework.</li>
+<li>EVT/DVT/PVT progression:Meets acceptance criteria for engineering, design and production validation builds.</li>
+<li>Manufacturing testability: All debug and test interfaces (JTAG, UART, boundary scan, test points) support automated EOL testing.</li>
+<li>Scalable production:Design supports manufacturing at volumes up to 10,000 units/year.</li>
+</ul>
+<h5 id="434-business-and-platform-criteria">4.3.4 Business and Platform Criteria<a class="headerlink" href="#434-business-and-platform-criteria" title="Permanent link">&para;</a></h5>
+<ul>
+<li>Reusable compute platform: H1 is adopted as the standard compute module for multiple humanoid robot variants.</li>
+<li>Reduced integration effort: Lowers integration complexity for autonomy, perception, and control teams.</li>
+<li>Faster feature deployment: Enables rapid rollout of new humanoid capabilities without hardware redesign.</li>
+</ul>
+<h3 id="5-constraints">5. Constraints<a class="headerlink" href="#5-constraints" title="Permanent link">&para;</a></h3>
+<h4 id="51-system-constraints">5.1 System Constraints<a class="headerlink" href="#51-system-constraints" title="Permanent link">&para;</a></h4>
+<ul>
+<li>24 V power architecture: H1 must operate from the robot’s 24 V power input and comply with system-level power distribution constraints.</li>
+<li>Defined subsystem interfaces: Interfaces to H2 (sensing), H3 (mobility), and H4 (power) must follow agreed communication protocols and timing requirements</li>
+<li>Physical integration envelope: H1 must fit within the mechanical space allocated in the humanoid torso electronics bay (dimensions provided by system team).</li>
+<li>Thermal envelope limits: H1 must meet thermal performance inside the system-level cooling constraints (no dedicated active cooling provided by H1).</li>
+<li>Real-time communication constraints: H1 must support deterministic, low-jitter communication with distributed controllers under system load.</li>
+</ul>
+<h4 id="52-electrical-environmental-constraints">5.2 Electrical &amp; Environmental Constraints<a class="headerlink" href="#52-electrical-environmental-constraints" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Operating voltage, load and transient limits:
+All power electronics must operate within the system-defined voltage ranges, transient behaviors and grounding constraints.</li>
+<li>EMI/EMC design guidelines: H1 must adhere to internal EMC/ESD design rules to support future system-level certification.</li>
+<li>RF coexistence constraints: Placement, filtering, and routing must avoid interference with other RF systems within the robot.</li>
+<li>Component availability and lifecycle: Components must meet minimum lifecycle and availability requirements for 10k units/year production.</li>
+</ul>
+<h4 id="53-organizational-project-constraints">5.3 Organizational &amp; Project Constraints<a class="headerlink" href="#53-organizational-project-constraints" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Common architecture across variants: H1 must maintain compatibility across current and future humanoid robot variants with minimal redesign.</li>
+<li>Manufacturability and testability: PCB stack-up, connectors, and interfaces must support automated testing and scalable assembly.</li>
+</ul>
+<h3 id="6-assumptions">6. Assumptions<a class="headerlink" href="#6-assumptions" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Subsystem interface definitions will be stable and provided by H2, H3, and H4 teams. H2, H3, H4 will deliver finalized ICDs (timing, pinouts, electrical levels) before layout freeze.</li>
+<li>24-V bus electrical characteristics (surges, ripple, noise limits) will be defined and remain stable.</li>
+<li>A centralized cooling solution will be provided by the system/mechanical team (e.g., shared heatsink or thermal interface), not by the H1 electronics team.</li>
+<li>The selected compute module  will remain available throughout development.</li>
+<li>Software will provide drivers for compute, WiFi, BT, 5G, and bring-up images before EVT.</li>
+<li>Mechanical design will provide PCB outline, mounting, and antenna placement constraints.</li>
+<li>Manufacturing partner supports 8-layer high-speed boards and EOL test processes. Manufacturing test infrastructure (fixtures, automation software) will be provided by the manufacturing engineering team; H1 will only provide electrical interfaces.</li>
+<li>Long-lead components (PMIC, supervisors, RF modules) will be procurable within timelines.</li>
+</ul>
+<h3 id="7-dependencies">7. Dependencies<a class="headerlink" href="#7-dependencies" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Internal Teams:</li>
+<li>H2 (Sensors): Sensor ICDs, bandwidth/timing specs, electrical compatibility.</li>
+<li>H3 (Mobility): Motor/actuator ICDs, control-loop timing and latency</li>
+<li>H4 (Power): 24 V power ICD, transients, sequencing, protection &amp; fault lines</li>
+<li>Mechanical: Board envelope, connector placements, mounting, thermal &amp; RF zones.</li>
+<li>Software: Drivers, WiFi/BT/5G, BSPs for EVT</li>
+<li>Security: Security workflow, debug lockout rules</li>
+<li>Manufacturing: EOL test requirements, fixture needs,Fixture readiness, AVL approvals</li>
+<li>Quality and Compliance: Environmental &amp; reliability test requirements (EVT/DVT/PVT), EMC/ESD/RF guidelines, certification considerations.</li>
+<li>System Engineering: System architecture, timing budgets, mechanical/thermal constraints.</li>
+<li>External Vendors:</li>
+<li>Compute module vendor (docs, errata, availability)</li>
+<li>RF module vendors (5G, WiFi/BT)</li>
+<li>EMC pre-compliance labs</li>
+</ul>
+<h3 id="8-stakeholders">8. Stakeholders<a class="headerlink" href="#8-stakeholders" title="Permanent link">&para;</a></h3>
+<p>The development of H1 involves multiple teams across hardware, software, system engineering, manufacturing, and operations. This chapter identifies all key stakeholders and their responsibilities to ensure alignment, accountability, and effective decision-making throughout the product lifecycle.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Stakeholder</strong></th>
+<th><strong>Responsibilities</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Product Owner / Product Management</strong></td>
+<td>Defines requirements, owns PRD, prioritizes scope, aligns H1 with overall humanoid platform strategy.</td>
+</tr>
+<tr>
+<td><strong>H1 Electronics Hardware Team</strong></td>
+<td>Schematics, PCB layout, SI/PI, power design, RF routing, component selection, validation, and pre-compliance readiness.</td>
+</tr>
+<tr>
+<td><strong>Firmware / Platform Software Team</strong></td>
+<td>Board bring-up, bootloader, drivers, BSP enablement, RF/WiFi/BT/5G integration, PCIe/Ethernet/USB support, hardware diagnostics.</td>
+</tr>
+<tr>
+<td><strong>Mechanical / Industrial Design Team</strong></td>
+<td>Enclosure design, board mechanical envelope, connector placement, mounting points, thermal interface zones, antenna placement guidelines.</td>
+</tr>
+<tr>
+<td><strong>H2 Sensing Team</strong></td>
+<td>Sensor ICDs, bandwidth and timing requirements, sensor electrical compatibility, real-time data pipeline requirements.</td>
+</tr>
+<tr>
+<td><strong>H3 Mobility &amp; Joint Control Team</strong></td>
+<td>ICDs for motor controllers, actuator buses, real-time control loop requirements, heartbeat/fault signaling.</td>
+</tr>
+<tr>
+<td><strong>H4 Power &amp; Energy Management Team</strong></td>
+<td>Power ICDs, 24 V input characteristics, transient/load requirements, power sequencing, protection signals.</td>
+</tr>
+<tr>
+<td><strong>Security / Platform Security Team</strong></td>
+<td>Secure boot requirements, key provisioning flows, debug lock, hardware security guidelines.</td>
+</tr>
+<tr>
+<td><strong>Manufacturing Engineering / Operations</strong></td>
+<td>DFM, DFT, boundary scan, test fixtures, EOL test strategy, production ramp readiness, mass-production support.</td>
+</tr>
+<tr>
+<td><strong>Quality &amp; Reliability Engineering</strong></td>
+<td>Environmental, thermal, vibration, reliability requirements; EVT/DVT/PVT validation and qualification testing.</td>
+</tr>
+<tr>
+<td><strong>Compliance / Regulatory Team</strong></td>
+<td>EMC, ESD, safety, RF guidelines; coordination of system-level certification programs.</td>
+</tr>
+<tr>
+<td><strong>System Engineering</strong></td>
+<td>System architecture ownership; cross-subsystem constraints; timing/power/thermal budgets; H1-H2-H3-H4 integration.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="81-stakeholders-raci-matrix-for-h1-development">8.1 Stakeholders RACI Matrix for H1 development<a class="headerlink" href="#81-stakeholders-raci-matrix-for-h1-development" title="Permanent link">&para;</a></h4>
+<p><strong>Legend</strong>:</p>
+<ul>
+<li>R = Responsible (owns the work / executes)</li>
+<li>A = Accountable (final decision-maker / sign-off)</li>
+<li>C = Consulted (provides input / expertise)</li>
+<li>I = Informed (kept updated)</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Activity / Deliverable</strong></th>
+<th>Product Owner</th>
+<th>H1 Hardware</th>
+<th>Firmware / BSP</th>
+<th>Mechanical</th>
+<th>H2</th>
+<th>H3</th>
+<th>H4</th>
+<th>Security</th>
+<th>Manufacturing / Ops</th>
+<th>Quality &amp; Reliability</th>
+<th>Compliance</th>
+<th>System Engg</th>
+<th>Cloud / OTA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PRD definition &amp; approval</strong></td>
+<td>R/A</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td><strong>Schematic design</strong></td>
+<td>I</td>
+<td>R/A</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td><strong>PCB layout &amp; SI/PI</strong></td>
+<td>I</td>
+<td>R/A</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td><strong>Power architecture (24 V integration)</strong></td>
+<td>C</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>A</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td><strong>High-speed interface design (PCIe, USB, Ethernet)</strong></td>
+<td>I</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td><strong>RF routing &amp; antenna placement</strong></td>
+<td>I</td>
+<td>R</td>
+<td>C</td>
+<td>A</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>A/C</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td><strong>Firmware bring-up &amp; drivers</strong></td>
+<td>I</td>
+<td>C</td>
+<td>R/A</td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td><strong>Interface definitions (ICDs)</strong></td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>A</td>
+<td>A</td>
+<td>A</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>R/A</td>
+<td>I</td>
+</tr>
+<tr>
+<td><strong>Thermal / mechanical integration</strong></td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+<td>R/A</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td><strong>Security enablement (secure boot, debug lock)</strong></td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>R/A</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td><strong>Manufacturability (DFM/DFT)</strong></td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>R/A</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td><strong>End-of-Line test design</strong></td>
+<td>I</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+<td>R/A</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td><strong>EVT/DVT/PVT qualification</strong></td>
+<td>I</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>C</td>
+<td>R/A</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td><strong>EMC/ESD pre-compliance</strong></td>
+<td>I</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+<td>R</td>
+<td>A</td>
+<td>C</td>
+<td>I</td>
+</tr>
+<tr>
+<td><strong>System integration &amp; robot bring-up</strong></td>
+<td>I</td>
+<td>R</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>C</td>
+<td>I</td>
+<td>I</td>
+<td>C</td>
+<td>I</td>
+<td>A/R</td>
+<td>I</td>
+</tr>
+</tbody>
+</table>
+<h3 id="10-use-case">10. Use case<a class="headerlink" href="#10-use-case" title="Permanent link">&para;</a></h3>
+<p>The humanoid robot is designed for service, industrial, research, and remote-operation environments where human-like 32-DOF movement, real-time AI processing (≥200 TOPS) and reliable wireless connectivity are essential. H1 enables these applications by providing the centralized compute, communication, and safety backbone of the robot.</p>
+<h3 id="11-high-level-features">11. High-Level Features<a class="headerlink" href="#11-high-level-features" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th><strong>Category</strong></th>
+<th><strong>High-Level Feature</strong></th>
+<th><strong>What It Enables (Electronics Scope)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>High-Performance Compute</strong></td>
+<td>Centralized AI compute platform</td>
+<td>Real-time perception, planning, and sensor fusion.</td>
+</tr>
+<tr>
+<td></td>
+<td>High memory &amp; data bandwidth</td>
+<td>Smooth processing of multi-camera and multi-sensor streams.</td>
+</tr>
+<tr>
+<td></td>
+<td>Modular compute architecture</td>
+<td>Upgradeable compute without redesigning subsystems.</td>
+</tr>
+<tr>
+<td><strong>Deterministic Subsystem Communication</strong></td>
+<td>Low-latency communication with H2/H3/H4</td>
+<td>Stable robot behavior across 32 DOF.</td>
+</tr>
+<tr>
+<td></td>
+<td>High-bandwidth sensor interfaces</td>
+<td>Ingestion of camera, IMU, force sensors, etc.</td>
+</tr>
+<tr>
+<td></td>
+<td>Synchronized subsystem timing</td>
+<td>Predictable locomotion and coordinated motion.</td>
+</tr>
+<tr>
+<td><strong>Wireless &amp; External Connectivity</strong></td>
+<td>WiFi-6 + Bluetooth 5.x</td>
+<td>Cloud access, diagnostics, device pairing.</td>
+</tr>
+<tr>
+<td></td>
+<td>5G modem support (M.2 Key-B)</td>
+<td>OTA updates, remote monitoring, teleoperation.</td>
+</tr>
+<tr>
+<td></td>
+<td>Flexible RF architecture</td>
+<td>Swappable modems, configurable antenna placement.</td>
+</tr>
+<tr>
+<td><strong>24 V Power Integration</strong></td>
+<td>Native 24-V system compatibility</td>
+<td>Seamless integration with robot power architecture.</td>
+</tr>
+<tr>
+<td></td>
+<td>Regulated internal rails &amp; sequencing</td>
+<td>Deterministic bring-up and stable power domains.</td>
+</tr>
+<tr>
+<td></td>
+<td>Power health monitoring</td>
+<td>Fault detection and safe-state transitions.</td>
+</tr>
+<tr>
+<td><strong>Reliability &amp; Safety</strong></td>
+<td>Industrial-grade EMC/ESD design</td>
+<td>Stable operation in noisy/harsh environments.</td>
+</tr>
+<tr>
+<td></td>
+<td>Deterministic operation under load</td>
+<td>Prevents unsafe subsystem miscoordination.</td>
+</tr>
+<tr>
+<td></td>
+<td>Hardware watchdog &amp; fault hooks</td>
+<td>Safe recovery from hardware faults.</td>
+</tr>
+<tr>
+<td><strong>Diagnostics &amp; Observability</strong></td>
+<td>Built-in telemetry &amp; monitoring</td>
+<td>Debugging, health checks, field servicing.</td>
+</tr>
+<tr>
+<td></td>
+<td>Debug interfaces (with lockout)</td>
+<td>Engineering bring-up with secure access control.</td>
+</tr>
+<tr>
+<td></td>
+<td>Manufacturing test support</td>
+<td>High-volume production (10k units/year).</td>
+</tr>
+<tr>
+<td><strong>Platform Scalability</strong></td>
+<td>Standardized interfaces (H2/H3/H4)</td>
+<td>Consistent integration across robot variants.</td>
+</tr>
+<tr>
+<td></td>
+<td>Expandable I/O &amp; compute pathways</td>
+<td>Additional sensors or future capabilities.</td>
+</tr>
+<tr>
+<td></td>
+<td>Reusable compute platform</td>
+<td>Lower redesign cost for new robot generations.</td>
+</tr>
+<tr>
+<td><strong>Security (Electronics Scope)</strong></td>
+<td>Secure debug lockout capability</td>
+<td>Prevents unauthorized physical access.</td>
+</tr>
+<tr>
+<td></td>
+<td>Tamper-resistant power/reset circuits</td>
+<td>Protection against fault injection/glitch attacks.</td>
+</tr>
+<tr>
+<td></td>
+<td>RF/compute isolation &amp; shielding</td>
+<td>Reduced attack surface and predictable RF performance.</td>
+</tr>
+<tr>
+<td></td>
+<td>Secure manufacturing provisions</td>
+<td>Fuse programming and production-test lockout.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-release-roadmap">12. Release Roadmap<a class="headerlink" href="#12-release-roadmap" title="Permanent link">&para;</a></h3>
+<p>Assumptions</p>
+<ul>
+<li>Subsystem ICD Maturity: Interface Control Documents (ICDs) from H2, H3, and H4 are currently in draft form and are expected to evolve during early design phases.</li>
+<li>Design Reuse: No existing electronics or board designs are being reused for H1; the solution is assumed to be a new, from-scratch design.</li>
+<li>Team Capacity: The electronics development team (schematic, layout, validation) consists of five or more engineers, with sufficient capacity for parallel work across design and bring-up phases.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>Phase</strong></th>
+<th><strong>Timeline</strong></th>
+<th><strong>Objectives</strong></th>
+<th><strong>Key Workstreams</strong></th>
+<th><strong>Exit Criteria</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Concept &amp; Alignment</strong></td>
+<td>Month 0–1</td>
+<td>Define scope, feasibility, and system alignment</td>
+<td>• PRD finalization<br>• Draft ICD alignment<br>• Compute SOM evaluation<br>• Initial architecture<br>• Risk register</td>
+<td>• PRD v1.0<br>• ICD draft v0.5<br>• Feasibility confirmed</td>
+</tr>
+<tr>
+<td><strong>2. Architecture &amp; Schematic Design</strong></td>
+<td>Month 1–3</td>
+<td>Complete system electrical design</td>
+<td>• Power tree design<br>• PCIe/CSI/Ethernet definition<br>• RF/5G integration plan<br>• Schematic v1.0<br>• ICD v0.7<br>• BOM v0.5</td>
+<td>• Schematic approved<br>• ICD stable<br>• Mechanical constraints frozen</td>
+</tr>
+<tr>
+<td><strong>3. PCB Layout &amp; EVT Build</strong></td>
+<td>Month 3–5</td>
+<td>Produce EVT prototype</td>
+<td>• High-speed routing<br>• RF routing<br>• EMC-aware layout<br>• DFM review<br>• EVT build execution</td>
+<td>• Layout v1.0<br>• EVT boards delivered</td>
+</tr>
+<tr>
+<td><strong>4. EVT – Engineering Validation Test</strong></td>
+<td>Month 5–7</td>
+<td>Validate electrical bring-up and core functionality</td>
+<td>• Power bring-up<br>• SOM boot testing<br>• CAN/Eth/PCIe/CSI validation<br>• RF checks<br>• Thermal hotspot evaluation</td>
+<td>• EVT report<br>• Fix list for DVT</td>
+</tr>
+<tr>
+<td><strong>5. DVT – Design Validation Test</strong></td>
+<td>Month 7–10</td>
+<td>Validate reliability, stress, and pre-compliance</td>
+<td>• DVT hardware<br>• Stress and soak tests<br>• EMC/ESD testing<br>• RF tuning<br>• Integration validation<br>• EOL plan definition</td>
+<td>• DVT passed<br>• Ready for PVT</td>
+</tr>
+<tr>
+<td><strong>6. PVT – Production Validation Test</strong></td>
+<td>Month 10–12</td>
+<td>Validate large-scale manufacturability</td>
+<td>• PVT build<br>• Pilot production run<br>• Fixture validation<br>• EOL testing<br>• Final BOM release</td>
+<td>• 95% FPY achieved<br>• Manufacturing validated</td>
+</tr>
+<tr>
+<td><strong>7. MP – Mass Production</strong></td>
+<td>Month 12+</td>
+<td>Ramp to 10k units/year</td>
+<td>• Volume production<br>• Yield tracking<br>• ECO management<br>• Field support readiness</td>
+<td>• Stable MP pipeline established</td>
+</tr>
+</tbody>
+</table>
+<h4 id="121-key-risks-impact">12.1. Key Risks &amp; Impact<a class="headerlink" href="#121-key-risks-impact" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Risk Area</strong></th>
+<th><strong>Issue</strong></th>
+<th><strong>Impact</strong></th>
+<th><strong>Worst-Case Effect</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ICD Uncertainty</strong></td>
+<td>Late changes from H2/H3/H4 teams</td>
+<td>Requires schematic + layout rework</td>
+<td><strong>+1–2 months</strong> delay</td>
+</tr>
+<tr>
+<td><strong>RF Complexity</strong></td>
+<td>5G/WiFi detuning or coexistence issues</td>
+<td>Antenna/matching redesign, rerouting</td>
+<td><strong>+1–2 months</strong> delay</td>
+</tr>
+<tr>
+<td><strong>EMC/ESD Failures</strong></td>
+<td>Failure in pre-compliance tests</td>
+<td>PCB respin, layout changes</td>
+<td><strong>+1–2 months</strong> delay</td>
+</tr>
+<tr>
+<td><strong>SOM Availability</strong></td>
+<td>Vendor delivery delays</td>
+<td>Bring-up schedule pushes out</td>
+<td><strong>+2–4 weeks</strong> delay</td>
+</tr>
+<tr>
+<td><strong>Mechanical Changes</strong></td>
+<td>Connector or outline changes</td>
+<td>Layout redo, rerouting</td>
+<td><strong>+3–6 weeks</strong> delay</td>
+</tr>
+<tr>
+<td><strong>Manufacturing Issues</strong></td>
+<td>Fixture readiness gaps</td>
+<td>PVT schedule slip</td>
+<td><strong>+1–1.5 months</strong> delay</td>
+</tr>
+</tbody>
+</table>
+<h4 id="122-risk-adjusted-timeline-summary">12.2. Risk-Adjusted Timeline Summary<a class="headerlink" href="#122-risk-adjusted-timeline-summary" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th><strong>Phase</strong></th>
+<th><strong>Best Case</strong></th>
+<th><strong>Realistic</strong></th>
+<th><strong>Worst Case</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Concept &amp; Alignment</strong></td>
+<td>3 weeks</td>
+<td>4–5 weeks</td>
+<td>6–8 weeks</td>
+</tr>
+<tr>
+<td><strong>Schematic Design</strong></td>
+<td>6 weeks</td>
+<td>7–9 weeks</td>
+<td>10–14 weeks</td>
+</tr>
+<tr>
+<td><strong>PCB Layout + EVT Build</strong></td>
+<td>6 weeks</td>
+<td>7–8 weeks</td>
+<td>12–14 weeks</td>
+</tr>
+<tr>
+<td><strong>EVT</strong></td>
+<td>4–6 weeks</td>
+<td>6–8 weeks</td>
+<td>10+ weeks</td>
+</tr>
+<tr>
+<td><strong>DVT</strong></td>
+<td>6–8 weeks</td>
+<td>8–10 weeks</td>
+<td>12–16 weeks</td>
+</tr>
+<tr>
+<td><strong>PVT</strong></td>
+<td>5–6 weeks</td>
+<td>6–7 weeks</td>
+<td>8–12 weeks</td>
+</tr>
+<tr>
+<td><strong>MP</strong></td>
+<td>Month 10–11</td>
+<td>Month 12–14</td>
+<td>Month 16–18</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

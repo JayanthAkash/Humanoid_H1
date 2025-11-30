@@ -1,0 +1,1860 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="8_1_3_Rating_Scales.html">
+      
+      
+        <link rel="next" href="8_3_Mean_Time_Between_Failure.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>8.2. Worst Case Analysis - VoltEdge H1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#worst-case-analysis-wca-report" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-header__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VoltEdge H1 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8.2. Worst Case Analysis
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-nav__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VoltEdge H1 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_Product_Requirments_Document.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Requirments Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_Requirements_Specification.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Requirements Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_System_Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. System Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Hardware_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Hardware Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Power_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Power Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Safety_and_Failsafe_Concept.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Safety and Failsafe Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_Interfaces_and_Connectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Interfaces and Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Design Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8. Design Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1. FMEA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8.1. FMEA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_FMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. FMEA Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_1_Carrier_DFMEA_%28Implemented%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. Carrier Board DFMEA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_2_Safety_Supervisor_Concept_DFMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Safety Supervisor Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_3_Rating_Scales.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Rating Scales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2. Worst Case Analysis
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="8_2_Worst_Case_Analysis.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2. Worst Case Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#worst-case-analysis-wca-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worst-Case Analysis (WCA) Report
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Worst-Case Analysis (WCA) Report">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-assumptions-corner-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Assumptions &amp; Corner Conditions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Assumptions &amp; Corner Conditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-electrical-and-environmental-corners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Electrical and Environmental Corners
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-component-tolerances-unless-noted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Component Tolerances (Unless Noted)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-methodology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Methodology
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-wca-results-main-power-rails-sic431-bucks-pre-reg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. WCA Results – Main Power Rails (SiC431 Bucks &amp; Pre-reg)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. WCA Results – Main Power Rails (SiC431 Bucks &amp; Pre-reg)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-design-equations-from-schematic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Design equations from schematic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-rail-level-wca-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Rail-level WCA summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-worked-example-5-v-buck-p1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Worked example – 5 V buck (P1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-wca-uvlo-enable-thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. WCA – UVLO / Enable Thresholds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-wca-ldo-rails-33-v_stby-and-18-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. WCA – LDO Rails (3.3 V_STBY and 1.8 V)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. WCA – LDO Rails (3.3 V_STBY and 1.8 V)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-33-v_stby-ncp730b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 3.3 V_STBY (NCP730B)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-18-v-ldo-tps7a0518" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 1.8 V LDO (TPS7A0518)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-thermal-wca-sic431-5-v-buck" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Thermal WCA – SiC431 5 V Buck
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Thermal WCA – SiC431 5 V Buck">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-continuous-10-a-load-case-design-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Continuous 10 A load case (design target)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-peak-12-a-load-case-short-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Peak 12 A load case (short duration)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. References
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_3_Mean_Time_Between_Failure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3. Reliability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_4_DesignAnalysis_Tolerance_Stackup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4. Tolerance Stackup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Test Plan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    9. Test Plan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_1_High_level_summary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1. High level summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_2_Component_Test_Plan%28bySchematicBlock%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2. Component Test Plan(bySchematicBlock)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_3_Module_Test_Plan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3. Module Test Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#worst-case-analysis-wca-report" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Worst-Case Analysis (WCA) Report
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Worst-Case Analysis (WCA) Report">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-assumptions-corner-conditions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Assumptions &amp; Corner Conditions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Assumptions &amp; Corner Conditions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-electrical-and-environmental-corners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Electrical and Environmental Corners
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-component-tolerances-unless-noted" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Component Tolerances (Unless Noted)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-methodology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Methodology
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-wca-results-main-power-rails-sic431-bucks-pre-reg" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. WCA Results – Main Power Rails (SiC431 Bucks &amp; Pre-reg)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. WCA Results – Main Power Rails (SiC431 Bucks &amp; Pre-reg)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-design-equations-from-schematic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Design equations from schematic
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-rail-level-wca-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Rail-level WCA summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-worked-example-5-v-buck-p1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Worked example – 5 V buck (P1)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-wca-uvlo-enable-thresholds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. WCA – UVLO / Enable Thresholds
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-wca-ldo-rails-33-v_stby-and-18-v" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. WCA – LDO Rails (3.3 V_STBY and 1.8 V)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. WCA – LDO Rails (3.3 V_STBY and 1.8 V)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-33-v_stby-ncp730b" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 3.3 V_STBY (NCP730B)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-18-v-ldo-tps7a0518" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 1.8 V LDO (TPS7A0518)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-thermal-wca-sic431-5-v-buck" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Thermal WCA – SiC431 5 V Buck
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. Thermal WCA – SiC431 5 V Buck">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-continuous-10-a-load-case-design-target" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Continuous 10 A load case (design target)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-peak-12-a-load-case-short-duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Peak 12 A load case (short duration)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Summary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. References
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>8.2. Worst Case Analysis</h1>
+
+<h2 id="worst-case-analysis-wca-report">Worst-Case Analysis (WCA) Report<a class="headerlink" href="#worst-case-analysis-wca-report" title="Permanent link">&para;</a></h2>
+<hr />
+<h3 id="1-purpose">1. Purpose<a class="headerlink" href="#1-purpose" title="Permanent link">&para;</a></h3>
+<p>This document captures the <strong>Worst-Case Analysis (WCA)</strong> performed on the H1 carrier board for the Jetson AGX Orin SOM.</p>
+<p>Objective: show that, under <strong>combined component tolerances, input variations, and environmental extremes</strong>, all critical voltages and thresholds remain within safe limits defined by device specs and system requirements.</p>
+<p>This is a <strong>schematic-level</strong> analysis (no PCB measurement data yet).</p>
+<hr />
+<h3 id="2-scope">2. Scope<a class="headerlink" href="#2-scope" title="Permanent link">&para;</a></h3>
+<p>Analysed blocks (from <code>H1_Jetson_AGX_Orin_SOM.kicad_sch</code>):</p>
+<ul>
+<li>24 V input → XL4015 pre-regulator → <code>VIN_SOM</code></li>
+<li>5 V and 3.3 V high-current bucks (SiC431)</li>
+<li>3.3 V_STBY LDO (NCP730B)</li>
+<li>1.8 V LDO (TPS7A0518)</li>
+<li>Buck <strong>UVLO / enable thresholds</strong></li>
+<li>First-order <strong>thermal WCA</strong> on the 5 V buck</li>
+</ul>
+<p>Other functions (LEDs, small logic pull-ups, etc.) are not WCA’d individually.</p>
+<hr />
+<h3 id="3-assumptions-corner-conditions">3. Assumptions &amp; Corner Conditions<a class="headerlink" href="#3-assumptions-corner-conditions" title="Permanent link">&para;</a></h3>
+<h4 id="31-electrical-and-environmental-corners">3.1 Electrical and Environmental Corners<a class="headerlink" href="#31-electrical-and-environmental-corners" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>24 V bus at robot level</strong></li>
+<li>Nominal: 24 V</li>
+<li>
+<p>Operating corner for H1: 20 V … 28 V</p>
+</li>
+<li>
+<p><strong>Ambient temperature inside torso</strong></p>
+</li>
+<li>
+<p>Operating range for WCA: <strong>–10 °C … +45 °C</strong></p>
+</li>
+<li>
+<p><strong>H1 power tree loads (design target)</strong></p>
+</li>
+<li>5 V buck: up to <strong>10 A continuous</strong>, 12 A peak</li>
+<li>3.3 V buck: up to <strong>8 A continuous</strong> (assumed for logic, radios, etc.)</li>
+<li>3.3 V_STBY: ≤ 150 mA</li>
+<li>
+<p>1.8 V LDO: ≤ 200 mA</p>
+</li>
+<li>
+<p><strong>Jetson AGX Orin VDD_IN range</strong></p>
+</li>
+<li>Carrier must provide <strong>7–20 V</strong> to VDD_IN</li>
+<li>H1 therefore aims for ~18.6 V pre-regulated <code>VIN_SOM</code>.</li>
+</ul>
+<h4 id="32-component-tolerances-unless-noted">3.2 Component Tolerances (Unless Noted)<a class="headerlink" href="#32-component-tolerances-unless-noted" title="Permanent link">&para;</a></h4>
+<ul>
+<li>All feedback / divider resistors: <strong>±1 %</strong></li>
+<li>SiC431 feedback reference (VFB): <strong>±1 % over –40…+125 °C</strong></li>
+<li>NCP730B LDO output accuracy: <strong>±1 %</strong></li>
+<li>TPS7A0518 1.8 V LDO output accuracy: <strong>±3 % (max)</strong></li>
+</ul>
+<hr />
+<h3 id="4-methodology">4. Methodology<a class="headerlink" href="#4-methodology" title="Permanent link">&para;</a></h3>
+<p>For each node / parameter:</p>
+<ol>
+<li>Use the design equations in the schematic comments (for SiC431 and UVLO) and the regulators’ datasheets.</li>
+<li>Apply <strong>absolute worst-case</strong> combinations of tolerances (not RMS):</li>
+<li>For <strong>minimum</strong> output, drive all tolerances in the direction that reduces it.</li>
+<li>For <strong>maximum</strong> output, drive all in the direction that increases it.</li>
+<li>Compute <code>Value_min</code> and <code>Value_max</code>.</li>
+<li>Compare with:</li>
+<li>Device absolute min / max and</li>
+<li>Functional system spec (USB, Jetson VDD_IN, etc.).</li>
+<li>Record <strong>margin</strong> and <strong>status (PASS / RISK)</strong>.</li>
+</ol>
+<hr />
+<h3 id="5-wca-results-main-power-rails-sic431-bucks-pre-reg">5. WCA Results – Main Power Rails (SiC431 Bucks &amp; Pre-reg)<a class="headerlink" href="#5-wca-results-main-power-rails-sic431-bucks-pre-reg" title="Permanent link">&para;</a></h3>
+<h4 id="51-design-equations-from-schematic">5.1 Design equations from schematic<a class="headerlink" href="#51-design-equations-from-schematic" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>Buck output equation</strong>
+  [
+  V_{OUT} = V_{REF} \cdot \frac{R_{FB_H} + R_{FB_L}}{R_{FB_L}}
+  ]
+  with (V_{REF} = 0.6\; \text{V}) (SIC431 feedback reference).</p>
+</li>
+<li>
+<p><strong>5 V buck feedback network</strong></p>
+</li>
+<li>(R_{FB_H} = 73.2\ \text{k}\Omega)</li>
+<li>(R_{FB_L} = 10\ \text{k}\Omega)</li>
+<li>
+<p>Comment in schematic: (V_{OUT} = 0.6\cdot(73k2+10k)/10k = 4.992\ \text{V})</p>
+</li>
+<li>
+<p><strong>3.3 V buck feedback network</strong></p>
+</li>
+<li>(R_{FB_H} = 45.3\ \text{k}\Omega)</li>
+<li>(R_{FB_L} = 10\ \text{k}\Omega)</li>
+<li>
+<p>Comment in schematic: (V_{OUT} = 0.6\cdot(45k3+10k)/10k = 3.318\ \text{V})</p>
+</li>
+<li>
+<p><strong>Pre-regulator (XL4015 style)</strong></p>
+</li>
+<li>Comment in schematic:
+    [
+    V_{OUT} = 1.25\cdot(1 + R_6/R_7), \quad V_{OUT,nom} \approx 18.6\ \text{V}
+    ]</li>
+<li>This implies (R_6/R_7 \approx 13.88).</li>
+</ul>
+<h4 id="52-rail-level-wca-summary">5.2 Rail-level WCA summary<a class="headerlink" href="#52-rail-level-wca-summary" title="Permanent link">&para;</a></h4>
+<p><strong>Assumptions for WCA:</strong></p>
+<ul>
+<li>SiC431 feedback reference tolerance: ±1 %</li>
+<li>XL4015 (pre-reg) reference: assumed ±1 % (typical for 1.25 V buck regulators).</li>
+<li>All feedback resistors: ±1 %.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Rail / Node</th>
+<th>Equation &amp; Resistors</th>
+<th>Spec (Min…Max)</th>
+<th>WCA Result (Min…Max)</th>
+<th>Margin vs spec</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1</td>
+<td>5 V buck output</td>
+<td>SiC431, R_H = 73.2k, R_L = 10k</td>
+<td>4.75…5.25 V (USB 5 V ±5 %)</td>
+<td>4.856…5.132 V</td>
+<td>≥106 mV from each limit</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>P2</td>
+<td>3.3 V buck output</td>
+<td>SiC431, R_H = 45.3k, R_L = 10k</td>
+<td>3.135…3.465 V (3.3 V ±5 %)</td>
+<td>3.232…3.407 V</td>
+<td>≥97 mV from each limit</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>P3</td>
+<td>VIN_SOM pre-reg</td>
+<td>XL4015, Vref = 1.25 V, R_6/R_7 ≈ 13.88</td>
+<td>7…20 V (Jetson VDD_IN range)</td>
+<td>18.074…19.140 V</td>
+<td>≥11.074 V above min, 0.860 V below max</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>P4</td>
+<td>3.3 V_STBY LDO</td>
+<td>NCP730B fixed 3.3 V, ±1 %</td>
+<td>3.135…3.465 V</td>
+<td>3.267…3.333 V</td>
+<td>Far inside ±5 % window</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>P5</td>
+<td>1.8 V LDO</td>
+<td>TPS7A0518 fixed 1.8 V, ±3 % max</td>
+<td>1.71…1.89 V</td>
+<td>1.746…1.854 V</td>
+<td>Far inside ±5 % window</td>
+<td>PASS</td>
+</tr>
+</tbody>
+</table>
+<h4 id="53-worked-example-5-v-buck-p1">5.3 Worked example – 5 V buck (P1)<a class="headerlink" href="#53-worked-example-5-v-buck-p1" title="Permanent link">&para;</a></h4>
+<p>Inputs:</p>
+<ul>
+<li>Vref = 0.6 V ±1 %</li>
+<li>R_H = 73.2 kΩ ±1 %</li>
+<li>R_L = 10.0 kΩ ±1 %</li>
+</ul>
+<p>Worst-case <strong>minimum</strong> (all tolerances toward lower Vout):</p>
+<ul>
+<li>Vref_min = 0.6·0.99 = 0.594 V</li>
+<li>R_H_min = 73.2k·0.99 = 72.468 kΩ</li>
+<li>R_L_max = 10k·1.01 = 10.10 kΩ</li>
+</ul>
+<p>[
+V_{OUT,min} = 0.594\cdot\frac{72.468k + 10.10k}{10.10k} = 4.856\ \text{V}
+]</p>
+<p>Worst-case <strong>maximum</strong> (all toward higher Vout):</p>
+<ul>
+<li>Vref_max = 0.606 V</li>
+<li>R_H_max = 73.2k·1.01 = 73.932 kΩ</li>
+<li>R_L_min = 10k·0.99 = 9.90 kΩ</li>
+</ul>
+<p>[
+V_{OUT,max} = 0.606\cdot\frac{73.932k + 9.90k}{9.90k} = 5.132\ \text{V}
+]</p>
+<p>Comparison with spec:</p>
+<ul>
+<li>Spec window: 4.75…5.25 V</li>
+<li>WCA result: 4.856…5.132 V</li>
+<li>Minimum margin to any limit: <strong>106 mV</strong> → <strong>PASS</strong>.</li>
+</ul>
+<p>(Similar calculations were done for the 3.3 V buck and pre-reg.)</p>
+<hr />
+<h3 id="6-wca-uvlo-enable-thresholds">6. WCA – UVLO / Enable Thresholds<a class="headerlink" href="#6-wca-uvlo-enable-thresholds" title="Permanent link">&para;</a></h3>
+<p>Using the standard SiC431 formula for UVLO:</p>
+<p>[
+R_{FB_H} = \frac{R_{FB_L}(V_{TH} - 0.6)}{0.6}
+]</p>
+<p>For an intended VIN turn-on threshold of 8.4 V,
+(R_{FB_H}/R_{FB_L} = (8.4/0.6) - 1 = 13).</p>
+<p>Assuming:</p>
+<ul>
+<li>Vref (FB) = 0.6 V ±1 %</li>
+<li>R_H and R_L = ±1 %</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Function / Node</th>
+<th style="text-align: right;">Nominal VIN_ON</th>
+<th>WCA VIN_ON (Min…Max)</th>
+<th>Comment</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>U1</td>
+<td>Pre-reg UVLO (24→VIN_SOM)</td>
+<td style="text-align: right;">8.4 V</td>
+<td>8.163…8.643 V</td>
+<td>Keeps converter off below ~8.2 V</td>
+<td>PASS</td>
+</tr>
+</tbody>
+</table>
+<p>Interpretation:</p>
+<ul>
+<li>Even with tolerances, the pre-reg will <strong>not</strong> enable below ~8.16 V (well above brownout levels for a 24 V robot bus).</li>
+<li>Upper end 8.64 V is acceptable; gives clean start without chatter.</li>
+</ul>
+<hr />
+<h3 id="7-wca-ldo-rails-33-v_stby-and-18-v">7. WCA – LDO Rails (3.3 V_STBY and 1.8 V)<a class="headerlink" href="#7-wca-ldo-rails-33-v_stby-and-18-v" title="Permanent link">&para;</a></h3>
+<p>These are fixed-output parts; WCA is straightforward:</p>
+<h4 id="71-33-v_stby-ncp730b">7.1 3.3 V_STBY (NCP730B)<a class="headerlink" href="#71-33-v_stby-ncp730b" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Output accuracy: ±1 % over temp</li>
+<li>Nominal: 3.300 V</li>
+</ul>
+<p>[
+V_{out,min} = 3.3 \cdot 0.99 = 3.267\ \text{V}
+]
+[
+V_{out,max} = 3.3 \cdot 1.01 = 3.333\ \text{V}
+]</p>
+<ul>
+<li>System spec for 3.3 V logic: 3.135…3.465 V (±5 %).</li>
+<li>WCA result sits well inside → <strong>large margin, PASS</strong>.</li>
+</ul>
+<h4 id="72-18-v-ldo-tps7a0518">7.2 1.8 V LDO (TPS7A0518)<a class="headerlink" href="#72-18-v-ldo-tps7a0518" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Output accuracy: ±3 % max</li>
+<li>Nominal: 1.800 V</li>
+</ul>
+<p>[
+V_{out,min} = 1.8 \cdot 0.97 = 1.746\ \text{V}
+]
+[
+V_{out,max} = 1.8 \cdot 1.03 = 1.854\ \text{V}
+]</p>
+<ul>
+<li>Common 1.8 V logic range: 1.71…1.89 V (±5 %).</li>
+<li>Again, well inside → <strong>PASS</strong>.</li>
+</ul>
+<hr />
+<h3 id="8-thermal-wca-sic431-5-v-buck">8. Thermal WCA – SiC431 5 V Buck<a class="headerlink" href="#8-thermal-wca-sic431-5-v-buck" title="Permanent link">&para;</a></h3>
+<p>From SiC431 datasheet:</p>
+<ul>
+<li>θ_JA ≈ <strong>16 °C/W</strong> in reference layout</li>
+<li>Maximum junction temperature rating: <strong>150 °C</strong> {index=11}</li>
+</ul>
+<h4 id="81-continuous-10-a-load-case-design-target">8.1 Continuous 10 A load case (design target)<a class="headerlink" href="#81-continuous-10-a-load-case-design-target" title="Permanent link">&para;</a></h4>
+<p>Assumptions:</p>
+<ul>
+<li>VOUT = 5.0 V</li>
+<li>IOUT = 10 A → P_OUT = 50 W</li>
+<li>Worst-case efficiency at this load: ~94 % (assumed from datasheet curves).</li>
+</ul>
+<p>Then:</p>
+<ul>
+<li>P_IN = 50 / 0.94 = 53.19 W</li>
+<li>P_LOSS = P_IN – P_OUT = <strong>3.19 W</strong></li>
+</ul>
+<p>With ambient = 45 °C:</p>
+<p>[
+T_J = T_A + P_{LOSS}\cdot\theta_{JA} = 45 + 3.19\cdot16 = 96\ ^\circ\text{C}
+]</p>
+<ul>
+<li>Margin to 150 °C abs max: <strong>54 °C</strong></li>
+<li>Margin to 125 °C recommended operating Tj: <strong>29 °C</strong>
+→ <strong>Thermally comfortable – PASS</strong> (assuming PCB copper similar to reference).</li>
+</ul>
+<h4 id="82-peak-12-a-load-case-short-duration">8.2 Peak 12 A load case (short duration)<a class="headerlink" href="#82-peak-12-a-load-case-short-duration" title="Permanent link">&para;</a></h4>
+<p>Assumptions:</p>
+<ul>
+<li>VOUT = 5.0 V, IOUT = 12 A → P_OUT = 60 W</li>
+<li>Worst-case efficiency at this load: ~92 %</li>
+</ul>
+<p>Then:</p>
+<ul>
+<li>P_IN = 60 / 0.92 = 65.22 W</li>
+<li>P_LOSS ≈ <strong>5.22 W</strong></li>
+</ul>
+<p>[
+T_J = 45 + 5.22\cdot16 \approx 128.5\ ^\circ\text{C}
+]</p>
+<ul>
+<li>Below 150 °C abs max but <strong>slightly above</strong> 125 °C recommended operating junction.</li>
+</ul>
+<blockquote>
+<p><strong>Conclusion:</strong>
+10 A continuous, 12 A short burst is realistic.
+For <strong>12 A continuous</strong> operation at +45 °C ambient, it is
+close to the safe limit and should:
+- Improve cooling (larger copper area, airflow, or heatsinking).</p>
+</blockquote>
+<hr />
+<h3 id="9-summary">9. Summary<a class="headerlink" href="#9-summary" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>5 V buck:</strong> WCA 4.856…5.132 V – meets USB/logic requirements with good margin.</li>
+<li><strong>3.3 V buck:</strong> WCA 3.232…3.407 V – comfortably within ±5 % window.</li>
+<li><strong>3.3 V_STBY &amp; 1.8 V LDOs:</strong> accuracy of the LDOs gives excellent margin.</li>
+<li><strong>UVLO for pre-reg:</strong> 8.16…8.64 V – ensures clean start and avoids low-VIN operation.</li>
+<li><strong>Thermal:</strong> 5 V buck is safe for 10 A continuous at 45 °C ambient; 12 A peak is acceptable but continuous 12 A is close to Tj limits.</li>
+</ul>
+<h3 id="10-references">10. References<a class="headerlink" href="#10-references" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>SiC431 – Vishay, “SiC431 3 V to 24 V Input, 24 A microBUCK DC/DC Converter”
+   https://www.vishay.com/docs/74589/sic431.pdf</p>
+</li>
+<li>
+<p>NCP730B – onsemi, “NCP730 150 mA LDO Regulator”
+   Product page: https://www.onsemi.com/products/power-management/linear-regulators-ldo/ncp730
+   Datasheet:    https://www.onsemi.com/download/data-sheet/pdf/ncp730-d.pdf</p>
+</li>
+<li>
+<p>TPS7A0518 (TPS7A05 family) – Texas Instruments, “TPS7A05 Low IQ LDO”
+   Product page: https://www.ti.com/product/TPS7A05
+   Datasheet:    https://www.ti.com/lit/ds/symlink/tps7a05.pdf</p>
+</li>
+<li>
+<p>AP22615 / AP22815 – Diodes Inc., “AP22815/615 Power Distribution Switches”
+   Product page: https://www.diodes.com/part/view/AP22615
+   Datasheet:    https://www.diodes.com/assets/Datasheets/AP22815_615.pdf</p>
+</li>
+<li>
+<p>Jetson AGX Orin – “Jetson Module Adaptation and Bring-Up: Checklists”
+   General checklist: https://docs.nvidia.com/jetson/archives/r35.1/DeveloperGuide/text/HR/JetsonModuleAdaptationAndBringUp/Checklists.html
+   AGX Orin series:   https://docs.nvidia.com/jetson/archives/r35.6.1/DeveloperGuide/HR/JetsonModuleAdaptationAndBringUp/JetsonAgxOrinSeries.html</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

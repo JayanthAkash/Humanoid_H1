@@ -1,0 +1,1489 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="1_Product_Requirments_Document.html">
+      
+      
+        <link rel="next" href="3_System_Overview.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>2. Requirements Specification - VoltEdge H1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#h1-requirements-specification" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-header__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VoltEdge H1 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              2. Requirements Specification
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-nav__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VoltEdge H1 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_Product_Requirments_Document.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Requirments Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Requirements Specification
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="2_Requirements_Specification.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Requirements Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-definitions-abbreviations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Definitions &amp; Abbreviations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-requirement-id-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Requirement ID Scheme
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-system-level-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. System-Level Functional Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-compute-memory-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Compute &amp; Memory Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-interface-and-connectivity-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Interface and Connectivity Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-power-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Power requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-safety-supervision-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Safety &amp; Supervision Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-security-requirements-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Security Requirements (NEW)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-environmental-reliability-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Environmental &amp; Reliability Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-verification-process-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Verification &amp; Process Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_System_Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. System Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Hardware_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Hardware Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Power_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Power Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Safety_and_Failsafe_Concept.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Safety and Failsafe Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_Interfaces_and_Connectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Interfaces and Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Design Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8. Design Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1. FMEA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8.1. FMEA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_FMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. FMEA Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_1_Carrier_DFMEA_%28Implemented%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. Carrier Board DFMEA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_2_Safety_Supervisor_Concept_DFMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Safety Supervisor Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_3_Rating_Scales.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Rating Scales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_2_Worst_Case_Analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2. Worst Case Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_3_Mean_Time_Between_Failure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3. Reliability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_4_DesignAnalysis_Tolerance_Stackup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4. Tolerance Stackup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Test Plan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    9. Test Plan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_1_High_level_summary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1. High level summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_2_Component_Test_Plan%28bySchematicBlock%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2. Component Test Plan(bySchematicBlock)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_3_Module_Test_Plan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3. Module Test Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-purpose" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Purpose
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Scope
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-definitions-abbreviations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3 Definitions &amp; Abbreviations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-requirement-id-scheme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Requirement ID Scheme
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-system-level-functional-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. System-Level Functional Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-compute-memory-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Compute &amp; Memory Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-interface-and-connectivity-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Interface and Connectivity Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-power-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Power requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-safety-supervision-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Safety &amp; Supervision Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-security-requirements-new" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Security Requirements (NEW)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-environmental-reliability-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Environmental &amp; Reliability Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-verification-process-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Verification &amp; Process Requirements
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="h1-requirements-specification">H1 – Requirements Specification<a class="headerlink" href="#h1-requirements-specification" title="Permanent link">&para;</a></h1>
+<h2 id="1-introduction">1. Introduction<a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h2>
+<h3 id="11-purpose">1.1 Purpose<a class="headerlink" href="#11-purpose" title="Permanent link">&para;</a></h3>
+<p>This document defines the <strong>requirements for the H1 Main Robotics Processing &amp; Communications Unit</strong> of the humanoid robot system. H1 is the central node responsible for:</p>
+<ul>
+<li>Running high-compute perception, planning and control software.</li>
+<li>Coordinating H2 (sensing/perception), H3 (mobility/manipulation) and H4 (power/actuation).</li>
+<li>Linking the robot to external networks and cloud services.</li>
+<li>Implementing supervision, health monitoring and safety-related functions.</li>
+</ul>
+<p>The requirements here describe <strong>what H1 shall do</strong>, independently of any specific hardware platform or SOM.</p>
+<h3 id="12-scope">1.2 Scope<a class="headerlink" href="#12-scope" title="Permanent link">&para;</a></h3>
+<p>In scope:</p>
+<ul>
+<li>H1 <strong>electronics</strong> (compute module, carrier/board-set, power tree, interfaces).</li>
+<li>H1 <strong>safety &amp; supervision</strong> at the hardware/platform level.</li>
+</ul>
+<p>Out of scope:</p>
+<ul>
+<li>Detailed mechanical design.</li>
+<li>Application-level software algorithms (vision, control, AI models).</li>
+<li>Cloud back-end design.</li>
+<li>Actuator/sensor electronics (covered by H2, H3, H4).</li>
+</ul>
+<h3 id="13-definitions-abbreviations">1.3 Definitions &amp; Abbreviations<a class="headerlink" href="#13-definitions-abbreviations" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>H1</strong> – Main Robotics Processing &amp; Communications Unit (this element).</li>
+<li><strong>H2</strong> – Sensor &amp; Perception Management Unit.</li>
+<li><strong>H3</strong> – Mobility &amp; Manipulation Controller.</li>
+<li><strong>H4</strong> – Power / Actuation Distribution or other controller.</li>
+<li><strong>Compute Module</strong> – High-performance CPU/GPU/SOC module used as the main processing element on H1.</li>
+<li><strong>MCU</strong> – Microcontroller (safety/supervisor).</li>
+<li><strong>RTM</strong> – Requirements Traceability Matrix</li>
+</ul>
+<hr />
+<h2 id="2-requirement-id-scheme">2. Requirement ID Scheme<a class="headerlink" href="#2-requirement-id-scheme" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>H1-SYS-xxx</strong> – System-level functional requirements.  </li>
+<li><strong>H1-CPU-xxx</strong> – Compute &amp; memory platform requirements.  </li>
+<li><strong>H1-IF-xxx</strong> – Interface &amp; connectivity requirements.  </li>
+<li><strong>H1-PWR-xxx</strong> – Power architecture requirements.  </li>
+<li><strong>H1-SAF-xxx</strong> – Safety &amp; supervision requirements.  </li>
+<li><strong>H1-ENV-xxx</strong> – Environmental &amp; reliability requirements.  </li>
+<li><strong>H1-VER-xxx</strong> – Verification &amp; process requirements.</li>
+</ul>
+<p>All requirements use the keyword shall to indicate mandatory compliance.</p>
+<hr />
+<h2 id="3-system-level-functional-requirements">3. System-Level Functional Requirements<a class="headerlink" href="#3-system-level-functional-requirements" title="Permanent link">&para;</a></h2>
+<p><strong>H1-SYS-001</strong><br />
+H1 <strong>shall act as the central orchestration node</strong> of the humanoid robot, coordinating perception, planning and control functions across H2, H3 and H4.</p>
+<p><strong>H1-SYS-002</strong><br />
+H1 shall provide the hardware and low-level control mechanisms necessary to support a graceful shutdown and restart of its compute module when commanded by system
+software or an external controller. At minimum, H1 shall:</p>
+<ul>
+<li>accept shutdown / restart requests via defined local and remote control inputs</li>
+<li>control power and reset to the compute module in a way that allows the operating system to complete its own shutdown sequence before power is removed.</li>
+</ul>
+<p><strong>H1-SYS-003</strong>
+H1 shall provide deterministic communication pathways between all robot subsystems with defined QoS and timing guarantees.</p>
+<hr />
+<h2 id="4-compute-memory-requirements">4. Compute &amp; Memory Requirements<a class="headerlink" href="#4-compute-memory-requirements" title="Permanent link">&para;</a></h2>
+<p><strong>H1-CPU-001</strong><br />
+H1 <strong>shall provide a compute platform</strong> with a peak AI compute capability of <strong>at least 200 TOPS (INT8 or equivalent)</strong> to support multi-camera perception and advanced control algorithms.</p>
+<p><strong>H1-CPU-002</strong><br />
+H1 <strong>shall provide at least 32 GB of system memory</strong> for concurrent perception, planning, mapping and logging workloads.</p>
+<p><strong>H1-CPU-003</strong><br />
+H1 <strong>shall support hardware-accelerated image and video processing</strong>, including parallel processing of multiple camera streams at ≥30 fps for primary perception cameras.</p>
+<p><strong>H1-CPU-004</strong><br />
+H1 <strong>shall support at least one hardware-accelerated AI runtime</strong> (e.g. TensorRT, ONNX Runtime, or equivalent) compatible with deep-learning workloads used in the robot.</p>
+<hr />
+<h2 id="5-interface-and-connectivity-requirements">5. Interface and Connectivity Requirements<a class="headerlink" href="#5-interface-and-connectivity-requirements" title="Permanent link">&para;</a></h2>
+<p><strong>H1-IF-001</strong><br />
+H1 <strong>shall provide at least one high-bandwidth Ethernet interface</strong> (≥1 Gbps) for internal communication with other robot units (e.g. H2/H3).</p>
+<p><strong>H1-IF-002</strong><br />
+H1 <strong>shall provide at least one CAN or CAN-FD interface</strong> for deterministic safety and control communication with H2/H3/H4.</p>
+<p><strong>H1-IF-003</strong><br />
+H1 <strong>shall provide at least one high-speed sensor interface</strong> (e.g. MIPI CSI, LVDS, or equivalent) suitable for one or more high-resolution cameras.</p>
+<p><strong>H1-IF-004</strong><br />
+H1 <strong>shall provide at least one high-speed general expansion interface</strong> (e.g. PCIe or equivalent) for future sensor or accelerator expansion.</p>
+<p><strong>H1-IF-005</strong><br />
+H1 <strong>shall expose dedicated connectors or board-to-board interfaces</strong> towards H2, H3 and H4 for:</p>
+<ul>
+<li>power distribution in accordance with the system power concept,  </li>
+<li>data communication (Ethernet, CAN, auxiliary UARTs/IO), and  </li>
+<li>safety / interlock signals (e.g. STO, ROBOT_ENABLE, LIMP_HOME, HEARTBEAT).</li>
+</ul>
+<p><strong>H1-IF-006</strong><br />
+H1 <strong>shall support Wi-Fi connectivity</strong> (Wi-Fi 6 or equivalent) including provision for external antennas or antenna connectors.</p>
+<p><strong>H1-IF-007</strong><br />
+H1 <strong>shall support connection of a 4G/5G cellular modem</strong> (either on-board or via module), including SIM access and antenna interfaces.</p>
+<p><strong>H1-IF-008</strong><br />
+H1 <strong>shall support Bluetooth connectivity</strong> (≥Bluetooth 5.0) for local human-machine interface devices and service tools.</p>
+<p><strong>H1-IF-009</strong><br />
+H1 shall provide at least one debug/service interface (e.g. serial console,USB device port, or JTAG access) for development and field diagnostics.</p>
+<hr />
+<h2 id="6-power-requirements">6. Power requirements<a class="headerlink" href="#6-power-requirements" title="Permanent link">&para;</a></h2>
+<p><strong>H1-PWR-001</strong><br />
+H1 shall be supplied from the robot’s 24 V system bus, with an operating input
+voltage range as defined by the system power specification (e.g. 7–24 V).</p>
+<p><strong>H1-PWR-002</strong><br />
+H1 shall include input protection appropriate for the system power environment,
+including at least:</p>
+<ul>
+<li>reverse-polarity protection,</li>
+<li>surge and transient suppression (e.g. TVS), and</li>
+<li>input filtering for conducted emissions and immunity.</li>
+</ul>
+<p><strong>H1-PWR-003</strong><br />
+H1 shall be designed to withstand the specified voltage transients and dips on
+the 24 V bus without permanent damage. H1 shall provide the necessary signals
+and control mechanisms (e.g. supervisor indicators, power-good and reset
+controls) to allow the system to transition to a defined safe state in the
+event of severe under-voltage.</p>
+<p><strong>H1-PWR-004</strong><br />
+H1 shall locally generate all internal power rails required by its compute
+module, on-board communication devices and any directly attached peripherals,
+including at minimum:</p>
+<ul>
+<li>an intermediate rail (if required by the chosen architecture),</li>
+<li>5 V main,</li>
+<li>3.3 V main,</li>
+<li>3.3 V standby (always-on),</li>
+<li>1.8 V (for low-voltage IO and MIPI domains).</li>
+</ul>
+<p><strong>H1-PWR-005</strong><br />
+Each internal power rail on H1 shall meet the voltage, current and ripple limits
+specified by the components it supplies (compute module, memory, PHYs, radios,
+sensors directly connected to H1, etc.).</p>
+<p><strong>H1-PWR-006</strong><br />
+H1 shall implement a controlled power-up and power-down sequence for its compute
+module and critical on-board peripherals, including appropriate reset and
+enable timing in accordance with the compute module and device design guides.</p>
+<hr />
+<h2 id="7-safety-supervision-requirements">7. Safety &amp; Supervision Requirements<a class="headerlink" href="#7-safety-supervision-requirements" title="Permanent link">&para;</a></h2>
+<p><strong>H1-SAF-001</strong><br />
+H1 <strong>shall include an independent safety and supervision controller</strong> (MCU), supplied from an always-on rail, which remains active regardless of the compute module’s state.</p>
+<p><strong>H1-SAF-002</strong><br />
+The safety/supervisor MCU <strong>shall monitor, at a minimum</strong>:</p>
+<ul>
+<li>system input voltage (24 V bus),  </li>
+<li>system input current,  </li>
+<li>status of key internal rails (5 V, 3.3 V),  </li>
+<li>heartbeat or health indication from the main compute module,  </li>
+<li>safety-related signals exchanged with H2/H3/H4.</li>
+</ul>
+<p><strong>H1-SAF-003</strong><br />
+The supervisor <strong>shall be able to command a controlled shutdown or inhibit</strong>:</p>
+<ul>
+<li>the main compute module, and  </li>
+<li>selected power outputs and control signals towards actuators,  </li>
+</ul>
+<p>in response to defined fault conditions or safety events.</p>
+<p><strong>H1-SAF-004</strong><br />
+Safety-related signals between H1 and other units <strong>shall have clearly defined polarity and fail-safe defaults</strong>, such that loss of power, cable disconnection or module reset leads to a safe condition.</p>
+<hr />
+<h2 id="8-security-requirements-new">8. Security Requirements (NEW)<a class="headerlink" href="#8-security-requirements-new" title="Permanent link">&para;</a></h2>
+<p><strong>H1-SEC-001</strong>
+H1 shall support Hsecure boot, preventing execution of unauthorized firmware.</p>
+<p><strong>H1-SEC-002</strong>
+H1 shall include hardware-based root of trust (TPM, HSM, or SoC-integrated equivalent).</p>
+<p><strong>H1-SEC-003</strong>
+H1 shall enforce secure debug lockout for JTAG/SWD/UART in production mode.</p>
+<p><strong>H1-SEC-004</strong>
+H1 shall support secure key provisioning during manufacturing.</p>
+<hr />
+<h2 id="9-environmental-reliability-requirements">9. Environmental &amp; Reliability Requirements<a class="headerlink" href="#9-environmental-reliability-requirements" title="Permanent link">&para;</a></h2>
+<p><strong>H1-ENV-001</strong><br />
+H1 <strong>shall operate correctly within the specified robot ambient temperature range</strong>, to be defined in the product standard (e.g. −10 °C to +50 °C or project-specific).</p>
+<p><strong>H1-ENV-002</strong><br />
+H1 <strong>shall withstand storage temperatures</strong> outside the operating range without permanent damage.</p>
+<p><strong>H1-ENV-003</strong><br />
+H1 <strong>shall be designed to meet the vibration and shock levels</strong> required for the robot’s operating environment (to be defined by system engineering).</p>
+<p><strong>H1-ENV-004</strong><br />
+H1 <strong>shall be designed to meet EMC/ESD requirements</strong> according to applicable industrial/robotics standards (exact standards to be specified).</p>
+<p><strong>H1-ENV-005</strong><br />
+H1 <strong>shall be designed with reliability targets</strong> consistent with the robot’s service life (e.g. MTBF/MTTF to be defined), and shall use components with appropriate derating.</p>
+<hr />
+<h2 id="10-verification-process-requirements">10. Verification &amp; Process Requirements<a class="headerlink" href="#10-verification-process-requirements" title="Permanent link">&para;</a></h2>
+<p><strong>H1-VER-001</strong><br />
+Each requirement in this specification <strong>shall be verified</strong> by at least one of the following methods: analysis, test, inspection or demonstration.</p>
+<p><strong>H1-VER-002</strong><br />
+A <strong>requirements traceability matrix (RTM)</strong> <strong>shall be maintained</strong>, linking each H1 requirement to design artefacts (architecture, schematic, layout, firmware) and verification artefacts (test cases, reports, analyses).</p>
+<p><strong>H1-VER-003</strong><br />
+H1 <strong>shall comply with the chosen compute module vendor’s design guidelines</strong> (power delivery, signaling, thermal), and such compliance shall be demonstrated through design reviews and, where applicable, measurements.</p>
+<p><strong>H1-VER-004</strong><br />
+H1 <strong>shall undergo design analysis</strong> including, but not limited to:</p>
+<ul>
+<li>Tolerance stack-up and worst-case analysis</li>
+<li>FMEA for critical functions</li>
+<li>Signal Integrity  </li>
+<li>Relaibility - MTTF, MTBF</li>
+<li>Power-integrity and thermal analyses</li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

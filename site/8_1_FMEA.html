@@ -1,0 +1,1362 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="7_Interfaces_and_Connectors.html">
+      
+      
+        <link rel="next" href="8_1_1_Carrier_DFMEA_%28Implemented%29.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>8.1.1. FMEA Overview - VoltEdge H1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#failure-mode-and-effects-analysis-fmea" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-header__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VoltEdge H1 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8.1.1. FMEA Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-nav__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VoltEdge H1 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_Product_Requirments_Document.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Requirments Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_Requirements_Specification.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Requirements Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_System_Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. System Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Hardware_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Hardware Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Power_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Power Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Safety_and_Failsafe_Concept.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Safety and Failsafe Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_Interfaces_and_Connectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Interfaces and Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Design Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8. Design Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1. FMEA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8.1. FMEA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. FMEA Overview
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="8_1_FMEA.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. FMEA Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-fmea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. What is FMEA?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-types-of-fmea-used-in-this-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Types of FMEA used in this project
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rating-scales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Rating Scales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-scope-of-our-fmea-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Scope of Our FMEA Work
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Scope of Our FMEA Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-inputs-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Inputs Available
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-h1-carrier-design-dfmea-sheet-h1-carrier-design-fmea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 H1 Carrier Design DFMEA (Sheet: “H1 Carrier Design FMEA”)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-safety-supervisor-concept-dfmea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Safety Supervisor Concept DFMEA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-how-this-fmea-will-be-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. How This FMEA Will Be Used
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_1_Carrier_DFMEA_%28Implemented%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. Carrier Board DFMEA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_2_Safety_Supervisor_Concept_DFMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Safety Supervisor Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_3_Rating_Scales.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Rating Scales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_2_Worst_Case_Analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2. Worst Case Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_3_Mean_Time_Between_Failure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3. Reliability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_4_DesignAnalysis_Tolerance_Stackup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4. Tolerance Stackup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Test Plan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    9. Test Plan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_1_High_level_summary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1. High level summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_2_Component_Test_Plan%28bySchematicBlock%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2. Component Test Plan(bySchematicBlock)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_3_Module_Test_Plan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3. Module Test Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-is-fmea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. What is FMEA?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-types-of-fmea-used-in-this-project" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Types of FMEA used in this project
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rating-scales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Rating Scales
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-scope-of-our-fmea-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Scope of Our FMEA Work
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Scope of Our FMEA Work">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-inputs-available" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Inputs Available
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-h1-carrier-design-dfmea-sheet-h1-carrier-design-fmea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 H1 Carrier Design DFMEA (Sheet: “H1 Carrier Design FMEA”)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-safety-supervisor-concept-dfmea" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Safety Supervisor Concept DFMEA
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-how-this-fmea-will-be-used" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. How This FMEA Will Be Used
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="failure-mode-and-effects-analysis-fmea">Failure Mode and Effects Analysis (FMEA)<a class="headerlink" href="#failure-mode-and-effects-analysis-fmea" title="Permanent link">&para;</a></h1>
+<h2 id="1-what-is-fmea">1. What is FMEA?<a class="headerlink" href="#1-what-is-fmea" title="Permanent link">&para;</a></h2>
+<p>Failure Mode and Effects Analysis (FMEA) is a <strong>structured, systematic method</strong> used to:</p>
+<ul>
+<li>Identify how a product or system can fail (Failure Modes)  </li>
+<li>Understand the <strong>effects</strong> of those failures on the customer, system, or safety  </li>
+<li>Estimate the <strong>risk</strong> of each failure using ratings for:</li>
+<li><strong>Severity (S)</strong> – How bad is the effect?</li>
+<li><strong>Occurrence (O)</strong> – How often is the cause likely to happen?</li>
+<li><strong>Detection (D)</strong> – How likely are we to detect the failure before it causes harm?</li>
+<li>Prioritize actions that <strong>reduce risk</strong> by:</li>
+<li>Lowering severity where possible  </li>
+<li>Reducing the probability of occurrence  </li>
+<li>Improving detection with better tests, monitoring, or diagnostics  </li>
+</ul>
+<p>Traditionally, risk is summarized using the <strong>Risk Priority Number (RPN)</strong>:</p>
+<blockquote>
+<p><code>RPN = Severity × Occurrence × Detection</code></p>
+</blockquote>
+<p>and/or by a color <strong>heatmap</strong> of S/O/D ratings.</p>
+<p>FMEA is a <strong>living document</strong>: it should be updated whenever the design changes, new tests reveal issues, or field experience provides new insight.</p>
+<hr />
+<h2 id="2-types-of-fmea-used-in-this-project">2. Types of FMEA used in this project<a class="headerlink" href="#2-types-of-fmea-used-in-this-project" title="Permanent link">&para;</a></h2>
+<p>We are using two closely related FMEA types:</p>
+<ol>
+<li><strong>Design FMEA (DFMEA)</strong>  </li>
+<li>Focus: Failures due to the <strong>hardware design</strong> of the H1 carrier board  </li>
+<li>Uses schematic-level information, component choices, and interfaces  </li>
+<li>
+<p>Looks at how parts of the design can fail and affect the robot system</p>
+</li>
+<li>
+<p><strong>Concept DFMEA – Safety Supervisor</strong>  </p>
+</li>
+<li>Focus: High-level <strong>safety concept</strong> around the Safety MCU (S32K116) and its signals  </li>
+<li>Works even though the safety schematic is not fully implemented in KiCad yet  </li>
+<li>Evaluates risk on the level of <strong>safety architecture</strong> (STO lines, health lines, enable lines, power control, etc.)</li>
+</ol>
+<blockquote>
+<p><strong>Important:</strong> Our FMEAs are <strong>hardware-centric</strong>. We intentionally <strong>exclude failures caused purely by software, flashing, updates, or algorithms</strong>, and concentrate on hardware architecture, components, and wiring.</p>
+</blockquote>
+<hr />
+<h2 id="3-rating-scales">3. Rating Scales<a class="headerlink" href="#3-rating-scales" title="Permanent link">&para;</a></h2>
+<p>We use three 1–10 scales:</p>
+<ul>
+<li><strong>Severity (S)</strong> – Impact on safety, system operation, or customer  </li>
+<li><strong>Occurrence (O)</strong> – Likelihood of the cause happening in the design  </li>
+<li><strong>Detection (D)</strong> – Likelihood of detecting the failure before it causes harm  </li>
+</ul>
+<p>A separate <strong>Severity / Occurrence / Detection scale table</strong> is maintained in this workbook (with text descriptions for each score from 1 to 10). These ratings are used consistently across all DFMEA sheets.</p>
+<hr />
+<h2 id="4-scope-of-our-fmea-work">4. Scope of Our FMEA Work<a class="headerlink" href="#4-scope-of-our-fmea-work" title="Permanent link">&para;</a></h2>
+<h3 id="41-inputs-available">4.1 Inputs Available<a class="headerlink" href="#41-inputs-available" title="Permanent link">&para;</a></h3>
+<p>For this hackathon, we <strong>do not have a physical board or test data</strong>. Our analysis is based on:</p>
+<ul>
+<li>H1 <strong>High Level Design (HLD)</strong> block diagrams  </li>
+<li>H1 <strong>carrier-board schematics</strong> in KiCad (<code>H1_Jetson_AGX_Orin_SOM.pdf</code> and related power / I/O schematics)  </li>
+<li>Word documents describing:</li>
+<li>Safety Supervisor concept (S32K116 MCU and interfaces)</li>
+<li>Schematic design review and improvement points</li>
+</ul>
+<p>All FMEA content is therefore <strong>design-time / paper analysis</strong>, not measured field reliability.</p>
+<hr />
+<h3 id="42-h1-carrier-design-dfmea-sheet-h1-carrier-design-fmea">4.2 H1 Carrier Design DFMEA (Sheet: “H1 Carrier Design FMEA”)<a class="headerlink" href="#42-h1-carrier-design-dfmea-sheet-h1-carrier-design-fmea" title="Permanent link">&para;</a></h3>
+<p><strong>Goal:</strong> Understand non-safety-specific hardware risks on the H1 carrier.</p>
+<p><strong>Main modules covered:</strong></p>
+<ul>
+<li><strong>Power</strong></li>
+<li>24 V input protection and connector</li>
+<li>Buck regulators for 5 V, 3V3, 1V8, VIN_SOM</li>
+<li><strong>CSI (Cameras)</strong></li>
+<li>Camera load switches</li>
+<li>I²C mux and GPIO expander</li>
+<li>CSI lane routing options</li>
+<li><strong>Ethernet</strong></li>
+<li>Gigabit PHY, magnetics, RJ45</li>
+<li>Ethernet cable / link loss behaviour</li>
+<li><strong>5G Modem</strong></li>
+<li>VBAT power rails</li>
+<li>SIM socket</li>
+<li><strong>Wi-Fi / NVMe</strong></li>
+<li>M.2 Key-E Wi-Fi module</li>
+<li>M.2 Key-M NVMe SSD</li>
+<li><strong>CAN</strong></li>
+<li>CAN transceiver and connector</li>
+<li><strong>USB-C / USB 2.0</strong></li>
+<li>USB-C VBUS power switches</li>
+<li>CC configuration network</li>
+<li>SuperSpeed pairs and ESD protection</li>
+<li>Debug USB port</li>
+<li><strong>Critical Connections</strong></li>
+<li>Jetson SOM board-to-board connector</li>
+<li>H2 and H3 high-speed connectors</li>
+<li>Jetson thermal management (heatsink and fan)</li>
+</ul>
+<p>For each item we capture:</p>
+<ul>
+<li>Hardware <strong>function</strong></li>
+<li><strong>Failure mode</strong>, <strong>effects</strong>, and <strong>causes</strong></li>
+<li>Current <strong>design controls</strong> (prevention and detection)</li>
+<li>S/O/D ratings and <strong>RPN</strong></li>
+<li><strong>Recommended actions</strong> (design changes, test requirements, docs)</li>
+</ul>
+<hr />
+<h3 id="43-safety-supervisor-concept-dfmea">4.3 Safety Supervisor Concept DFMEA<a class="headerlink" href="#43-safety-supervisor-concept-dfmea" title="Permanent link">&para;</a></h3>
+<p>(Sheet: “Safety Supervisor Concept DFMEA”)</p>
+<p><strong>Goal:</strong> Evaluate the robustness of the <strong>safety architecture</strong> around the S32K116 even before a full KiCad schematic exists.</p>
+<p><strong>Key concept items:</strong></p>
+<ul>
+<li>Safety Supervisor MCU core and NVM</li>
+<li>24 V current and voltage monitoring paths</li>
+<li>CAN-FD interface to H4 (battery &amp; power)</li>
+<li>Control and feedback lines to Jetson:</li>
+<li>Power enable, reset, shutdown, health/heartbeat</li>
+<li>Safety-related signals to H3 motion controller:</li>
+<li>STO command path</li>
+<li>Robot_Enable</li>
+<li>Limp_Home</li>
+<li>Motion_Healthy and Drive_Fault feedback</li>
+<li>Interfaces to H2 perception:</li>
+<li>H2 power and reset control</li>
+<li>H2 fault/health lines</li>
+<li>Local user interfaces:</li>
+<li>Fault-acknowledge button</li>
+<li>Status LEDs and buzzer</li>
+</ul>
+<p>Each row describes:</p>
+<ul>
+<li>What happens if the <strong>signal or hardware path fails</strong></li>
+<li>How the failure affects <strong>robot safety or availability</strong></li>
+<li>Hardware-level <strong>prevention and detection</strong> measures required</li>
+<li>S/O/D and RPN</li>
+<li>Implementation <strong>requirements</strong> to carry into final schematics and tests</li>
+</ul>
+<hr />
+<h2 id="5-how-this-fmea-will-be-used">5. How This FMEA Will Be Used<a class="headerlink" href="#5-how-this-fmea-will-be-used" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Design refinement</strong>  </li>
+<li>Drive concrete schematic changes (e.g., fuses, OVP, pull-downs, test points, feedback signals).</li>
+<li>
+<p>Feed into the <strong>Design Review</strong> document for traceability.</p>
+</li>
+<li>
+<p><strong>Test planning</strong>  </p>
+</li>
+<li>
+<p>Many “Recommended Actions” are actually <strong>test requirements</strong>:</p>
+<ul>
+<li>Production tests (continuity, power-rail checks)</li>
+<li>Lab validation (brown-outs, shorts, thermal tests, STO tests)</li>
+<li>System-level behaviour (link loss, limp-home, heartbeat loss)</li>
+</ul>
+</li>
+<li>
+<p><strong>RFP deliverable</strong>  </p>
+</li>
+<li>
+<p>Demonstrates that the H1 team has applied <strong>systematic risk analysis</strong> to both:</p>
+<ul>
+<li>The <strong>carrier-board electronics</strong>, and</li>
+<li>The <strong>safety supervisor concept</strong>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Future updates</strong>  </p>
+</li>
+<li>Once KiCad schematics for Safety MCU and later PCB prototypes exist, the same DFMEA sheets can be:<ul>
+<li>Updated with <strong>new failure modes</strong> or <strong>re-rated</strong> based on real test data.</li>
+<li>Used as the starting point for <strong>process FMEA</strong> or <strong>test FMEA</strong> if required.</li>
+</ul>
+</li>
+</ol>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

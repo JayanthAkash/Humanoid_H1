@@ -1,0 +1,1589 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="9_1_High_level_summary.html">
+      
+      
+        <link rel="next" href="9_3_Module_Test_Plan.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>9.2. Component Test Plan(bySchematicBlock) - VoltEdge H1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#2-component-test-plan-by-schematic-block" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-header__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VoltEdge H1 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              9.2. Component Test Plan(bySchematicBlock)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-nav__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VoltEdge H1 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_Product_Requirments_Document.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Requirments Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_Requirements_Specification.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Requirements Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_System_Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. System Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Hardware_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Hardware Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Power_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Power Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Safety_and_Failsafe_Concept.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Safety and Failsafe Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_Interfaces_and_Connectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Interfaces and Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Design Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8. Design Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1. FMEA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8.1. FMEA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_FMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. FMEA Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_1_Carrier_DFMEA_%28Implemented%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. Carrier Board DFMEA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_2_Safety_Supervisor_Concept_DFMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Safety Supervisor Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_3_Rating_Scales.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Rating Scales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_2_Worst_Case_Analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2. Worst Case Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_3_Mean_Time_Between_Failure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3. Reliability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_4_DesignAnalysis_Tolerance_Stackup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4. Tolerance Stackup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Test Plan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    9. Test Plan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_1_High_level_summary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1. High level summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2. Component Test Plan(bySchematicBlock)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="9_2_Component_Test_Plan%28bySchematicBlock%29.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2. Component Test Plan(bySchematicBlock)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-power-tree-24-v-input-dcdc-rails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Power Tree – 24 V Input &amp; DC/DC Rails
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-usb-c-ports-power-type-c-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 USB-C Ports (Power + Type-C Hardware)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-csi-camera-power-control-h1-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 CSI Camera Power &amp; Control (H1 Side)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-ethernet-phy-hardware-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Ethernet PHY (Hardware Only)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-5g-modem-hardware-interface-power-pcie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 5G Modem Hardware Interface (Power + PCIe)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-wi-fibt-m2-nvme-m2-hardware-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Wi-Fi/BT M.2 &amp; NVMe M.2 Hardware Interface
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-can-interface-electrical-transceiver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 CAN Interface (Electrical &amp; Transceiver)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#28-fan-drive-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 Fan Drive Circuit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29-supervisor-mcu-safety-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.9 Supervisor MCU &amp; Safety Outputs
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_3_Module_Test_Plan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3. Module Test Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-power-tree-24-v-input-dcdc-rails" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Power Tree – 24 V Input &amp; DC/DC Rails
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-usb-c-ports-power-type-c-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 USB-C Ports (Power + Type-C Hardware)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-csi-camera-power-control-h1-side" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 CSI Camera Power &amp; Control (H1 Side)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-ethernet-phy-hardware-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Ethernet PHY (Hardware Only)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-5g-modem-hardware-interface-power-pcie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5 5G Modem Hardware Interface (Power + PCIe)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#26-wi-fibt-m2-nvme-m2-hardware-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.6 Wi-Fi/BT M.2 &amp; NVMe M.2 Hardware Interface
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#27-can-interface-electrical-transceiver" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.7 CAN Interface (Electrical &amp; Transceiver)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#28-fan-drive-circuit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.8 Fan Drive Circuit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#29-supervisor-mcu-safety-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.9 Supervisor MCU &amp; Safety Outputs
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="2-component-test-plan-by-schematic-block">2. Component Test Plan (by schematic block)<a class="headerlink" href="#2-component-test-plan-by-schematic-block" title="Permanent link">&para;</a></h1>
+<h2 id="21-power-tree-24-v-input-dcdc-rails">2.1 Power Tree – 24 V Input &amp; DC/DC Rails<a class="headerlink" href="#21-power-tree-24-v-input-dcdc-rails" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Test ID</th>
+<th>Objective</th>
+<th>Tools / Equipment</th>
+<th>Setup</th>
+<th>Steps</th>
+<th>Expected Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CT-PWR-001</td>
+<td>Verify all rails at correct voltage and polarity at nominal VIN (SOM not fitted)</td>
+<td>Bench 0–30 V PSU (current limit), DMM, 4-ch oscilloscope</td>
+<td>H1 board without SOM; PSU set to 24 V, current limit ~1 A</td>
+<td>1) Connect PSU to 24 V input.<br>2) Power on.<br>3) Measure 3V3_STBY, 3V3, 5V, 1V8 at test points.<br>4) Capture start-up waveforms.</td>
+<td>All rails present with correct polarity; voltages within design tolerance (e.g. ±3%); no abnormal ringing/oscillation.</td>
+</tr>
+<tr>
+<td>CT-PWR-002</td>
+<td>Verify power-up sequencing and control signals</td>
+<td>4–8-ch oscilloscope, logic probe or LA</td>
+<td>Same board; probes on VIN, rails, CARRIER_POWER_ON, MODULE_SHDN_N, PGOODs</td>
+<td>1) Arm scope.<br>2) Apply power or toggle POWER_BTN_N.<br>3) Record timing of rails and control pins.</td>
+<td>Rails ramp in intended order; enables/PGOODs follow design timing; no rail driven before its supply is valid.</td>
+</tr>
+<tr>
+<td>CT-PWR-003</td>
+<td>Check load regulation &amp; max continuous current for each rail</td>
+<td>Electronic load or power resistors, DMM, scope, IR thermometer</td>
+<td>H1 with rails accessible; SOM not fitted</td>
+<td>1) Apply 24 V.<br>2) Load 5 V rail from 0 → rated current; measure V and ripple.<br>3) Repeat for 3.3 V and 1.8 V.</td>
+<td>Voltage within tolerance and ripple below spec across load range; regulators stay within safe temperature; no early current-limit.</td>
+</tr>
+<tr>
+<td>CT-PWR-004</td>
+<td>Verify UVLO / brown-out behaviour</td>
+<td>Programmable PSU, scope on rails &amp; reset/supervisor pins, dummy loads</td>
+<td>H1 with representative loads on each rail</td>
+<td>1) Start at 24 V.<br>2) Decrease VIN slowly into UVLO region.<br>3) Observe rail collapse and reset/supervisor outputs.</td>
+<td>When VIN below threshold, rails shut down cleanly; supervisor drives reset / power-down; no latch-up or uncontrolled states.</td>
+</tr>
+<tr>
+<td>CT-PWR-005</td>
+<td>Verify short-circuit / over-current protection per rail</td>
+<td>Electronic load in short mode, fast DMM or current probe, IR thermometer</td>
+<td>H1 powered at 24 V, each rail accessible</td>
+<td>1) Briefly short each rail output (one at a time).<br>2) Observe current limit and regulator temperature.<br>3) Remove short and monitor recovery.</td>
+<td>Current is limited to safe value; devices stay below rated temperature; rail recovers per regulator spec; no permanent damage.</td>
+</tr>
+<tr>
+<td>CT-PWR-006</td>
+<td>Characterise 24 V bus voltage &amp; current sense paths to supervisor</td>
+<td>Programmable PSU, electronic load, DMM, S32K116 debugger/UART</td>
+<td>H1 with S32K116 powered from 3V3_STBY</td>
+<td>1) Apply several VIN/load combinations.<br>2) Read ADC values via debug/UART.<br>3) Compare calculated V/I vs DMM.</td>
+<td>ADC-derived V/I within specified error (e.g. ±3%); monotonic; no clipping at extremes.</td>
+</tr>
+<tr>
+<td>CT-PWR-007</td>
+<td>Verify 3V3_STBY only powers “always-on” circuitry</td>
+<td>PSU for standby input, DMM, current clamp (optional)</td>
+<td>H1 with only 3V3_STBY powered</td>
+<td>1) Power just 3V3_STBY.<br>2) Measure other rails &amp; leakage current.<br>3) Identify powered ICs.</td>
+<td>Only supervisor/always-on circuits are powered; main DC/DCs and SOM rails remain off; leakage into main rails within spec.</td>
+</tr>
+<tr>
+<td>CT-PWR-008</td>
+<td>Check surge / transient protection on 24 V input (TVS, MOSFET)</td>
+<td>EFT / surge generator (if available), PSU, DMM, scope</td>
+<td>H1 powered via surge generator with 24 V nominal</td>
+<td>1) Apply standard surge pulses (e.g. ±500 V EFT on 24 V line).<br>2) Monitor 24 V bus and downstream rails.</td>
+<td>TVS/MOSFET clamp transients; downstream rails stay within safe voltage; no component damage or latch-up.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="22-usb-c-ports-power-type-c-hardware">2.2 USB-C Ports (Power + Type-C Hardware)<a class="headerlink" href="#22-usb-c-ports-power-type-c-hardware" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Test ID</th>
+<th>Objective</th>
+<th>Tools / Equipment</th>
+<th>Setup</th>
+<th>Steps</th>
+<th>Expected Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CT-USB-001</td>
+<td>Verify VBUS power switching and current limit per USB-C port</td>
+<td>USB-C power meter, programmable load, bench PSU, DMM</td>
+<td>H1 powered; means to assert USB_VBUS_ENx (jumper or simple GPIO pattern)</td>
+<td>1) Connect meter+load to Port 1.<br>2) Enable port.<br>3) Increase load current beyond rating.<br>4) Repeat for Ports 2 &amp; 3.</td>
+<td>VBUS ≈ 5 V ±5% up to rated current; over-current causes AP22615 limit/shutdown with FLG asserted; port &amp; board recover when fault cleared.</td>
+</tr>
+<tr>
+<td>CT-USB-002</td>
+<td>Confirm Type-C role/orientation detection at electrical level</td>
+<td>USB-C host, USB-C device, cables, DMM, simple access to HD3SS3220 status pins</td>
+<td>H1 powered; HD3SS3220 accessible via header/debug</td>
+<td>1) Configure port role per design (DFP/UFP).<br>2) Plug cable in both orientations with host/device.<br>3) Observe CC1/CC2 and status outputs.</td>
+<td>Correct role (source/sink) established; CC termination swaps with orientation; VBUS only enabled when permitted by role; no over-current on CC pins.</td>
+</tr>
+<tr>
+<td>CT-USB-003</td>
+<td>Basic ESD robustness on USB-C shell and pins</td>
+<td>IEC ESD gun ±4 kV contact / ±8 kV air (lab), USB-C dummy plug, scope (for fail symptoms)</td>
+<td>H1 on ESD bench with grounding as per lab practice</td>
+<td>1) Apply ESD strikes to USB-C shell and, with dummy plug, to pins as allowed.<br>2) Check that board still powers and USB-C power switch operates.</td>
+<td>No permanent damage to connectors, TVS, or power switches; after event, VBUS switching still works and no rail is shorted.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="23-csi-camera-power-control-h1-side">2.3 CSI Camera Power &amp; Control (H1 Side)<a class="headerlink" href="#23-csi-camera-power-control-h1-side" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Test ID</th>
+<th>Objective</th>
+<th>Tools / Equipment</th>
+<th>Setup</th>
+<th>Steps</th>
+<th>Expected Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CT-CSI-001</td>
+<td>Verify camera power switches and over-current flags</td>
+<td>Bench PSU, DMM, scope, electronic load / resistor for overload</td>
+<td>H1 powered; camera connectors accessible; no cameras initially</td>
+<td>1) Enable each camera rail via control pin.<br>2) Measure voltage/current.<br>3) Introduce controlled short on one rail and observe AP22615 FLG.</td>
+<td>Rails switch correctly; nominal current within design; short causes AP22615 to limit/shutoff and raise FLG; other rails unaffected; no damage.</td>
+</tr>
+<tr>
+<td>CT-CSI-002</td>
+<td>Verify I²C mux and GPIO expander hardware behaviour</td>
+<td>USB-I²C dongle or basic I²C master, logic probe</td>
+<td>H1 powered; SCL/SDA test header connected to dongle</td>
+<td>1) Scan I²C bus; record addresses.<br>2) Select each mux channel and rescan.<br>3) Read/write GPIO expander registers; verify levels with probe.</td>
+<td>Devices at correct addresses; mux channels expose expected downstream devices; GPIO pins switch/read as expected.</td>
+</tr>
+<tr>
+<td>CT-CSI-005</td>
+<td>Confirm camera rails are off by default at power-up</td>
+<td>Bench PSU, DMM/scope</td>
+<td>H1 with cameras attached</td>
+<td>1) Cold power-up H1.<br>2) Monitor camera enables and rails from 0 → steady state (no SW enable).</td>
+<td>Camera rails remain off (or defined safe) until intentionally enabled; there is no unintended inrush to cameras on reset or initial power-up.</td>
+</tr>
+<tr>
+<td>CT-CSI-006</td>
+<td>Check differential impedance/continuity of CSI pairs</td>
+<td>TDR or VNA (if available), controlled-impedance test fixture</td>
+<td>Unpowered H1; CSI pairs accessible at connectors &amp; SOM edge</td>
+<td>1) Connect TDR to CSI pair.<br>2) Measure characteristic impedance and continuity along route.</td>
+<td>CSI routes have impedance within allowed MIPI tolerance (e.g. 90 Ω ±10% diff); no opens/shorts; connectors correctly pinned.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="24-ethernet-phy-hardware-only">2.4 Ethernet PHY (Hardware Only)<a class="headerlink" href="#24-ethernet-phy-hardware-only" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Test ID</th>
+<th>Objective</th>
+<th>Tools / Equipment</th>
+<th>Setup</th>
+<th>Steps</th>
+<th>Expected Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CT-ETH-001</td>
+<td>Check PHY power rails and reset timing versus datasheet</td>
+<td>Bench PSU, oscilloscope, DMM</td>
+<td>H1 powered; probes on PHY AVDD/DVDD and RESET_N</td>
+<td>1) Apply 24 V.<br>2) Capture rail ramp and RESET_N waveform.</td>
+<td>Rails meet datasheet ramp &amp; sequencing; RESET_N held low until rails valid, then released cleanly; no chatter or brown-out.</td>
+</tr>
+<tr>
+<td>CT-ETH-002</td>
+<td>Verify magnetics isolation and RJ45 connection integrity</td>
+<td>Hi-pot tester (if available), continuity tester</td>
+<td>Unpowered H1; access to RJ45 and PHY side</td>
+<td>1) Perform isolation test across magnetics per datasheet/standard.<br>2) Verify each RJ45 pin maps correctly through magnetics to PHY side.</td>
+<td>Isolation withstands specified voltage; no shorts between isolated domains; RJ45 pin mapping correct.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="25-5g-modem-hardware-interface-power-pcie">2.5 5G Modem Hardware Interface (Power + PCIe)<a class="headerlink" href="#25-5g-modem-hardware-interface-power-pcie" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Test ID</th>
+<th>Objective</th>
+<th>Tools / Equipment</th>
+<th>Setup</th>
+<th>Steps</th>
+<th>Expected Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CT-5G-001</td>
+<td>Verify 5G modem power rails, enable, and basic PCIe link presence</td>
+<td>Bench PSU, DMM, scope on modem supplies/enables, simple PCIe status access</td>
+<td>H1 with modem fitted</td>
+<td>1) Power H1.<br>2) Measure modem supply rails and enable/reset levels.<br>3) Confirm PCIe link-up via controller low-level status.</td>
+<td>Modem rails within spec; enables/resets follow design; PCIe link trains and stays up; no excessive current from modem slot.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="26-wi-fibt-m2-nvme-m2-hardware-interface">2.6 Wi-Fi/BT M.2 &amp; NVMe M.2 Hardware Interface<a class="headerlink" href="#26-wi-fibt-m2-nvme-m2-hardware-interface" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Test ID</th>
+<th>Objective</th>
+<th>Tools / Equipment</th>
+<th>Setup</th>
+<th>Steps</th>
+<th>Expected Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CT-PCIE-001</td>
+<td>Verify PCIe electrical link to Wi-Fi and NVMe modules</td>
+<td>Bench PSU, low-level PCIe status tool (BIST on SoM or external tester), DMM</td>
+<td>H1 with Wi-Fi card &amp; NVMe SSD fitted</td>
+<td>1) Power H1.<br>2) Query PCIe controller link status for both devices (speed/width, link-up flag).</td>
+<td>Each slot trains to intended PCIe generation/lane width; no repeated link flaps; slot 3.3 V rails within spec.</td>
+</tr>
+<tr>
+<td>CT-PCIE-002</td>
+<td>Basic SI check on PCIe lanes</td>
+<td>High-bandwidth scope + differential probes or PCIe BERT (optional)</td>
+<td>Powered H1; access to debug pads on PCIe lanes</td>
+<td>1) Run known PCIe PRBS/BERT pattern.<br>2) Capture eye or BER.</td>
+<td>Eye opening / BER within acceptable limits as per speed; no major reflections due to layout issues.</td>
+</tr>
+<tr>
+<td>CT-NVME-001</td>
+<td>Check NVMe power delivery and connector integrity</td>
+<td>Current probe on NVMe 3.3 V rail, DMM, IR thermometer</td>
+<td>H1 with SSD; simple R/W activity pattern</td>
+<td>1) Power H1.<br>2) Measure idle NVMe current and connector temperature.<br>3) Apply moderate R/W activity and monitor peak current/temperature.</td>
+<td>NVMe 3.3 V rail stays within tolerance; peak current within regulator capacity; connector temperature acceptable; no intermittent contact.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="27-can-interface-electrical-transceiver">2.7 CAN Interface (Electrical &amp; Transceiver)<a class="headerlink" href="#27-can-interface-electrical-transceiver" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Test ID</th>
+<th>Objective</th>
+<th>Tools / Equipment</th>
+<th>Setup</th>
+<th>Steps</th>
+<th>Expected Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CT-CAN-001</td>
+<td>Validate CAN transceiver basic electrical operation</td>
+<td>CAN analyser or second CAN node, 120 Ω termination</td>
+<td>H1 CAN port connected to analyser/peer</td>
+<td>1) Configure bus bitrate.<br>2) Transmit fixed frames from H1 and peer.</td>
+<td>Frames seen correctly at both ends; dominant/recessive levels meet spec; error counters low.</td>
+</tr>
+<tr>
+<td>CT-CAN-002</td>
+<td>Check CAN error handling and bus-off recovery (transceiver side)</td>
+<td>Same as above</td>
+<td>Same as CT-CAN-001</td>
+<td>1) Briefly short CANH or CANL to GND while traffic running.<br>2) Observe analyser status.<br>3) Remove fault.</td>
+<td>Node enters error-passive/bus-off, then recovers after fault removal; no transceiver damage.</td>
+</tr>
+<tr>
+<td>CT-CAN-003</td>
+<td>Verify termination / common-mode choke wiring</td>
+<td>DMM, continuity tester</td>
+<td>Unpowered H1; CAN connector &amp; transceiver pins</td>
+<td>1) Measure resistance between CANH/CANL and between lines &amp; GND.<br>2) Trace through common-mode chokes &amp; termination parts.</td>
+<td>Measured termination matches design (e.g. 60–120 Ω total); chokes correctly inserted; no shorts to GND/VCC.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="28-fan-drive-circuit">2.8 Fan Drive Circuit<a class="headerlink" href="#28-fan-drive-circuit" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Test ID</th>
+<th>Objective</th>
+<th>Tools / Equipment</th>
+<th>Setup</th>
+<th>Steps</th>
+<th>Expected Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CT-FAN-001</td>
+<td>Correlate PWM duty cycle with fan RPM (hardware path)</td>
+<td>PWM source (micro or signal generator), tachometer or scope on tach output</td>
+<td>Fan connected to H1 fan header</td>
+<td>1) Drive PWM at 0/25/50/75/100%.<br>2) Measure fan RPM or tach period at each duty.</td>
+<td>RPM increases monotonically with duty; no stall at minimum specified duty; tach output clean and at expected frequency.</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="29-supervisor-mcu-safety-outputs">2.9 Supervisor MCU &amp; Safety Outputs<a class="headerlink" href="#29-supervisor-mcu-safety-outputs" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Test ID</th>
+<th>Objective</th>
+<th>Tools / Equipment</th>
+<th>Setup</th>
+<th>Steps</th>
+<th>Expected Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CT-SAF-001</td>
+<td>Confirm S32K116 boots and can toggle all safety-related pins</td>
+<td>Bench PSU for 3V3_STBY, simple test firmware, logic analyser / probe</td>
+<td>H1 powered in standby-only mode</td>
+<td>1) Power 3V3_STBY.<br>2) Run test firmware that toggles each safety output &amp; indicator LED.</td>
+<td>MCU always starts on power-up; all safety pins switch between valid logic levels; no stuck/shorted outputs.</td>
+</tr>
+<tr>
+<td>CT-SAF-002</td>
+<td>Validate ADC channels for 24 V and current sense</td>
+<td>Programmable VIN, electronic load, DMM, S32K116 debugger/UART</td>
+<td>H1 with full power path connected, S32K116 sampling ADCs</td>
+<td>1) Apply several VIN/load combos.<br>2) Read ADC codes and convert.<br>3) Compare to DMM.</td>
+<td>ADC readings match real voltage/current within allowed error; monotonic; no clipping.</td>
+</tr>
+<tr>
+<td>CT-SAF-004</td>
+<td>Verify E-stop input correctly forces safe output levels</td>
+<td>E-stop switch, logic analyser, dummy loads on Robot_Enable/STO lines</td>
+<td>H1 powered; supervisor in simple “enabled” state</td>
+<td>1) Set safety outputs to “enable”.<br>2) Operate E-stop.<br>3) Observe change on Robot_Enable/STO pins.</td>
+<td>Within defined reaction time, all drive-enable/Robot_Enable lines go to safe disabled level and stay there until reset/power-cycle.</td>
+</tr>
+<tr>
+<td>CT-SAF-005</td>
+<td>Check mapping of safety modes to external connector levels</td>
+<td>Supervisor in test-mode firmware, logic analyser or DMM on H2/H3/H4 safety pins</td>
+<td>H1 powered; access to safety pins at connectors</td>
+<td>1) Command each defined mode (Normal, STO, etc.).<br>2) Record voltage levels on all safety lines.</td>
+<td>For each mode, observed levels match safety truth-table; no undefined or conflicting states.</td>
+</tr>
+<tr>
+<td>CT-SAF-006</td>
+<td>Ensure 24 V brown-out forces safe outputs</td>
+<td>Programmable PSU, analyser on safety lines, moderate load</td>
+<td>H1 running supervisor with safety outputs in enable state</td>
+<td>1) Slowly reduce VIN into brown-out region.<br>2) Observe safety lines &amp; reset.</td>
+<td>As VIN falls below threshold, supervisor drives all safety outputs to safe state before logic destabilises; no chatter on lines.</td>
+</tr>
+<tr>
+<td>CT-SAF-007</td>
+<td>Robustness to short-to-battery / short-to-ground on safety lines</td>
+<td>DMM, current-limited fault injection (resistors or current source)</td>
+<td>Unpowered H1 initially; then powered</td>
+<td>1) Individually short each safety output to GND via resistor; repeat to 24 V (through series resistor).<br>2) Power board and observe current and device behaviour.</td>
+<td>Safety drivers tolerate expected fault currents or fail-safe (e.g. open-circuit) without damaging other circuitry; current limited as per design.</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

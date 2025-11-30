@@ -1,0 +1,1611 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="8_1_FMEA.html">
+      
+      
+        <link rel="next" href="8_1_2_Safety_Supervisor_Concept_DFMEA.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>8.1.1. Carrier Board DFMEA - VoltEdge H1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#h1-carrier-design-fmea" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-header__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VoltEdge H1 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              8.1.1. Carrier Board DFMEA
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-nav__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VoltEdge H1 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_Product_Requirments_Document.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Requirments Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_Requirements_Specification.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Requirements Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_System_Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. System Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Hardware_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Hardware Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Power_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Power Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Safety_and_Failsafe_Concept.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Safety and Failsafe Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_Interfaces_and_Connectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Interfaces and Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Design Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8. Design Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1. FMEA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8.1. FMEA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_FMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. FMEA Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="8_1_1_Carrier_DFMEA_%28Implemented%29.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. Carrier Board DFMEA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_2_Safety_Supervisor_Concept_DFMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Safety Supervisor Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_3_Rating_Scales.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Rating Scales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_2_Worst_Case_Analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2. Worst Case Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_3_Mean_Time_Between_Failure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3. Reliability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_4_DesignAnalysis_Tolerance_Stackup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4. Tolerance Stackup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Test Plan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    9. Test Plan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_1_High_level_summary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1. High level summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_2_Component_Test_Plan%28bySchematicBlock%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2. Component Test Plan(bySchematicBlock)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_3_Module_Test_Plan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3. Module Test Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="h1-carrier-design-fmea">H1 Carrier Design FMEA<a class="headerlink" href="#h1-carrier-design-fmea" title="Permanent link">&para;</a></h1>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Module</th>
+<th>Item</th>
+<th>Function</th>
+<th>Potential Failure Mode</th>
+<th>Effects of Failure</th>
+<th>Severity</th>
+<th>Causes</th>
+<th>Occurrence</th>
+<th>Current Design Controls – Prevention</th>
+<th>Current Design Controls – Detection</th>
+<th>Detection</th>
+<th>RPN</th>
+<th>Recommended Actions</th>
+<th>Owner</th>
+<th>Date Due</th>
+<th>Action Results</th>
+<th>Date Completed</th>
+<th>Severity (Post)</th>
+<th>Occurrence (Post)</th>
+<th>Detection (Post)</th>
+<th>RPN (Post)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#</td>
+<td>Product Module</td>
+<td>Product component or part</td>
+<td>Primary function</td>
+<td>How could the system / item / process potentially fail?</td>
+<td>Consequential impact on other systems, departments, etc.</td>
+<td></td>
+<td>All contributing factors</td>
+<td></td>
+<td>Prevention</td>
+<td>Detection</td>
+<td></td>
+<td>Risk Priority Number</td>
+<td>Steps required to reduce severity, occurrence, and detection</td>
+<td>Organization, team, or individual responsible</td>
+<td>Target date of completion</td>
+<td>Actions taken</td>
+<td>Actual date of completion</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Risk Priority Number</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Power</td>
+<td>BLK-PWR-24V: PowerHandling.kicad_sch – 24 V input protection (TVS + reverse MOSFET)</td>
+<td>Protect H1 from reverse polarity &amp; surges</td>
+<td>Protection device open / not functioning</td>
+<td>Board exposed directly to reverse polarity or surge → damage to buck regulators, SOM, connectors; robot down, may fail dangerously if partial damage</td>
+<td>9</td>
+<td>Component ageing, solder crack, wrong part value</td>
+<td>3</td>
+<td>Use automotive-grade TVS &amp; MOSFET, sized and derated; correct orientation; layout per datasheet</td>
+<td>Visual inspection, ICT continuity on key nets; bring-up surge / reverse test in lab</td>
+<td>7</td>
+<td>189</td>
+<td>Add input fuse or polyfuse F1 in PowerHandling.kicad_sch on 24V_IN; explicitly include reverse/over-voltage test in validation; add assembly note for orientation and footprint checks referencing BLK-PWR-24V and the corresponding connector JH4_24V.</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Power</td>
+<td>BLK-PWR-5V: PowerHandling.kicad_sch – 5 V buck regulator (SIC431)</td>
+<td>Provide regulated 5 V to Jetson &amp; peripherals</td>
+<td>High-side FET short → 24 V appears on 5 V rail</td>
+<td>Over-voltage destroys Jetson, USB, NVMe etc → loss of control/communication, possible unpredictable robot behaviour</td>
+<td>10</td>
+<td>MOSFET failure, lightning / surge, design margin too low</td>
+<td>2</td>
+<td>Proper derating of regulator &amp; MOSFET; snubbers; good layout; input fuse</td>
+<td>Currently no dedicated 5 V OVP; only downstream device protection</td>
+<td>9</td>
+<td>180</td>
+<td>In PowerHandling.kicad_sch add crowbar / OVP IC or fast fuse on +5V_MAIN; add 5 V monitor (ADC_5V or PG_5V) into S32K116_ADC_MON.sch; update safety doc so that on 5 V out-of-range S32K116 commands STO &amp; logs fault (BLK-PWR-5V, BLK-SUP-ADC24)</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Power</td>
+<td>BLK-PWR-3V3S: PowerHandling.kicad_sch – 3V3_STBY LDO</td>
+<td>Supply always-on supervisor &amp; safety logic</td>
+<td>Output stuck low or out of spec</td>
+<td>S32K116 off or unstable while H1 may still try to power Jetson/H2/H3 → loss of supervision</td>
+<td>9</td>
+<td>LDO failure, overload, overheating</td>
+<td>3</td>
+<td>LDO derating, decoupling, current limit</td>
+<td>No direct monitoring of 3V3_STBY aside from MCU boot/no-boot</td>
+<td>6</td>
+<td>162</td>
+<td>Make “+3V3_STBY good” a pre-condition for enabling Jetson/H2/H3 (gating in S32K116_JETSON_IF.sch / S32K116_H2_CTRL.sch); add TP_3V3_STBY and optional ADC_3V3_STBY in S32K116_ADC_MON.sch; include power-cycle robustness tests in validation.</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Power</td>
+<td>BLK-PWR-24V: PowerHandling.kicad_sch – 24 V connector &amp; cabling (JH4_24V)</td>
+<td>Deliver stable 24 V to power tree</td>
+<td>Intermittent contact / brown-out</td>
+<td>Fast rail drops → random resets of H1/H2/H3; may lead to uncontrolled stop or strange behaviour if H3 not designed for it</td>
+<td>8</td>
+<td>Loose connector, vibration, cable strain</td>
+<td>5</td>
+<td>Locking connector, strain relief, design review</td>
+<td>Supervisor will monitor 24 V via ADC; buck UVLO thresholds</td>
+<td>6</td>
+<td>240</td>
+<td>In system safety concept define behaviour on 24 V brown-out (H3 default STO on lost H1 heartbeat); add brown-out tests with controlled dips at JH4_24V; recommend cable retention hardware and document this under BLK-PWR-24V in design review.</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Power</td>
+<td>BLK-PWR-3V3: PowerHandling.kicad_sch – 3V3 main buck U6 (SIC431) + inductor L2/L3</td>
+<td>Provide 3.3 V @ high current to Jetson &amp; peripherals</td>
+<td>High-side FET short or feedback open → 3.3 V over-voltage</td>
+<td>Over-voltage can damage Jetson SOM, Ethernet PHY, Wi-Fi, NVMe etc → loss of H1 and comms; robot stops</td>
+<td>10</td>
+<td>MOSFET/IC failure, wrong feedback resistor value, solder short, lightning / surge</td>
+<td>2</td>
+<td>Proper derating of inductor, MOSFET &amp; diode; correct FB resistor values; surge suppression at 24 V input</td>
+<td>No dedicated OVP; only downstream device protections and general functional tests</td>
+<td>9</td>
+<td>180</td>
+<td>Add hardware OVP on 3V3 (crowbar or supervisor IC) tied to 3V3 rail; route 3V3 monitor to supervisor ADC on S32K116 board; add validation test sweeping load and verifying 3V3 stays within tolerance.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Power</td>
+<td>BLK-PWR-1V8: PowerHandling.kicad_sch – 1V8 LDO U8 (TPS7A05)</td>
+<td>Provide 1.8 V for CSI / logic</td>
+<td>LDO output low or noisy</td>
+<td>CSI IO, I²C buffers or SoM interfaces unstable → intermittent camera failures or boot issues</td>
+<td>8</td>
+<td>LDO overheating due to excess load, wrong output cap, short to GND</td>
+<td>3</td>
+<td>Use recommended output capacitor and derating; keep 1V8 track short; protect against shorts</td>
+<td>Basic power-on voltage check on prototype boards</td>
+<td>5</td>
+<td>120</td>
+<td>Add 1V8 testpoint; in production, check 1V8 level and ripple under load; consider over-current protection or resettable fuse if multiple loads are added later.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Power</td>
+<td>BLK-PWR-VIN: PowerHandling.kicad_sch – 24 V → VIN_SOM buck (XL4015, L1)</td>
+<td>Generate VIN_SOM (~18–19 V) for Jetson power tree</td>
+<td>Buck output over-voltage (FET short, FB open) → VIN_SOM too high</td>
+<td>Over-voltage stresses Jetson on-module regulators and other VIN_SOM loads → possible SOM damage, sudden stop, board replacement needed</td>
+<td>10</td>
+<td>MOSFET/IC failure, feedback resistor open, solder bridge, surge</td>
+<td>2</td>
+<td>XL4015 and inductor derated; layout roughly per datasheet; 24 V input protected by TVS/MOSFET</td>
+<td>Prototype bring-up measures VIN_SOM under load; no continuous monitoring</td>
+<td>8</td>
+<td>160</td>
+<td>Add VIN_SOM monitor (ADC_VIN_SOM) to supervisor board, with UV/OV thresholds; consider simple OVP (TVS or zener clamp) on VIN_SOM; include validation tests sweeping load and verifying VIN_SOM limits for BLK-PWR-VIN.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>CSI</td>
+<td>BLK-CSI-PWR: CSI.kicad_sch – Camera 3V3/5V load switches U11–U14 (AP22615)</td>
+<td>Supply and power-cycle front cameras</td>
+<td>Load switch stuck OFF (no output)</td>
+<td>One or more CSI cameras never power up → loss of image streams, degraded perception; robot may have to run in reduced capability</td>
+<td>8</td>
+<td>FET or IC internal failure, EN pin not soldered, overload causing latch-off</td>
+<td>3</td>
+<td>Use AP22615 with adequate derating; decoupling and soft-start; clear labeling of CSIA_3V3/CSIA_5V nets</td>
+<td>Bring-up test: verify camera 3V3/5V rails at J7/J8; system-level check that all cameras enumerate</td>
+<td>5</td>
+<td>120</td>
+<td>Add testpoints on each camera power rail; add production test to toggle each EN pin and measure current; add small status LED (already partly present) or read FLG pins into debug header for easier diagnostics.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>9</td>
+<td>CSI</td>
+<td>BLK-CSI-I2C: CSI.kicad_sch – I²C mux U9 (PI4MSD5V9548A) &amp; GPIO expander U10 (PCAL6408A)</td>
+<td>Route camera control I²C and GPIOs</td>
+<td>I²C mux channel stuck or open (e.g., output SDx/SCx not switching)</td>
+<td>A subset of cameras cannot be configured or read; image missing or wrong exposure; system may run with reduced field of view</td>
+<td>7</td>
+<td>Internal IC failure, power-supply pin not soldered, address pins wrong, pull-ups missing</td>
+<td>3</td>
+<td>Use proper pull-ups on all I²C lines; adhere to supply sequencing; ESD protection on external connectors</td>
+<td>Functional test with each camera: verify I²C ACKs from each address path; board-level I²C scan during production</td>
+<td>6</td>
+<td>126</td>
+<td>Add test header for shared I²C; specify production script that exercises all mux channels and GPIO lines; consider adding weak pull-ups near connectors to reduce risk of bus stuck-low.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>10</td>
+<td>CSI</td>
+<td>BLK-CSI-ROUTING: CSI.kicad_sch – CSI 0-Ω resistor arrays (R46, R49, R53, R67, R69, R72, R78, etc.)</td>
+<td>Configure CSI lane mapping and options</td>
+<td>Wrong population of 0-Ω options → mis-routed CSI pairs</td>
+<td>Cameras show no image, swapped lanes, or link instability; may require board rework</td>
+<td>6</td>
+<td>Assembly error (wrong array stuffed), rework mistake, documentation ambiguity</td>
+<td>3</td>
+<td>Clear BoM notes for which links are “DNP” vs “fitted”; silkscreen labels around resistor arrays</td>
+<td>Visual inspection; bring-up test of each CSI configuration (J7/J8); high-speed eye-check in lab for one board</td>
+<td>6</td>
+<td>108</td>
+<td>Freeze a single validated CSI configuration in BoM (one lane map); mark alternative option resistors as DNP and keep them unpopulated; add photo or assembly drawing showing correct stuffing.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Ethernet</td>
+<td>BLK-ETH-PHY: EthernetIf.kicad_sch – KSZ9031 PHY U19 + RJ45 J7 + magnetics</td>
+<td>Provide gigabit Ethernet link</td>
+<td>Wrong termination / bias or missing magnetics reference → link unstable or EMI issues</td>
+<td>Unreliable Ethernet, packet loss, regulatory EMI failures; may affect remote control and logging</td>
+<td>6</td>
+<td>Wrong resistor values, layout not following PHY datasheet, missing chassis/earth connection</td>
+<td>3</td>
+<td>Follow KSZ9031 reference design; use magnetics module with integrated terminations; ESD protection D12</td>
+<td>Link-up indication via LEDs; prototype SI/EMI testing</td>
+<td>6</td>
+<td>108</td>
+<td>Review layout vs vendor reference; simulate or measure impedance; add common-mode chokes if needed; include Ethernet stress/EMI tests in validation; document chassis-ground strategy in design notes.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Ethernet</td>
+<td>BLK-ETH: EthernetIf.kicad_sch – Ethernet PHY + cable</td>
+<td>Provide wired comms / remote control</td>
+<td>Link lost (unplug, PHY failure)</td>
+<td>Loss of remote control / logging; robot should fall back to local safe control</td>
+<td>5</td>
+<td>Cable pulled, connector wear, ESD, water ingress</td>
+<td>7</td>
+<td>Use magnetics, ESD; quality connector</td>
+<td>Link status LEDs, Jetson network stack detect link-down</td>
+<td>2</td>
+<td>70</td>
+<td>In system behaviour spec state that if Ethernet (BLK-ETH) is primary control path and link lost, H3 must stop or go to low-risk mode; add soak test with repeated plug/unplug under load and log behaviour.</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>5G Modem</td>
+<td>BLK-5G-MODEM-PWR: EthernetIf.kicad_sch – RG520N modem VBAT rails (VBAT_BB, VBAT_RF1/2)</td>
+<td>Supply 5G modem module</td>
+<td>Short on modem VBAT or incorrect decoupling → heavy current draw, 3V8/24 V droop</td>
+<td>Power rail collapse resetting Jetson or whole H1; modem may overheat</td>
+<td>8</td>
+<td>Solder bridge, wrong modem footprint, decoupling cap short, mechanical damage</td>
+<td>3</td>
+<td>Use correct connector footprint; adequate trace width; bulk capacitance near modem</td>
+<td>Thermal behaviour checked on proto; modem current roughly monitored during bring-up</td>
+<td>5</td>
+<td>120</td>
+<td>Add resettable fuse / dedicated power switch on modem VBAT; provide sense resistor or current-monitor test point; include modem on/off cycling and over-current test in board validation.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>5G Modem</td>
+<td>BLK-5G-SIM: EthernetIf.kicad_sch – SIM socket for RG520N modem</td>
+<td>Provide SIM interface for 5G registration</td>
+<td>Poor SIM contact, wrong orientation, bent pins</td>
+<td>5G modem cannot register to network; cloud connectivity unavailable; robot still works locally but loses remote features / OTA logging</td>
+<td>5</td>
+<td>Wear of spring contacts, contamination, user insertion error</td>
+<td>4</td>
+<td>Use proven SIM socket; clear polarity marking; keep away from dust / contamination sources</td>
+<td>Loss of network seen during commissioning; modem AT commands show “no SIM”</td>
+<td>5</td>
+<td>100</td>
+<td>Add commissioning test that verifies SIM detection and network attach; consider SIM tray with better retention for mobile environment; document cleaning / replacement procedure for BLK-5G-SIM in maintenance guide.</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>15</td>
+<td>WiFi</td>
+<td>BLK-WIFI-M2: WifiIf.kicad_sch – M.2 Key-E Wi-Fi module J9</td>
+<td>Provide Wi-Fi / BT connectivity</td>
+<td>Module short on 3V3 or RF pins</td>
+<td>Local overheating, 3V3 drop; Jetson resets, Wi-Fi unavailable</td>
+<td>7</td>
+<td>Damaged module, insertion at angle, debris in connector</td>
+<td>3</td>
+<td>Use keyed M2 connector; place keep-out around antenna area; follow layout rules for 3V3 plane</td>
+<td>Visual inspection; functional Wi-Fi/BT test during bring-up</td>
+<td>5</td>
+<td>105</td>
+<td>Add 3V3_M2 sense resistor or polyfuse; define in test plan: check 3V3 current with/without module; recommend mechanical support or standoff to reduce flexing.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td>WiFi</td>
+<td>BLK-NVME-M2: WifiIf.kicad_sch – M.2 Key-M NVMe SSD J10</td>
+<td>Provide NVMe storage via PCIe</td>
+<td>NVMe module over-current or connector short on 3V3</td>
+<td>3V3 droop, Jetson brown-out or reboot; data loss; NVMe unavailable</td>
+<td>7</td>
+<td>Damaged SSD, poor insertion, solder bridge at connector</td>
+<td>3</td>
+<td>Use rated connector; correct 3V3 trace width and decoupling; observe PCIe layout rules</td>
+<td>Functional boot/throughput test with SSD</td>
+<td>5</td>
+<td>105</td>
+<td>Add resettable fuse or current-limit switch in 3V3_NVM path; add testpoint for NVMe 3V3; include hot-plug / stress test of SSD in validation plan.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>17</td>
+<td>WiFi</td>
+<td>BLK-CAN: WifiIf.kicad_sch – TJA1042 CAN transceiver U21 + connector</td>
+<td>Provide CAN diagnostics/expansion bus</td>
+<td>CANH/CANL shorted or transceiver latch-up</td>
+<td>CAN bus inoperative; possible heating at U21; external modules not reachable</td>
+<td>7</td>
+<td>Wiring fault, external short, ESD, incorrect termination</td>
+<td>4</td>
+<td>Use automotive transceiver (TJA1042); series protection / TVS; 120 Ω termination as required</td>
+<td>Visual check of CAN wiring; basic CAN communication test</td>
+<td>5</td>
+<td>140</td>
+<td>Add TVS or common-mode choke if not already; add simple “CAN bus health” board test (loopback or external node); consider small PTC in CAN supply if many external nodes are used.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>18</td>
+<td>USB - 3.2</td>
+<td>BLK-USB-C12-VBUS: UsbIf.kicad_sch – USB-C1/2 VBUS path (U25/U30, Q11/Q12, R1xx)</td>
+<td>Provide 5 V VBUS to USB-C ports 1 &amp; 2</td>
+<td>Short of VBUS to GND at connector or FET stuck fully ON with no current limit</td>
+<td>Over-current can trip upstream supply, cause local heating or 5 V collapse → Jetson or peripherals reset</td>
+<td>8</td>
+<td>Damaged cable, debris in connector, MOSFET failure, AP22615 failure</td>
+<td>3</td>
+<td>Use AP22615 current-limited switch; adequate copper for heat; ESD protection; connector with shell tied to GND</td>
+<td>Limited by AP22615 flag pin (FLG), basic USB device enumeration test</td>
+<td>5</td>
+<td>120</td>
+<td>Ensure FLG pins are accessible (test pad or MCU input on future rev); add requirement for production test with controlled short on VBUS to verify protection; consider resettable fuse upstream of common 5 V rail.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>19</td>
+<td>USB - 3.2</td>
+<td>BLK-USB-C-CC: UsbIf.kicad_sch &amp; USB_C_If.kicad_sch – CC resistors &amp; HD3SS3220 config pins</td>
+<td>Negotiate USB-C role/current and orientation</td>
+<td>Wrong CC resistor population or ADDR/CURRENT_MODE pin strapping → wrong advertised role/current</td>
+<td>Port may never enter host mode, or may advertise too much current; some devices won’t enumerate or may overload cable/partner</td>
+<td>5</td>
+<td>Assembly error (wrong R values or DNP), mis-interpretation of datasheet</td>
+<td>3</td>
+<td>Schematic uses standard values (10 kΩ, 200 kΩ, 887 kΩ etc.) for current and address settings; notes near network</td>
+<td>Only caught during functional testing with various USB-C devices; no automatic check</td>
+<td>6</td>
+<td>90</td>
+<td>Lock down one intended role (DFP or DRP) per port in BoM; mark alternative option resistors as DNP; add small table in assembly docs mapping each resistor to function; during validation, test with both high-power sink and typical USB devices.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>20</td>
+<td>USB - 3.2</td>
+<td>BLK-USB-C-HS: UsbIf.kicad_sch &amp; USB_C_If.kicad_sch – SuperSpeed pairs &amp; ESD arrays (TPD4E05)</td>
+<td>Maintain USB2/USB3 signal integrity and ESD protection</td>
+<td>Incorrect routing/length-matching or wrong ESD placement → high error rate or link down</td>
+<td>Certain USB-C devices show unstable data transfer, link drops to USB2, or fails compliance tests</td>
+<td>5</td>
+<td>Skew or impedance mismatch in routing, ESD array placed in stub, using non-USB-rated ESD</td>
+<td>3</td>
+<td>Differential pairs length-matched per guidelines; USB-rated TPD4E05 devices; controlled-impedance stack-up</td>
+<td>Lab validation with USB3 eye diagram on at least one prototype; user field feedback</td>
+<td>7</td>
+<td>105</td>
+<td>Review routing vs USB-IF guidelines; keep ESD very close to connector, minimize stubs; include USB3 signal-integrity test (eye + BER) in validation; if issues seen, derate port to USB2 in RFP documentation as limitation.</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>21</td>
+<td>USB - 3.2</td>
+<td>BLK-USB-DEBUG: UsbIf.kicad_sch – Debug / recovery USB 2.0 port</td>
+<td>Provide USB device/host for flashing &amp; console access</td>
+<td>VBUS shorted to GND at connector or cable; ESD damage to USB transceiver</td>
+<td>Local heating at connector, 5 V rail droop; may reset Jetson or cause USB port to be permanently dead; flashing / debug not available</td>
+<td>6</td>
+<td>Damaged cable, metallic debris, connector wear, ESD strike</td>
+<td>3</td>
+<td>Use connector with robust shell &amp; proper mounting; series PTC or current-limited switch; ESD array on D+/D− and VBUS</td>
+<td>Visual inspection; simple “USB device enumerates” check during bring-up</td>
+<td>5</td>
+<td>90</td>
+<td>Add resettable fuse on debug VBUS if not present; add a short-circuit test on VBUS during validation to prove protection; mark port as “debug only – not for field use” in docs if current limiting is minimal (BLK-USB-DEBUG).</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Connections / Interfaces</td>
+<td>BLK-JETSON-CONN: H1_Jetson_AGX_Orin_SOM.kicad_sch – Jetson SOM board-to-board connector</td>
+<td>Provide all power &amp; signals between SOM and carrier</td>
+<td>Intermittent contact / bent pins on SOM connector</td>
+<td>Random resets, missing interfaces (CSI, PCIe, USB), hard-to-reproduce field failures; robot repeatedly restarts or certain ports are dead</td>
+<td>8</td>
+<td>Connector wear, mis-insertion, poor solder fillets, board flex</td>
+<td>4</td>
+<td>Use approved high-reliability connectors; mechanical stiffeners; enforce insertion instructions; keep large cut-outs/slots away to reduce board flex</td>
+<td>Visual inspection on production; functional test with SOM installed</td>
+<td>6</td>
+<td>192</td>
+<td>Add mechanical support (standoffs, screws) close to SOM; specify insertion / removal limit cycles; include vibration test and thermal-cycle test while monitoring Jetson stability (BLK-JETSON-CONN).</td>
+<td></td>
+<td>TBD</td>
+<td>TBD</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>23</td>
+<td>Connections / Interfaces</td>
+<td>BLK-JETSON-THERMAL: H1_Jetson_AGX_Orin_SOM.kicad_sch – Heatsink &amp; fan header</td>
+<td>Remove heat from Jetson SOM</td>
+<td>Heatsink / fan not fitted correctly, fan connector open, blocked airflow</td>
+<td>Jetson overheats → thermal throttling, resets, long-term reliability reduction; robot may pause frequently or reboot under high compute load</td>
+<td>8</td>
+<td>Heatsink mis-assembly, bad thermal pad, fan failure, dust buildup</td>
+<td>3</td>
+<td>Follow NVIDIA mechanical guide; specify torque and TIM; use quality fan; keep vents unobstructed</td>
+<td>Jetson on-die temperature sensors visible in diagnostics; thermal issues seen only in stress testing</td>
+<td>6</td>
+<td>144</td>
+<td>Add requirement for thermal-stress test (max CPU/GPU load, worst-case ambient) and record temperature vs time; consider fan tach feedback to Jetson/S32K116 on future rev; document heatsink assembly procedure linked to BLK-JETSON-THERMAL.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>24</td>
+<td>Connections / Interfaces</td>
+<td>BLK-H2-CONN: H1_Jetson_AGX_Orin_SOM.kicad_sch – High-speed connector to H2</td>
+<td>Provide high-bandwidth link to H2 (sensory/perception)</td>
+<td>Open, short, or swapped differential pair on H2 high-speed interface</td>
+<td>H2 board not detected or link unstable → loss of perception / sensors; robot falls back to reduced or no autonomous behaviour</td>
+<td>7</td>
+<td>Assembly damage, connector not fully seated, routing / pin-out error</td>
+<td>4</td>
+<td>Use keyed connector; follow length-match/impedance rules; verify schematic pin-out vs H2; add strain relief for harness</td>
+<td>Bring-up functional test verifying H2 link bandwidth; basic link-up LED/status</td>
+<td>5</td>
+<td>140</td>
+<td>Add continuity / impedance test on critical pairs for first articles; in system test, exercise full-bandwidth traffic with motion and log for errors; document connector type and pin-out under BLK-H2-CONN for future revisions.</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>25</td>
+<td>Connections / Interfaces</td>
+<td>BLK-H3-CONN: H1_Jetson_AGX_Orin_SOM.kicad_sch – High-speed connector to H3</td>
+<td>Provide command / feedback data path to H3 controller</td>
+<td>TX/RX lines open, short, or cross-connected</td>
+<td>Jetson cannot send trajectories or receive feedback; H3 should fall back to local mode, but overall robot capability degraded; operator may see frequent faults</td>
+<td>9</td>
+<td>Harness damage, connector mis-mating, pin-out mistake</td>
+<td>4</td>
+<td>Keyed connector; clear silkscreen orientation; mechanical strain relief; follow interface standard (e.g. Ethernet/CAN/PCIe mapping)</td>
+<td>Link-status LEDs or H3 diagnostics show link loss; heartbeat from H3 monitored</td>
+<td>4</td>
+<td>144</td>
+<td>Define and test behaviour on H1↔H3 link loss (e.g. H3 uses safe default commands); add production test to verify each lane/pair continuity; consider adding small test pads for probing critical H3 interface nets (BLK-H3-CONN).</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

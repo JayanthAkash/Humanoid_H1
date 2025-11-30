@@ -1,0 +1,1369 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="6_Safety_and_Failsafe_Concept.html">
+      
+      
+        <link rel="next" href="8_1_FMEA.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>7. Interfaces and Connectors - VoltEdge H1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#7-interfaces-connectors" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-header__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VoltEdge H1 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              7. Interfaces and Connectors
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-nav__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VoltEdge H1 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_Product_Requirments_Document.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Requirments Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_Requirements_Specification.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Requirements Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_System_Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. System Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4_Hardware_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Hardware Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Power_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Power Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Safety_and_Failsafe_Concept.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Safety and Failsafe Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Interfaces and Connectors
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="7_Interfaces_and_Connectors.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Interfaces and Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#7-interfaces-connectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Interfaces &amp; Connectors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Interfaces &amp; Connectors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-interface-summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Interface Summary Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-connector-to-h2-sensory-perception-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Connector to H2 – Sensory &amp; Perception Unit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-connector-to-h3-mobility-manipulation-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Connector to H3 – Mobility &amp; Manipulation Controller
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-connector-to-h4-power-management-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Connector to H4 – Power Management Unit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-external-rf-network-interfaces-wi-fibt-5g-ethernet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 External RF &amp; Network Interfaces (Wi-Fi/BT, 5G, Ethernet)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-debug-manufacturing-interfaces-jtagswd-uart-test-pads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 Debug &amp; Manufacturing Interfaces (JTAG/SWD, UART, Test Pads)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Design Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8. Design Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1. FMEA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8.1. FMEA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_FMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. FMEA Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_1_Carrier_DFMEA_%28Implemented%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. Carrier Board DFMEA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_2_Safety_Supervisor_Concept_DFMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Safety Supervisor Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_3_Rating_Scales.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Rating Scales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_2_Worst_Case_Analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2. Worst Case Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_3_Mean_Time_Between_Failure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3. Reliability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_4_DesignAnalysis_Tolerance_Stackup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4. Tolerance Stackup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Test Plan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    9. Test Plan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_1_High_level_summary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1. High level summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_2_Component_Test_Plan%28bySchematicBlock%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2. Component Test Plan(bySchematicBlock)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_3_Module_Test_Plan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3. Module Test Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#7-interfaces-connectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Interfaces &amp; Connectors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. Interfaces &amp; Connectors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-interface-summary-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 Interface Summary Table
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72-connector-to-h2-sensory-perception-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2 Connector to H2 – Sensory &amp; Perception Unit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#73-connector-to-h3-mobility-manipulation-controller" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3 Connector to H3 – Mobility &amp; Manipulation Controller
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#74-connector-to-h4-power-management-unit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4 Connector to H4 – Power Management Unit
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#75-external-rf-network-interfaces-wi-fibt-5g-ethernet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.5 External RF &amp; Network Interfaces (Wi-Fi/BT, 5G, Ethernet)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#76-debug-manufacturing-interfaces-jtagswd-uart-test-pads" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.6 Debug &amp; Manufacturing Interfaces (JTAG/SWD, UART, Test Pads)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>7. Interfaces and Connectors</h1>
+
+<h2 id="7-interfaces-connectors">7. Interfaces &amp; Connectors<a class="headerlink" href="#7-interfaces-connectors" title="Permanent link">&para;</a></h2>
+<h3 id="71-interface-summary-table">7.1 Interface Summary Table<a class="headerlink" href="#71-interface-summary-table" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Group</th>
+<th>Interface / Bus</th>
+<th>Direction (w.r.t. H1)</th>
+<th>Typical Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Power</td>
+<td>24 V from H4</td>
+<td>Input</td>
+<td>Primary supply for H1</td>
+</tr>
+<tr>
+<td>Power</td>
+<td>Pre-charge / Enable lines</td>
+<td>Bi-directional</td>
+<td>Contactors and inrush control with H4</td>
+</tr>
+<tr>
+<td>To H2</td>
+<td>Ethernet / CSI / USB</td>
+<td>Bi-directional</td>
+<td>High-bandwidth sensor data, configuration</td>
+</tr>
+<tr>
+<td>To H3</td>
+<td>Ethernet and/or CAN0</td>
+<td>Bi-directional</td>
+<td>Motion commands, joint feedback</td>
+</tr>
+<tr>
+<td>To H3</td>
+<td>Robot_Enable, STO, Limp_Home</td>
+<td>Output</td>
+<td>Safety control of actuators</td>
+</tr>
+<tr>
+<td>To H4</td>
+<td>CAN1</td>
+<td>Bi-directional</td>
+<td>BMS and power telemetry</td>
+</tr>
+<tr>
+<td>To H4</td>
+<td>Power status / reset lines</td>
+<td>Bi-directional</td>
+<td>H1 power control, reset</td>
+</tr>
+<tr>
+<td>External network</td>
+<td>RJ45 Gigabit Ethernet</td>
+<td>Bi-directional</td>
+<td>Lab / debug network</td>
+</tr>
+<tr>
+<td>Wireless</td>
+<td>M.2 Key-E Wi-Fi/BT</td>
+<td>Bi-directional</td>
+<td>Wi-Fi and Bluetooth connectivity</td>
+</tr>
+<tr>
+<td>Wireless</td>
+<td>5G modem (PCIe + USB)</td>
+<td>Bi-directional</td>
+<td>Cellular data link</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>M.2 Key-M NVMe SSD</td>
+<td>Local</td>
+<td>OS, models, logging</td>
+</tr>
+<tr>
+<td>Cameras &amp; lidar</td>
+<td>USB 3.2, CSI connectors</td>
+<td>Bi-directional</td>
+<td>RealSense, monocular camera, lidar</td>
+</tr>
+<tr>
+<td>Service</td>
+<td>USB-C ports (2× user, 1× service)</td>
+<td>Bi-directional</td>
+<td>Firmware update, console, external devices</td>
+</tr>
+<tr>
+<td>Debug / Manufacturing</td>
+<td>JTAG/SWD, UART, test pads</td>
+<td>Bi-directional</td>
+<td>Programming, bring-up, end-of-line test</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="72-connector-to-h2-sensory-perception-unit">7.2 Connector to H2 – Sensory &amp; Perception Unit<a class="headerlink" href="#72-connector-to-h2-sensory-perception-unit" title="Permanent link">&para;</a></h3>
+<p>The H2 unit concentrates head-mounted cameras and IMUs. H1 connects to it via:</p>
+<ul>
+<li><strong>Gigabit Ethernet</strong> (if H2 has its own MCU or FPGA):  </li>
+<li>
+<p>Carries compressed image streams, time stamps and health/status messages.</p>
+</li>
+<li>
+<p><strong>Alternatively / additionally, CSI &amp; USB links</strong>:  </p>
+</li>
+<li>CSI flat-flex cables from H1’s CSI connectors to head camera modules.  </li>
+<li>
+<p>USB 3.2 for Intel RealSense and other USB-based sensors.</p>
+</li>
+<li>
+<p><strong>Control &amp; sync GPIOs</strong> (optional):  </p>
+</li>
+<li>Frame-sync signals, trigger lines or GPIO interrupts can be routed via spare pins on the H2 harness.</li>
+</ul>
+<p>The logical view is that H1 receives all perception data from H2 with sufficient bandwidth and low latency to feed its vision pipelines.</p>
+<hr />
+<h3 id="73-connector-to-h3-mobility-manipulation-controller">7.3 Connector to H3 – Mobility &amp; Manipulation Controller<a class="headerlink" href="#73-connector-to-h3-mobility-manipulation-controller" title="Permanent link">&para;</a></h3>
+<p>The H3 controller interfaces the joint drives and grippers. H1 provides:</p>
+<ul>
+<li><strong>CAN0 bus</strong>  </li>
+<li>
+<p>Deterministic messaging for joint targets, drive telemetry and fault reporting.</p>
+</li>
+<li>
+<p><strong>Optional Ethernet link</strong>  </p>
+</li>
+<li>
+<p>Higher-bandwidth channel for richer state (joint torques, temperature maps) or future extensions (TSN, distributed control).</p>
+</li>
+<li>
+<p><strong>Safety lines</strong>  </p>
+</li>
+<li><code>Robot_Enable</code>, <code>STO</code>, <code>Limp_Home</code> are wired in a dedicated twisted-pair harness for noise immunity.  </li>
+<li>These lines must be interpreted by H3 even if CAN/Ethernet is lost.</li>
+</ul>
+<p>H3 returns the robot’s motion state and safety acknowledgement signals (e.g. “drives ready”, “STO active”) so that H1 can supervise transitions between modes.</p>
+<hr />
+<h3 id="74-connector-to-h4-power-management-unit">7.4 Connector to H4 – Power Management Unit<a class="headerlink" href="#74-connector-to-h4-power-management-unit" title="Permanent link">&para;</a></h3>
+<p>The H4 unit manages the 24 V Li-ion battery pack and charging. The H1–H4 interface consists of:</p>
+<ul>
+<li><strong>24 V main power feed</strong> into H1’s power tree.  </li>
+<li><strong>CAN1 bus</strong> for:  </li>
+<li>BMS measurements (voltage, currents, SoC, temperatures),  </li>
+<li>charger status (plugged in, charging current),  </li>
+<li>fault codes (over-voltage, under-voltage, over-current).  </li>
+<li><strong>Discrete control lines</strong> (number and polarity to be finalised):  </li>
+<li><code>H1_POWER_EN</code> / <code>H1_PRECHARGE</code> – request to energise H1.  </li>
+<li>Optional <code>RESET_OUT</code> / <code>FAULT_IN</code> lines for tighter coordination in severe fault cases.</li>
+</ul>
+<p>This interface allows H1 to both <strong>influence</strong> and <strong>react to</strong> power decisions at system level.</p>
+<hr />
+<h3 id="75-external-rf-network-interfaces-wi-fibt-5g-ethernet">7.5 External RF &amp; Network Interfaces (Wi-Fi/BT, 5G, Ethernet)<a class="headerlink" href="#75-external-rf-network-interfaces-wi-fibt-5g-ethernet" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Wi-Fi/BT (M.2 Key-E)</strong>  </li>
+<li>PCIe / SDIO + UART control lines connect to Jetson’s host interface.  </li>
+<li>RF ports lead to external dual-band antennas on the humanoid shell.  </li>
+<li>
+<p>GPIOs from Jetson or S32K116 control <code>W_DISABLE</code>, reset and power-enable pins.</p>
+</li>
+<li>
+<p><strong>5G Modem</strong>  </p>
+</li>
+<li>PCIe x2 and USB 3.2 signals connect to the modem; a SIM card connector is provided on the carrier.  </li>
+<li>
+<p>Multiple RF ports route to 4G/5G and GNSS antennas, respecting modem layout guidelines.</p>
+</li>
+<li>
+<p><strong>Ethernet</strong>  </p>
+</li>
+<li>RGMII connection from Jetson to Gigabit PHY, then to:  <ul>
+<li>RJ45 for lab network, or  </li>
+<li>internal harness connector towards other humanoid units.</li>
+</ul>
+</li>
+</ul>
+<p>These interfaces make H1 the primary network and cloud gateway for the robot.</p>
+<hr />
+<h3 id="76-debug-manufacturing-interfaces-jtagswd-uart-test-pads">7.6 Debug &amp; Manufacturing Interfaces (JTAG/SWD, UART, Test Pads)<a class="headerlink" href="#76-debug-manufacturing-interfaces-jtagswd-uart-test-pads" title="Permanent link">&para;</a></h3>
+<p>To support development, bring-up and manufacturing test, H1 exposes:</p>
+<ul>
+<li><strong>JTAG/SWD headers</strong>  </li>
+<li>For S32K116 safety MCU and EFM8 supervisor.  </li>
+<li>
+<p>Used for programming firmware, updating bootloaders and running boundary-scan or production tests.</p>
+</li>
+<li>
+<p><strong>Jetson debug access</strong>  </p>
+</li>
+<li>USB-C service port can place Jetson into recovery mode for reflashing.  </li>
+<li>
+<p>Optional UART console broken out via an internal header for low-level debugging.</p>
+</li>
+<li>
+<p><strong>Test pads (TPs) on critical nets</strong>  </p>
+</li>
+<li>Power rails: 24 V in, VIN_SOM, 5 V, 3.3 V, 3.3 V_STBY, 1.8 V.  </li>
+<li>Power-control lines: <code>VIN_PWR_ON</code>, <code>CARRIER_POWER_ON</code>, <code>MODULE_POWER_ON</code>, <code>MODULE_SHDN_N</code>, <code>SYS_RESET_N</code>, <code>FORCE_SHUTDOWN</code>.  </li>
+<li>
+<p>High-speed / differential nets (PCIe, USB, CSI) may have carefully placed pads or loop-backs for eye-diagram and signal-integrity validation (where allowed by the layout).</p>
+</li>
+<li>
+<p><strong>Manufacturing test hooks</strong>  </p>
+</li>
+<li>Reserved GPIOs and I²C lines from Jetson or S32K116 can be temporarily re-purposed for in-circuit test (ICT) patterns, LED blink codes, etc.</li>
+</ul>
+<p>Together, these interfaces ensure that H1 can be efficiently verified in the lab, tested on the production line and serviced in the field without dismantling the entire humanoid.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>

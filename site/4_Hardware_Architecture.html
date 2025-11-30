@@ -1,0 +1,1828 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="3_System_Overview.html">
+      
+      
+        <link rel="next" href="5_Power_Architecture.html">
+      
+      
+        
+      
+      
+      <link rel="icon" href="assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>4. Hardware Architecture - VoltEdge H1 Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#4-hardware-architecture" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-header__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            VoltEdge H1 Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              4. Hardware Architecture
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="index.html" title="VoltEdge H1 Documentation" class="md-nav__button md-logo" aria-label="VoltEdge H1 Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    VoltEdge H1 Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="index.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    0. Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1_Product_Requirments_Document.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Product Requirments Document
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2_Requirements_Specification.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Requirements Specification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="3_System_Overview.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. System Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Hardware Architecture
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="4_Hardware_Architecture.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Hardware Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#4-hardware-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Hardware Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Hardware Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-main-compute-subsystem-jetson-agx-orin-som" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Main Compute Subsystem (Jetson AGX Orin SOM)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Main Compute Subsystem (Jetson AGX Orin SOM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-processing-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.1 Processing resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-power-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.2 Power integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413-high-speed-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.3 High-speed interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#414-low-speed-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.4 Low-speed interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#415-thermal-and-mechanical-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.5 Thermal and mechanical considerations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-safety-supervisor-subsystem-s32k116-mcu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Safety / Supervisor Subsystem (S32K116 MCU)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Safety / Supervisor Subsystem (S32K116 MCU)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-carrier-supervisor-mcu-efm8sb10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.1 Carrier Supervisor MCU (EFM8SB10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-system-safety-mcu-s32k116" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.2 System Safety MCU (S32K116)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423-safety-signals-and-fail-safe-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.3 Safety Signals and Fail-safe Behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-communications-networking-subsystems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Communications &amp; Networking Subsystems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 Communications &amp; Networking Subsystems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431-internal-real-time-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.1 Internal Real-time Networks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432-external-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.2 External Connectivity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#433-sensor-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.3 Sensor Connectivity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-storage-subsystem-nvme-emmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Storage Subsystem (NVMe, eMMC)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 Storage Subsystem (NVMe, eMMC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#441-on-module-emmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.1 On-module eMMC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#442-nvme-ssd-on-m2-key-m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.2 NVMe SSD on M.2 Key-M
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#443-data-protection-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.3 Data Protection Considerations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-human-service-interfaces-usb-c-leds-buttons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Human / Service Interfaces (USB-C, LEDs, Buttons)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.5 Human / Service Interfaces (USB-C, LEDs, Buttons)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#451-usb-c-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5.1 USB-C ports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#452-status-leds-and-buzzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5.2 Status LEDs and buzzer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#453-buttons-and-fan-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5.3 Buttons and fan interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#454-debug-expansion-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5.4 Debug / expansion header
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="5_Power_Architecture.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Power Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6_Safety_and_Failsafe_Concept.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Safety and Failsafe Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="7_Interfaces_and_Connectors.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    7. Interfaces and Connectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8. Design Analysis
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8. Design Analysis
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_1" id="__nav_9_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1. FMEA
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    8.1. FMEA
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_FMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. FMEA Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_1_Carrier_DFMEA_%28Implemented%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.1. Carrier Board DFMEA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_2_Safety_Supervisor_Concept_DFMEA.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Safety Supervisor Concept
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_1_3_Rating_Scales.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.1.2. Rating Scales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_2_Worst_Case_Analysis.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.2. Worst Case Analysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_3_Mean_Time_Between_Failure.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.3. Reliability
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8_4_DesignAnalysis_Tolerance_Stackup.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    8.4. Tolerance Stackup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9. Test Plan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    9. Test Plan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_1_High_level_summary.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.1. High level summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_2_Component_Test_Plan%28bySchematicBlock%29.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.2. Component Test Plan(bySchematicBlock)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9_3_Module_Test_Plan.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    9.3. Module Test Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#4-hardware-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Hardware Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Hardware Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-main-compute-subsystem-jetson-agx-orin-som" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 Main Compute Subsystem (Jetson AGX Orin SOM)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1 Main Compute Subsystem (Jetson AGX Orin SOM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#411-processing-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.1 Processing resources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#412-power-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.2 Power integration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#413-high-speed-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.3 High-speed interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#414-low-speed-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.4 Low-speed interfaces
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#415-thermal-and-mechanical-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1.5 Thermal and mechanical considerations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-safety-supervisor-subsystem-s32k116-mcu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 Safety / Supervisor Subsystem (S32K116 MCU)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.2 Safety / Supervisor Subsystem (S32K116 MCU)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#421-carrier-supervisor-mcu-efm8sb10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.1 Carrier Supervisor MCU (EFM8SB10)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#422-system-safety-mcu-s32k116" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.2 System Safety MCU (S32K116)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#423-safety-signals-and-fail-safe-behaviour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2.3 Safety Signals and Fail-safe Behaviour
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-communications-networking-subsystems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 Communications &amp; Networking Subsystems
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.3 Communications &amp; Networking Subsystems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#431-internal-real-time-networks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.1 Internal Real-time Networks
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#432-external-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.2 External Connectivity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#433-sensor-connectivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3.3 Sensor Connectivity
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-storage-subsystem-nvme-emmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Storage Subsystem (NVMe, eMMC)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.4 Storage Subsystem (NVMe, eMMC)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#441-on-module-emmc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.1 On-module eMMC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#442-nvme-ssd-on-m2-key-m" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.2 NVMe SSD on M.2 Key-M
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#443-data-protection-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4.3 Data Protection Considerations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-human-service-interfaces-usb-c-leds-buttons" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Human / Service Interfaces (USB-C, LEDs, Buttons)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4.5 Human / Service Interfaces (USB-C, LEDs, Buttons)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#451-usb-c-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5.1 USB-C ports
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#452-status-leds-and-buzzer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5.2 Status LEDs and buzzer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#453-buttons-and-fan-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5.3 Buttons and fan interface
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#454-debug-expansion-header" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5.4 Debug / expansion header
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>4. Hardware Architecture</h1>
+
+<h2 id="4-hardware-architecture">4. Hardware Architecture<a class="headerlink" href="#4-hardware-architecture" title="Permanent link">&para;</a></h2>
+<p>This section details how H1 is realised in hardware on the carrier board and safety board. It explains the major subsystems, their interfaces and how they work together to fulfil the requirements outlined in Section 3.</p>
+<hr />
+<h3 id="41-main-compute-subsystem-jetson-agx-orin-som">4.1 Main Compute Subsystem (Jetson AGX Orin SOM)<a class="headerlink" href="#41-main-compute-subsystem-jetson-agx-orin-som" title="Permanent link">&para;</a></h3>
+<p>The main compute subsystem is built around an <strong>NVIDIA Jetson AGX Orin SOM</strong>, mounted on a high-density board-to-board connector in the middle of the carrier board.</p>
+<p><img alt="Jetson AGX Orin SOM" src="Images/SOM.png" /></p>
+<h4 id="411-processing-resources">4.1.1 Processing resources<a class="headerlink" href="#411-processing-resources" title="Permanent link">&para;</a></h4>
+<ul>
+<li>8× ARM Cortex-A78 CPU cores for the operating system, middleware (e.g. ROS2) and control applications.</li>
+<li>An Ampere-architecture GPU with two graphics processing clusters, used for neural-network inference, point-cloud processing and other massively parallel workloads.</li>
+<li>Dedicated accelerators:</li>
+<li><strong>DLA</strong> (Deep Learning Accelerators) for efficient inference of CNN models.</li>
+<li><strong>PVA</strong> (Programmable Vision Accelerator) for feature extraction and low-level image processing.</li>
+<li><strong>HDR ISP</strong> for camera pipeline processing (exposure, demosaicing, colour space conversion).</li>
+<li><strong>Video encode/decode engines</strong> for hardware-accelerated streaming and logging of camera feeds.</li>
+<li>Integrated <strong>Safety Island</strong> for local safety monitoring, lockstep execution and diagnostic coverage.</li>
+<li>32 GB LPDDR5 memory and system cache shared across CPU, GPU and accelerators.</li>
+</ul>
+<h4 id="412-power-integration">4.1.2 Power integration<a class="headerlink" href="#412-power-integration" title="Permanent link">&para;</a></h4>
+<ul>
+<li>The SOM is powered from a regulated <strong>VIN_SOM</strong> rail (e.g. 18 V) generated by the carrier’s DC-DC converter from the 24 V bus.</li>
+<li>All core voltages (VDD_CPU, VDD_GPU, memory rails, etc.) are generated on the SOM itself; the carrier provides bulk and high-frequency decoupling close to the connector.</li>
+<li>Dedicated power-control signals (<code>MODULE_POWER_ON</code>, <code>MODULE_SHDN_N</code>, <code>SYS_RESET_N</code>) allow the supervisor MCU to sequence power-up and controlled shutdown.</li>
+</ul>
+<h4 id="413-high-speed-interfaces">4.1.3 High-speed interfaces<a class="headerlink" href="#413-high-speed-interfaces" title="Permanent link">&para;</a></h4>
+<p>The following high-speed interfaces from the SOM are used in H1:</p>
+<ul>
+<li><strong>PCIe x4</strong> → M.2 Key-M NVMe SSD.</li>
+<li><strong>PCIe x1</strong> → M.2 Key-E Wi-Fi 6 + Bluetooth module.</li>
+<li><strong>PCIe x2</strong> → external 5G modem.</li>
+<li><strong>USB 3.2 (three ports)</strong> →</li>
+<li>Head-mounted Intel RealSense camera,</li>
+<li>2D safety lidar,</li>
+<li>spare/service high-speed port on USB-C.</li>
+<li><strong>Two MIPI-CSI ports</strong> → 22-pin CSI connectors for stereo or monocular cameras.</li>
+<li><strong>RGMII Ethernet MAC</strong> → Gigabit Ethernet PHY and RJ45 / internal connector.</li>
+<li><strong>Two CAN controllers</strong> → CAN-FD transceivers and 2-pin connectors.</li>
+</ul>
+<h4 id="414-low-speed-interfaces">4.1.4 Low-speed interfaces<a class="headerlink" href="#414-low-speed-interfaces" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>I²C</strong> buses configure the Ethernet PHY, USB-C/Type-C controllers, power switches and environmental sensors.</li>
+<li><strong>SPI/UART</strong> links connect to the S32K116 safety MCU and other support devices.</li>
+<li><strong>GPIO</strong> pins drive status LEDs, read interrupt lines from peripherals and provide fan PWM/tach signals.</li>
+</ul>
+<h4 id="415-thermal-and-mechanical-considerations">4.1.5 Thermal and mechanical considerations<a class="headerlink" href="#415-thermal-and-mechanical-considerations" title="Permanent link">&para;</a></h4>
+<ul>
+<li>The SOM is placed to mate with a heat-spreader or heat-sink fixed to the humanoid chassis.</li>
+<li>Fan control (PWM + tach) from the SOM ensures the module stays within thermal limits under peak AI loads.</li>
+</ul>
+<hr />
+<h3 id="42-safety-supervisor-subsystem-s32k116-mcu">4.2 Safety / Supervisor Subsystem (S32K116 MCU)<a class="headerlink" href="#42-safety-supervisor-subsystem-s32k116-mcu" title="Permanent link">&para;</a></h3>
+<p>The safety architecture follows a <strong>two-layer</strong> approach: a local power supervisor on the carrier and a system-level safety MCU.</p>
+<h4 id="421-carrier-supervisor-mcu-efm8sb10">4.2.1 Carrier Supervisor MCU (EFM8SB10)<a class="headerlink" href="#421-carrier-supervisor-mcu-efm8sb10" title="Permanent link">&para;</a></h4>
+<p>The EFM8SB10 on the carrier focuses on <strong>power integrity and controlled sequencing</strong>:</p>
+<p><strong>Inputs</strong></p>
+<ul>
+<li>Power-good outputs from each DC-DC regulator (24 V input, 18 V, 5 V, 3.3 V, 1.8 V).</li>
+<li>User power button and reset button signals.</li>
+<li>Optional status or commands from the S32K116.</li>
+</ul>
+<p><strong>Outputs</strong></p>
+<ul>
+<li><code>VIN_PWR_ON</code> – enables the main 24 V → VIN_SOM converter.</li>
+<li><code>CARRIER_PWR_ON</code> – enables secondary regulators for peripherals.</li>
+<li><code>MODULE_POWER_ON</code> and <code>MODULE_SHDN_N</code> – request Jetson power-up or shutdown.</li>
+<li><code>SYS_RESET_N</code> – issues a hardware reset to the SOM when needed.</li>
+</ul>
+<p><strong>Behaviour</strong></p>
+<ul>
+<li>Implements a power-state machine with states <strong>OFF</strong>, <strong>PRECHARGE</strong>, <strong>RUN</strong>, <strong>FAULT</strong>.</li>
+<li>Handles debounce and long-press detection for the power button.</li>
+<li>Ensures that undervoltage or overcurrent conditions result in an orderly shutdown, preventing brown-outs or latch-ups.</li>
+</ul>
+<h4 id="422-system-safety-mcu-s32k116">4.2.2 System Safety MCU (S32K116)<a class="headerlink" href="#422-system-safety-mcu-s32k116" title="Permanent link">&para;</a></h4>
+<p>The S32K116 safety MCU sees the <strong>whole robot</strong>:</p>
+<p><strong>Interfaces</strong></p>
+<ul>
+<li>UART/SPI + heartbeat GPIO to the Jetson SOM for liveness monitoring and command exchange.</li>
+<li>CAN connection to H3 and H4 for motion and power telemetry.</li>
+<li>Discrete safety lines to H3: <code>Robot_Enable</code>, <code>STO</code> (Safe Torque Off), <code>Limp_Home</code>.</li>
+<li>Digital inputs from E-Stop, safety switches and other external safety circuits.</li>
+</ul>
+<p><strong>Responsibilities</strong></p>
+<ul>
+<li>Implements the operating mode state machine (Off, Standby, Normal, Limp-Home, Fault).</li>
+<li>Monitors Jetson heartbeat and internal watchdog, triggering a controlled shutdown or fault if the compute stack becomes unresponsive.</li>
+<li>Checks plausibility of BMS data (voltages, currents, temperatures, SoC) received from H4.</li>
+<li>Latches and timestamps safety-relevant events for diagnostics.</li>
+</ul>
+<h4 id="423-safety-signals-and-fail-safe-behaviour">4.2.3 Safety Signals and Fail-safe Behaviour<a class="headerlink" href="#423-safety-signals-and-fail-safe-behaviour" title="Permanent link">&para;</a></h4>
+<ul>
+<li>In <strong>Normal</strong> mode, <code>Robot_Enable</code> is high and <code>STO</code> is de-asserted, allowing H3 to drive the actuators.</li>
+<li>In <strong>Limp-Home</strong> mode, <code>Limp_Home</code> is asserted to request reduced torque and speed; <code>Robot_Enable</code> may remain high but H3 interprets the combination as a derated state.</li>
+<li>In <strong>Fault/E-Stop</strong>, <code>Robot_Enable</code> is forced low and <code>STO</code> is asserted; H3 must respond by disabling torque at the drive level, independently of any software commands.</li>
+<li>Safety inputs and outputs are wired using hardware defaults (pull-downs/pull-ups) so that loss of power or broken wires tends to result in a safe state.</li>
+</ul>
+<hr />
+<h3 id="43-communications-networking-subsystems">4.3 Communications &amp; Networking Subsystems<a class="headerlink" href="#43-communications-networking-subsystems" title="Permanent link">&para;</a></h3>
+<p>The communications design distinguishes between internal real-time networks and external connectivity.</p>
+<h4 id="431-internal-real-time-networks">4.3.1 Internal Real-time Networks<a class="headerlink" href="#431-internal-real-time-networks" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Gigabit Ethernet backbone</strong></li>
+<li>Jetson RGMII connects to a Gigabit PHY.</li>
+<li>The PHY links either to an RJ45 jack (for lab use) or to a board-to-board connector that continues to H2/H3.</li>
+<li>
+<p>Supports time-synchronised data exchange (e.g. camera frames, motion commands, joint states).</p>
+</li>
+<li>
+<p><strong>CAN / CAN-FD networks</strong></p>
+</li>
+<li><strong>CAN0</strong> – usually assigned to <strong>H3 Mobility &amp; Manipulation</strong>. Carries:<ul>
+<li>joint set-points and trajectory references,</li>
+<li>drive feedback (currents, temperatures, faults),</li>
+<li>drive firmware version and diagnostics.</li>
+</ul>
+</li>
+<li><strong>CAN1</strong> – usually assigned to <strong>H4 Power/BMS and auxiliaries</strong>. Carries:<ul>
+<li>battery voltages, currents and SoC,</li>
+<li>charger status and power-path information,</li>
+<li>fault flags (over-voltage, under-voltage, over-temperature).</li>
+</ul>
+</li>
+<li>Each bus can be galvanically separated from the SOM side if required by the safety concept.</li>
+</ul>
+<h4 id="432-external-connectivity">4.3.2 External Connectivity<a class="headerlink" href="#432-external-connectivity" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Wi-Fi 6 + Bluetooth module</strong></li>
+<li>M.2 Key-E card connected via PCIe x1 and/or SDIO.</li>
+<li>Provides a high-bandwidth link to the lab network and Bluetooth connectivity for controllers or wearable devices.</li>
+<li>
+<p>Power-enable and reset lines allow the Jetson or supervisor to power-cycle the module to recover from faults.</p>
+</li>
+<li>
+<p><strong>5G modem</strong></p>
+</li>
+<li>Connected via PCIe x2 and USB 3.2, with a SIM slot on the carrier.</li>
+<li>Multiple RF connectors route to external antennas on the humanoid shell.</li>
+<li>Used for remote tele-operation, telemetry streaming and OTA updates when Wi-Fi is not available.</li>
+</ul>
+<h4 id="433-sensor-connectivity">4.3.3 Sensor Connectivity<a class="headerlink" href="#433-sensor-connectivity" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>USB 3.2 ports</strong> are used for:</li>
+<li>Intel RealSense depth camera in the head,</li>
+<li>2D safety lidar,</li>
+<li>
+<p>spare high-speed device (e.g. extra camera or debug dongle).</p>
+</li>
+<li>
+<p><strong>CSI camera ports</strong> connect to:</p>
+</li>
+<li>a forward-facing stereo or RGB camera cluster,</li>
+<li>an optional downward-facing or side-facing monocular camera.</li>
+</ul>
+<p>These links are sized so that all required sensors can stream simultaneously while still leaving headroom for logging and control traffic.</p>
+<hr />
+<h3 id="44-storage-subsystem-nvme-emmc">4.4 Storage Subsystem (NVMe, eMMC)<a class="headerlink" href="#44-storage-subsystem-nvme-emmc" title="Permanent link">&para;</a></h3>
+<p>The storage subsystem is designed for both <strong>performance</strong> and <strong>serviceability</strong>.</p>
+<h4 id="441-on-module-emmc">4.4.1 On-module eMMC<a class="headerlink" href="#441-on-module-emmc" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Contains:</li>
+<li>boot loaders and secure boot infrastructure,</li>
+<li>a factory-reset OS image,</li>
+<li>minimal diagnostics environment.</li>
+<li>Normally used read-only in the field; updates are rare and carefully controlled.</li>
+</ul>
+<h4 id="442-nvme-ssd-on-m2-key-m">4.4.2 NVMe SSD on M.2 Key-M<a class="headerlink" href="#442-nvme-ssd-on-m2-key-m" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Provides the main high-performance storage:</li>
+<li>primary root filesystem for day-to-day operation,</li>
+<li>AI models and configuration data,</li>
+<li>experiment logs and datasets.</li>
+<li>Typical capacities: 512 GB – 2 TB, selectable depending on product tier.</li>
+<li>Connected via PCIe x4 for high throughput; the PCIe link training and power-good status are monitored so that SSD faults can be detected early.</li>
+<li>Power-switch and enable lines allow:</li>
+<li>forced power-cycle of the SSD during debug,</li>
+<li>partial power-down in low-energy modes.</li>
+</ul>
+<h4 id="443-data-protection-considerations">4.4.3 Data Protection Considerations<a class="headerlink" href="#443-data-protection-considerations" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Logs can be written to journalling filesystems to reduce corruption risk after hard faults.</li>
+<li>Critical configuration and calibration files are periodically backed up from the SSD to a reserved eMMC partition.</li>
+</ul>
+<hr />
+<h3 id="45-human-service-interfaces-usb-c-leds-buttons">4.5 Human / Service Interfaces (USB-C, LEDs, Buttons)<a class="headerlink" href="#45-human-service-interfaces-usb-c-leds-buttons" title="Permanent link">&para;</a></h3>
+<p>Human interaction and servicing are primarily through the carrier’s front-panel interfaces.</p>
+<h4 id="451-usb-c-ports">4.5.1 USB-C ports<a class="headerlink" href="#451-usb-c-ports" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>USB-C 1 / USB-C 2</strong> – multi-role high-speed ports:</li>
+<li>default to USB host for connecting external drives, sensors or debug adapters,</li>
+<li>can be reconfigured as device ports for direct connection to a laptop (mass-storage gadget, USB-Ethernet gadget, etc.).</li>
+<li><strong>USB-C 3 (Service)</strong> – normally dedicated to engineering use:</li>
+<li>used to flash OS images, access serial console or recover the system,</li>
+<li>protected with ESD diodes and current-limited power switches.</li>
+</ul>
+<p>Each port is managed by a USB Type-C/PD controller that:</p>
+<ul>
+<li>negotiates orientation and role,</li>
+<li>limits inrush and fault currents,</li>
+<li>reports over-current events to the supervisor or Jetson.</li>
+</ul>
+<h4 id="452-status-leds-and-buzzer">4.5.2 Status LEDs and buzzer<a class="headerlink" href="#452-status-leds-and-buzzer" title="Permanent link">&para;</a></h4>
+<p>Typical indicators include:</p>
+<ul>
+<li><strong>POWER</strong> – 24 V and local rails present.</li>
+<li><strong>RUN</strong> – Jetson has booted and is in Normal mode.</li>
+<li><strong>FAULT</strong> – safety fault latched; system in Limp-Home or Fault mode.</li>
+<li><strong>NET</strong> – Ethernet link and activity (integrated into the RJ45).</li>
+</ul>
+<p>A small <strong>buzzer</strong> can be driven by the supervisor or Jetson to signal power-up, errors or mode changes (e.g. different beep patterns for Fault vs Limp-Home).</p>
+<h4 id="453-buttons-and-fan-interface">4.5.3 Buttons and fan interface<a class="headerlink" href="#453-buttons-and-fan-interface" title="Permanent link">&para;</a></h4>
+<ul>
+<li><strong>Power button</strong></li>
+<li>Short press: request power-up or clean shutdown via the supervisor.</li>
+<li>
+<p>Long press (configurable): force transition to Fault or power-cut for recovery in case of software lock-up.</p>
+</li>
+<li>
+<p><strong>Reset button</strong></p>
+</li>
+<li>
+<p>Generates a supervisor-mediated reset of the Jetson (and optionally some peripherals) without fully depowering the board.</p>
+</li>
+<li>
+<p><strong>Fan control</strong></p>
+</li>
+<li>Jetson PWM output drives the cooling fan.</li>
+<li>Fan tachometer feedback is monitored; if the fan stalls, the supervisor can limit performance or force shutdown to protect the SOM.</li>
+</ul>
+<h4 id="454-debug-expansion-header">4.5.4 Debug / expansion header<a class="headerlink" href="#454-debug-expansion-header" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Provides access to:</li>
+<li>a UART console for low-level debugging if required,</li>
+<li>spare GPIO, I²C and power pins for attaching temporary sensors, logic analysers or measurement equipment.</li>
+</ul>
+<p>These interfaces ensure that the H1 unit can be assembled, brought up, diagnosed and maintained conveniently throughout the project lifecycle, from hackathon prototype to potential product.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
