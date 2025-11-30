@@ -2,7 +2,7 @@
 
 ## Main Robotics Processing And Communications Unit
 
-# 1. Product Purpose
+### 1. Product Purpose
 
 H1 is the main robotics processing and communications unit for the 32-DOF humanoid robot. It is designed to solve the fundamental challenge in humanoid robotics: the need for a unified, high-performance compute and communication platform that can reliably process large volumes of sensor data, execute advanced AI workloads and coordinate all distributed subsystems in real time.
 
@@ -11,7 +11,7 @@ H1 provides the foundational electronics infrastructureor autonomy algorithms, c
 
 The primary users of H1 are the robot’s internal subsystems : H2 (sensing), H3 (mobility and joint controllers) and H4 (power and energy management) which depend on continuous, deterministic communication with a central compute unit. In addition, engineering teams, manufacturing teams and cloud/operations teams rely on H1 as the foundation for integration, testing, deployment, telemetry and OTA updates. Ultimately, end users benefit from the system performance, reliability, and capabilities enabled by H1.
 
-# 2. Product Overview
+### 2. Product Overview
 
 H1 is a consolidated high compute and communications electronics module that integrates:
 
@@ -24,9 +24,9 @@ H1 is a consolidated high compute and communications electronics module that int
 - Comprehensive health monitoring and telemetry for system diagnostics and fleet operation
 - A modular board assembly optimized for integration, routing and thermal design
 
-# 3. Scope and Non-Goals
+### 3. Scope and Non-Goals
 
-## 3.1 In-Scope (Electronics Only)
+#### 3.1 In-Scope (Electronics Only)
 
 H1 focuses exclusively on the electronics required to deliver compute, communication and system orchestration.
 H1 responsibilities include:
@@ -39,8 +39,8 @@ H1 responsibilities include:
 - Diagnostics and testability
 - Security hooks and manufacturing interfaces
 - PCB and integration elements
-  
-## 3.2 Out of Scope
+
+#### 3.2 Out of Scope
 
 - Mechanical parts (enclosure, heatsinks, brackets)
 - Software/OS/AI algorithms (middleware, autonomy, locomotion logic)
@@ -50,11 +50,11 @@ H1 responsibilities include:
 - Formal regulatory certifications (FCC/CE/UL/PTCRB/RED; only pre-compliance is considered)
 - Manufacturing operations (fixtures, automation, supply chain mgmt.)
 
-# 4. Product Goals
+### 4. Product Goals
 
 The following goals define the essential outcomes H1 must achieve as the centralized compute and communications platform for the humanoid robot. These goals guide the design direction, engineering decisions and validation criteria for the product.
 
-## 4.1 Primary goals
+#### 4.1 Primary goals
 
 - **Centralize high-performance computation**: Provide the robot with a unified compute platform capable of supporting real-time perception, planning and decision-making workloads.
 
@@ -64,23 +64,23 @@ The following goals define the essential outcomes H1 must achieve as the central
 
 - **Deliver a reliable power integration subsystem** with proper protection, regulation, sequencing
 
-## 4.2 Business and Product Goals
+#### 4.2 Business and Product Goals
 
 - **Reduce system integration complexity**: Standardize the compute and communication architecture across the humanoid platform, simplifying hardware and software integration
-  
+
 - **Enable scalable manufacturing**: Support reliable production at volumes up to 10,000 units per year through a manufacturable and testable electronics design.
-  
+
 - **Accelerate development of humanoid capabilities and time-to-market**: Provide a stable compute foundation that shortens development cycles for autonomy, perception, control and cloud-connected features.
-  
+
 - **Ensure long-term extensibility**: Enable future enhancements in AI, autonomy, software, and cloud services without requiring major hardware redesigns.
-  
+
 - **Establish a reusable platform baseline**: Position H1 as the standard compute module for current and future humanoid robot variants, ensuring consistent architecture, predictable performance and reduced engineering effort across product generations
 
-## 4.3 Success Criteria
+#### 4.3 Success Criteria
 
 H1 is considered successful when it reliably delivers the performance, integration capability, and operational stability required for the humanoid robot platform. The following criteria define measurable outcomes across technical, reliability, integration, and business dimensions.
 
-### 4.3.1 Technical Success Criteria
+##### 4.3.1 Technical Success Criteria
 
 - Real-time compute performance:Supports perception, planning, and control workloads without missed cycles, dropped frames, or latency overruns
 - Deterministic subsystem communication: maintains low-latency, low-jitter communication with H2, H3, and H4 under full load.
@@ -88,29 +88,29 @@ H1 is considered successful when it reliably delivers the performance, integrati
 - Reliable wireless connectivity:
 - Thermal & electrical robustness: No throttling, resets, or instability within the specified thermal and electrical operating envelope.
 
-### 4.3.2 Reliability and Safety Criteria
+##### 4.3.2 Reliability and Safety Criteria
 
 - Fault-tolerant operation: System recovers gracefully from internal resets, communication errors, and subsystem faults.
 - Correct safety signaling: Heartbeats, watchdogs, and fault lines operate within defined timing constraints
 - Pre-compliance readiness:Passes internal EMC, ESD, and thermal pre-compliance thresholds without major redesign.
 - Stable long-duration operation:No unexpected resets, hangs, or unsafe behavior during extended stress and endurance tests.
 
-### 4.3.3 Integration and Manufacturing Criteria
+##### 4.3.3 Integration and Manufacturing Criteria
 
 - Seamless integration: Interfaces with H2, H3 and H4 without architecture or pinout rework.
 - EVT/DVT/PVT progression:Meets acceptance criteria for engineering, design and production validation builds.
 - Manufacturing testability: All debug and test interfaces (JTAG, UART, boundary scan, test points) support automated EOL testing.
 - Scalable production:Design supports manufacturing at volumes up to 10,000 units/year.
 
-### 4.3.4 Business and Platform Criteria
+##### 4.3.4 Business and Platform Criteria
 
 - Reusable compute platform: H1 is adopted as the standard compute module for multiple humanoid robot variants.
 - Reduced integration effort: Lowers integration complexity for autonomy, perception, and control teams.
 - Faster feature deployment: Enables rapid rollout of new humanoid capabilities without hardware redesign.
-  
-# 5. Constraints
 
-## 5.1 System Constraints
+### 5. Constraints
+
+#### 5.1 System Constraints
 
 - 24 V power architecture: H1 must operate from the robot’s 24 V power input and comply with system-level power distribution constraints.
 - Defined subsystem interfaces: Interfaces to H2 (sensing), H3 (mobility), and H4 (power) must follow agreed communication protocols and timing requirements
@@ -118,7 +118,7 @@ H1 is considered successful when it reliably delivers the performance, integrati
 - Thermal envelope limits: H1 must meet thermal performance inside the system-level cooling constraints (no dedicated active cooling provided by H1).
 - Real-time communication constraints: H1 must support deterministic, low-jitter communication with distributed controllers under system load.
 
-## 5.2 Electrical & Environmental Constraints
+#### 5.2 Electrical & Environmental Constraints
 
 - Operating voltage, load and transient limits:
 All power electronics must operate within the system-defined voltage ranges, transient behaviors and grounding constraints.
@@ -126,12 +126,12 @@ All power electronics must operate within the system-defined voltage ranges, tra
 - RF coexistence constraints: Placement, filtering, and routing must avoid interference with other RF systems within the robot.
 - Component availability and lifecycle: Components must meet minimum lifecycle and availability requirements for 10k units/year production.
 
-## 5.3 Organizational & Project Constraints
+#### 5.3 Organizational & Project Constraints
 
 - Common architecture across variants: H1 must maintain compatibility across current and future humanoid robot variants with minimal redesign.
 - Manufacturability and testability: PCB stack-up, connectors, and interfaces must support automated testing and scalable assembly.
-  
-# 6. Assumptions
+
+### 6. Assumptions
 
 - Subsystem interface definitions will be stable and provided by H2, H3, and H4 teams. H2, H3, H4 will deliver finalized ICDs (timing, pinouts, electrical levels) before layout freeze.
 - 24-V bus electrical characteristics (surges, ripple, noise limits) will be defined and remain stable.
@@ -142,7 +142,7 @@ All power electronics must operate within the system-defined voltage ranges, tra
 - Manufacturing partner supports 8-layer high-speed boards and EOL test processes. Manufacturing test infrastructure (fixtures, automation software) will be provided by the manufacturing engineering team; H1 will only provide electrical interfaces.
 - Long-lead components (PMIC, supervisors, RF modules) will be procurable within timelines.
 
-# 7. Dependencies
+### 7. Dependencies
 
 - Internal Teams:
   - H2 (Sensors): Sensor ICDs, bandwidth/timing specs, electrical compatibility.
@@ -159,7 +159,7 @@ All power electronics must operate within the system-defined voltage ranges, tra
   - RF module vendors (5G, WiFi/BT)
   - EMC pre-compliance labs
 
-# 8. Stakeholders
+### 8. Stakeholders
 
 The development of H1 involves multiple teams across hardware, software, system engineering, manufacturing, and operations. This chapter identifies all key stakeholders and their responsibilities to ensure alignment, accountability, and effective decision-making throughout the product lifecycle.
 
@@ -179,7 +179,7 @@ The development of H1 involves multiple teams across hardware, software, system 
 | **System Engineering**                     | System architecture ownership; cross-subsystem constraints; timing/power/thermal budgets; H1-H2-H3-H4 integration.                        |
 
 
-## 8.1 Stakeholders RACI Matrix for H1 development
+#### 8.1 Stakeholders RACI Matrix for H1 development
 
 **Legend**:
 
@@ -206,11 +206,11 @@ The development of H1 involves multiple teams across hardware, software, system 
 | **EMC/ESD pre-compliance**                            | I             | R           | C              | C          | I  | I  | I  | I        | C                   | R                     | A          | C           | I           |
 | **System integration & robot bring-up**               | I             | R           | C              | C          | C  | C  | C  | I        | I                   | C                     | I          | A/R         | I           |
 
-# 10. Use case
+### 10. Use case
 
 The humanoid robot is designed for service, industrial, research, and remote-operation environments where human-like 32-DOF movement, real-time AI processing (≥200 TOPS) and reliable wireless connectivity are essential. H1 enables these applications by providing the centralized compute, communication, and safety backbone of the robot.
 
-# 10. High-Level Features
+### 11. High-Level Features
 
 | **Category**                              | **High-Level Feature**                  | **What It Enables (Electronics Scope)**                     |
 | ----------------------------------------- | --------------------------------------- | ----------------------------------------------------------- |
@@ -241,7 +241,7 @@ The humanoid robot is designed for service, industrial, research, and remote-ope
 |                                           | Secure manufacturing provisions         | Fuse programming and production-test lockout.               |
 
 
-# 10. Release Roadmap
+### 12. Release Roadmap
 
 Assumptions
 
@@ -259,7 +259,7 @@ Assumptions
 | **6. PVT – Production Validation Test**  | Month 10–12  | Validate large-scale manufacturability              | • PVT build<br>• Pilot production run<br>• Fixture validation<br>• EOL testing<br>• Final BOM release                              | • 95% FPY achieved<br>• Manufacturing validated                         |
 | **7. MP – Mass Production**              | Month 12+    | Ramp to 10k units/year                              | • Volume production<br>• Yield tracking<br>• ECO management<br>• Field support readiness                                           | • Stable MP pipeline established                                        |
 
-## 10.1. Key Risks & Impact
+#### 12.1. Key Risks & Impact
 | **Risk Area**            | **Issue**                              | **Impact**                           | **Worst-Case Effect**   |
 | ------------------------ | -------------------------------------- | ------------------------------------ | ----------------------- |
 | **ICD Uncertainty**      | Late changes from H2/H3/H4 teams       | Requires schematic + layout rework   | **+1–2 months** delay   |
@@ -269,7 +269,7 @@ Assumptions
 | **Mechanical Changes**   | Connector or outline changes           | Layout redo, rerouting               | **+3–6 weeks** delay    |
 | **Manufacturing Issues** | Fixture readiness gaps                 | PVT schedule slip                    | **+1–1.5 months** delay |
 
-## 10.2. Risk-Adjusted Timeline Summary
+#### 12.2. Risk-Adjusted Timeline Summary
 
 | **Phase**                  | **Best Case** | **Realistic** | **Worst Case** |
 | -------------------------- | ------------- | ------------- | -------------- |

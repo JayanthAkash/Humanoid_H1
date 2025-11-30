@@ -30,7 +30,7 @@ At a glance, H1:
 
 ### 3.2 High-Level H1 Block Diagram
 
-![H1 High-Level Block Diagram](../Images/BlockDiagram.png)
+![H1 High-Level Block Diagram](./Images/BlockDiagram.png)
 
 Conceptually, H1 is composed of:
 

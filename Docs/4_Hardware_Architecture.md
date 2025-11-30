@@ -8,7 +8,7 @@ This section details how H1 is realised in hardware on the carrier board and saf
 
 The main compute subsystem is built around an **NVIDIA Jetson AGX Orin SOM**, mounted on a high-density board-to-board connector in the middle of the carrier board.
 
-![Jetson AGX Orin SOM](../Images/SOM.png)
+![Jetson AGX Orin SOM](./Images/SOM.png)
 
 #### 4.1.1 Processing resources
 

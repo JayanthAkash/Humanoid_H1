@@ -1,6 +1,6 @@
 ## 5. Power Architecture
 
-![PowerFlow Architecture](../Images/PowerFlow.png)
+![PowerFlow Architecture](./Images/PowerFlow.png)
 
 ### 5.1 24 V Input & DC-DC Power Tree
 
